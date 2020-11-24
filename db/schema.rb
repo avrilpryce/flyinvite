@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_145747) do
+ActiveRecord::Schema.define(version: 2020_11_24_103459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "trips", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.string "street"
+    t.string "zip"
+    t.string "city"
+    t.string "country"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "max_price"
+    t.string "flight_class"
+    t.datetime "latest_arrival"
+    t.datetime "earliest_departure"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +41,27 @@ ActiveRecord::Schema.define(version: 2020_11_23_145747) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.string "job_title"
+    t.string "company"
+    t.boolean "host", default: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_users_trips_on_trip_id"
+    t.index ["user_id"], name: "index_users_trips_on_user_id"
+  end
+
+  add_foreign_key "trips", "users"
+  add_foreign_key "users_trips", "trips"
+  add_foreign_key "users_trips", "users"
 end

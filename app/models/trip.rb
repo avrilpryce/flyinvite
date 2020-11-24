@@ -1,4 +1,6 @@
 class Trip < ApplicationRecord
+  FLIGHT_CLASSES = ["Economy", "Business", "First Class"]
+
   belongs_to :host, foreign_key: :user_id, class_name: "User"
 
   has_many :users_trips

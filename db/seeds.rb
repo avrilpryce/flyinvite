@@ -1,6 +1,6 @@
 require 'faker'
 
-flight_classes = ["Economy", "Business", "First"]
+flight_classes = ["Economy", "Business", "First Class"]
 airlines = ["Air France", "Luxair", "British Airways", "Iberia", "Delta", "Ryanair", "KLM"]
 
 puts "Starting the seeding process!"

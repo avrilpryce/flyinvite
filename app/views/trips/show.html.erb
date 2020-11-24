@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h1><%= @trip.name.capitalize %></h1>
+  <h3>Details:</h3>
+  <ul>
+    <li>Address: <%= @trip.street.capitalize %>, <%= @trip.zip %> <%= @trip.city.capitalize %>, <%= @trip.country.upcase %></li>
+    <li>Start: <%= @trip.start_date %></li>
+    <li>End: <%= @trip.end_date %></li>
+  </ul>
+  <h3>Restrictions:</h3>
+  <ul>
+    <li>Arrival airport: <%= @trip.airport_code.nil? ? "N/A" : @trip.airport_code.upcase %></li>
+    <li>Price ceilling: <%= @trip.max_price.nil? ? "N/A" : @trip.max_price %>€</li>
+    <li>Travel class: <%= @trip.flight_class.nil? ? "N/A" : @trip.flight_class.capitalize %></li>
+    <li>Latest arrival: <%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival %></li>
+    <li>Earliest departure: <%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure %></li>
+  </ul>
+  <% if @trip.users.count > 0 %>
+  <h3>Participants:</h3>
+  <ul>
+    <% @trip.users.each do |participant| %>
+      <li><%= participant.first_name.capitalize %> <%= participant.last_name.capitalize %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <%= link_to "Back to My trips", trips_path, class:"btn btn-primary" %>
+</div>

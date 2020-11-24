@@ -1,0 +1,9 @@
+<div class="container mt-5">
+  <h1> My trips </h1>
+  <ul>
+    <% @trips.each do |trip| %>
+      <li><%= link_to trip.name, trip_path(trip) %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Create a trip", new_trip_path, class:"btn btn-primary" %>
+</div>

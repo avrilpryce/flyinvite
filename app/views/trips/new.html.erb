@@ -1,0 +1,20 @@
+<div class="container mt-5 mb-5">
+  <h1>Create a trip</h1>
+  <%= simple_form_for @trip do |f| %>
+    <h3>Details:</h3>
+    <%= f.input :name, label: "Name" %>
+    <%= f.input :street, label: "Street" %>
+    <%= f.input :zip, label: "Zip code" %>
+    <%= f.input :city, label: "City" %>
+    <%= f.input :country, label: "Country", as: :string %>
+    <%= f.input :start_date, label: "Start date" %>
+    <%= f.input :end_date, label: "End date" %>
+    <h3>Restrictions:</h3>
+    <%= f.input :airport_code, label: "Airport (IATA code)" %>
+    <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>
+    <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
+    <%= f.input :latest_arrival, label: "Latest possible arrival at event" %>
+    <%= f.input :earliest_departure, label: "Earliest possible departure from event" %>
+    <%= f.submit %>
+  <% end %>
+</div>

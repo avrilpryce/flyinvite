@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :owned_trips, class_name: "Trip"
   has_many :users_trips
   has_many :trips, through: :users_trips
+
+  validates :first_name, :last_name, :username, :job_title, :company, presence: true
+  validates :email, uniqueness: true
 end

@@ -1,1 +1,10 @@
-<%= link_to 'My trips', trips_path %>
+<% if user_signed_in? && current_user.host %>
+  <%= link_to 'My trips', trips_path %>
+<% elsif user_signed_in? %>
+  <%= link_to 'My invitations', invitations_path %>
+<% else %>
+  <h1>Hi, welcome to Flyinvite!</h1>
+<% end %>
+
+
+

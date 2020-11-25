@@ -1,4 +1,11 @@
 class InvitationsController < ApplicationController
+  def index
+    @invitations = Invitation.where(email: current_user.email)
+  end
+
+  def show
+  end
+
   def new
   end
   
@@ -11,6 +18,12 @@ class InvitationsController < ApplicationController
     send_invitation
 
     redirect_to trip_path(@trip)
+  end
+
+  def update
+    @invitation = Invitation.find(params[:id])
+    @invitation.update(invitation_params)
+    redirect_to invitations_path
   end
 
   private

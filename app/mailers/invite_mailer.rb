@@ -11,6 +11,6 @@ class InviteMailer < ApplicationMailer
     @email = @invitation.email
     @greeting = "Hello"
 
-    mail to: @email
+    mail(to: @email, subject: 'Join us on a trip!')
   end
 end

@@ -1,14 +1,14 @@
 class InvitationsController < ApplicationController
   def new
   end
-
+  
   def create
     @trip = Trip.find(params[:trip_id])
     @invitation = Invitation.new(invitation_params)
     @invitation.trip_id = @trip.id
     @invitation.save
-
-    # email(@invitation.email)
+    
+    send_invitation
 
     redirect_to trip_path(@trip)
   end
@@ -19,7 +19,7 @@ class InvitationsController < ApplicationController
     params.require(:invitation).permit(:email, :status)
   end
 
-  # def email(address)
-
-  # end
+  def send_invitation
+    InviteMailer.with(invitation: @invitation).invite.deliver_now
+  end
 end

@@ -8,6 +8,8 @@ class InvitationsController < ApplicationController
     @invitation.trip_id = @trip.id
     @invitation.save
 
+    # email(@invitation.email)
+
     redirect_to trip_path(@trip)
   end
 
@@ -16,4 +18,8 @@ class InvitationsController < ApplicationController
   def invitation_params
     params.require(:invitation).permit(:email, :status)
   end
+
+  # def email(address)
+
+  # end
 end

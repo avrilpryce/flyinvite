@@ -23,6 +23,11 @@ class InvitationsController < ApplicationController
   def update
     @invitation = Invitation.find(params[:id])
     @invitation.update(invitation_params)
+
+    if @invitation.status == "Accepted"
+      @invitation.trip.users << current_user
+    end
+
     redirect_to invitations_path
   end
 

@@ -3,17 +3,22 @@
   <% @invitations.each do |invitation| %>
     <h3>Trip's name: <%= invitation.trip.name.capitalize %></h3>
     <ul>
-    <li>Trip's host: <%= invitation.trip.host.first_name.capitalize %> <%= invitation.trip.host.last_name.capitalize %></li>
-    <li>Trip's location: <%= invitation.trip.street.capitalize %>, <%= invitation.trip.zip %> <%= invitation.trip.city.capitalize %>, <%= invitation.trip.country.upcase %></li>
-    <li>Trip starts on: <%= invitation.trip.start_date %></li>
-    <li>Trip ends on: <%= invitation.trip.end_date %></li>
-    <li>Invitation's status: <%= invitation.status %></li>
+      <li>Trip's host: <%= invitation.trip.host.first_name.capitalize %> <%= invitation.trip.host.last_name.capitalize %></li>
+      <li>Trip's location: <%= invitation.trip.street.capitalize %>, <%= invitation.trip.zip %> <%= invitation.trip.city.capitalize %>, <%= invitation.trip.country.upcase %></li>
+      <li>Trip starts on: <%= invitation.trip.start_date %></li>
+      <li>Trip ends on: <%= invitation.trip.end_date %></li>
+      <li>Invitation's status: <%= invitation.status %></li>
     </ul>
-    <div class="change-status mt-2">
-      <%= simple_form_for invitation, method: :patch do |f| %>
-      <%= f.input :status, label: "Change invitation status", collection: Invitation::STATUS %>
-      <%= f.submit %>
-      <% end %>
-    </div>
+    <% if invitation.status == "Pending" %>
+      <div class="change-status mt-2">
+        <%= simple_form_for invitation, method: :patch do |f| %>
+        <%= f.input :status, label: "Change invitation status", collection: Invitation::STATUS %>
+        <%= f.submit %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
+  <div class="container mt-3 mb-3">
+    <%= link_to "Back to home", root_path, class:"btn btn-primary" %>
+  </div>
 </div>

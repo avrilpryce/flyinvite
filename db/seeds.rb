@@ -20,19 +20,19 @@ else
   seeder = User.create!(email: "seeder@gmail.com", password: "123456", first_name: "seeder", last_name: "McSeed", username: "seed_account", job_title: "CEO", company: "Seeds'r'us", host: true)
 end
 
-if User.exists?(:username => "traveller 1")
-  traveller1 = User.where(username: "traveller 1").first
+if User.exists?(:username => "traveler 1")
+  traveler1 = User.where(username: "traveler 1").first
 else
-  traveller1 = User.create!(email: "traveller1@gmail.com", password: "123456", first_name: "John", last_name: "T1", job_title: "CFO", company: "Seeds'r'us", username: "traveller 1")
+  traveler1 = User.create!(email: "traveler1@gmail.com", password: "123456", first_name: "John", last_name: "T1", job_title: "CFO", company: "Seeds'r'us", username: "traveler 1")
 end
 
-if User.exists?(:username => "traveller 2")
-  traveller2 = User.where(username: "traveller 2").first
+if User.exists?(:username => "traveler 2")
+  traveler2 = User.where(username: "traveler 2").first
 else
-  traveller2 = User.create!(email: "traveller2@gmail.com", password: "123456", first_name: "Marc", last_name: "T2", job_title: "COO", company: "Seeds'r'us", username: "traveller 2")
+  traveler2 = User.create!(email: "traveler2@gmail.com", password: "123456", first_name: "Marc", last_name: "T2", job_title: "COO", company: "Seeds'r'us", username: "traveler 2")
 end
 
-passengers = [traveller1, traveller2]
+passengers = [traveler1, traveler2]
 
 puts ""
 puts "#{seeder.username} is ready to seed the DB!"
@@ -55,8 +55,8 @@ puts "Seeding new trips, please wait..."
 
   trip.host = seeder
   trip.save
-  trip.users << traveller1
-  trip.users << traveller2
+  trip.users << traveler1
+  trip.users << traveler2
 
   2.times do
 

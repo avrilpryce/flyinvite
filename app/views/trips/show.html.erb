@@ -22,23 +22,26 @@
     <% end %>
   </ul>
   <% end %>
-
-  <% if @trip.invitations.length > 0 %>
-    <h3>Pending invitations:</h3>
-    <ul>
-      <% @trip.invitations.each do |invitation| %>
-        <% if invitation.status == "Pending" %>
-          <li><%= invitation.email %><br>Creation: <%= invitation.created_at %></li>
+  <% if current_user == @trip.host %>
+    <% if @trip.invitations.length > 0 %>
+      <h3>Pending invitations:</h3>
+      <ul>
+        <% @trip.invitations.each do |invitation| %>
+          <% if invitation.status == "Pending" %>
+            <li><%= invitation.email %><br>Creation: <%= invitation.created_at %></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
   <% end %>
 
-  <h3>Create invitations:</h3>
-  <%= simple_form_for [@trip, @invitation] do |f| %>
-    <%= f.input :email, label: "Email address" %>
-    <%= f.submit "Invite!", class:"btn btn-primary" %>
-  <% end %> <br>
+  <% if current_user == @trip.host %>
+    <h3>Create invitations:</h3>
+    <%= simple_form_for [@trip, @invitation] do |f| %>
+      <%= f.input :email, label: "Email address" %>
+      <%= f.submit "Invite!", class:"btn btn-primary" %>
+    <% end %> <br>
+  <% end %>
 
   <%= link_to "Back to My trips", trips_path, class:"btn btn-primary" %>
 </div>

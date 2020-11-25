@@ -23,14 +23,16 @@
   </ul>
   <% end %>
 
-  <h3>Pending invitations:</h3>
-  <ul>
-    <% @trip.invitations.each do |invitation| %>
-      <% if invitation.status == "Pending" %>
-        <li><%= invitation.email %><br>Creation: <%= invitation.created_at %></li>
+  <% if @trip.invitations.length > 0 %>
+    <h3>Pending invitations:</h3>
+    <ul>
+      <% @trip.invitations.each do |invitation| %>
+        <% if invitation.status == "Pending" %>
+          <li><%= invitation.email %><br>Creation: <%= invitation.created_at %></li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  <% end %>
 
   <h3>Create invitations:</h3>
   <%= simple_form_for [@trip, @invitation] do |f| %>

@@ -8,6 +8,8 @@ class Trip < ApplicationRecord
 
   has_many :flightbookings
 
+  has_many :invitations
+
   validates :name, :city, :country, presence: true
   validates :name, uniqueness: true
   # validates :start_date, :end_date, presence: true

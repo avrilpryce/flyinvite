@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'invitations/new'
+  get 'invitations/create'
   devise_for :users
   root to: 'pages#home'
-  resources :trips, only: [ :index, :show, :new, :create ]
+  resources :trips do
+    resources :invitations, only: [ :new, :create ]
+  end
 end

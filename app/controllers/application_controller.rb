@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:find_location, :flight_search]
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'search_flights', to: 'flight_bookings#find_location'
   devise_for :users
   root to: 'pages#home'
   resources :trips do
@@ -6,3 +7,5 @@ Rails.application.routes.draw do
   end
   resources :invitations, only: [ :index, :show, :update ]
 end
+
+  # verb 'path', to: 'controller#action'

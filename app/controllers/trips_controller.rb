@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
   def index
-    @trips = current_user.owned_trips
+    if current_user.host
+      @trips = current_user.owned_trips
+    else
+      @trips = current_user.trips
+    end
   end
 
   def show

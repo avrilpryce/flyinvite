@@ -1,1 +1,16 @@
-<%= link_to 'My trips', trips_path %>
+<div class="container mt-5 mb-5">
+  <% if user_signed_in? && current_user.host %>
+    <div class="container mt-3 mb-3">
+      <%= link_to 'My trips', trips_path, class:"btn btn-primary" %>
+    </div>
+  <% elsif user_signed_in? %>
+    <div class="container mt-3 mb-3">
+      <%= link_to 'My invitations', invitations_path, class:"btn btn-primary" %> <br>
+    </div>
+    <div class="container mt-3 mb-3">
+      <%= link_to 'My trips', trips_path, class:"btn btn-primary" %>
+    </div>
+  <% else %>
+    <h1>Hi, welcome to Flyinvite!</h1>
+  <% end %>
+</div>

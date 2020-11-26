@@ -22,15 +22,15 @@
 
 
      <%= f.input :country, label: "Country", as: :string %>
-      <%= f.input :start_date, label: "Start date" %>
-      <%= f.input :end_date, label: "End date" %>
+      <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {id: "range_start"} %>
+      <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {id: "range_end"} %>
       <%= f.input :description, as: :text %>
       <h3>Restrictions:</h3>
       <%= f.input :airport_code, label: "Airport (IATA code)" %>
       <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>
       <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
-      <%= f.input :latest_arrival, label: "Latest possible arrival at event" %>
-      <%= f.input :earliest_departure, label: "Earliest possible departure from event" %>
+      <%= f.input :latest_arrival, label: "Latest possible arrival at event", as: :string, required: false, input_html: {id: "latest_arrival"} %>
+      <%= f.input :earliest_departure, label: "Earliest possible departure from event", as: :string, required: false, input_html: {id: "earliest_departure"} %>
       <%= f.submit %>
     <% end %>
   </div>

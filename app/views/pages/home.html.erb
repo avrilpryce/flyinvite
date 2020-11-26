@@ -1,16 +1,103 @@
-<div class="container mt-5 mb-5">
-  <% if user_signed_in? && current_user.host %>
-    <div class="container mt-3 mb-3">
-      <%= link_to 'My trips', trips_path, class:"btn btn-primary" %>
+<%# Dashboard of a host %>
+<% if user_signed_in? && current_user.host %>
+
+  <%# List of trips in the next 30 days %>
+  <div class="d-flex my-5 mx-5 justify-content-around">
+
+    <div class="container my-5 mx-3 py-3 col-6" style="background-color:powderblue;">
+      <h1 style="text-align:center;">Trips scheduled in the next 30 days:</h1>
+      <div class="justify-content-around card-grid">
+        <% @owned_trips.each do |trip| %>
+          <% if trip.start_date < (Time.now + (86400 * 31)) %>
+            <div class="card mx-1 my-1" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= trip.name.capitalize %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %></h6>
+                <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
+                <%= link_to "More details", trip_path(trip), class:"card-link" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  <% elsif user_signed_in? %>
-    <div class="container mt-3 mb-3">
-      <%= link_to 'My invitations', invitations_path, class:"btn btn-primary" %> <br>
+    
+    <%# List of invitations send and still pending %>
+    <div class="container my-5 mx-3 py-3 col-6" style="background-color:powderblue;">
+      <h1 style="text-align:center;">Invitations still pending:</h1>
+      <div class="justify-content-around card-grid">
+        <% @owned_trips.each do |trip| %>
+            <% trip.invitations.each do |invitation| %>
+              <% if invitation.status == "Pending" %>
+                <div class="card mx-1 my-1" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= invitation.trip.name.capitalize %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= invitation.trip.start_date.strftime("%m/%d/%Y") %> - <%= invitation.trip.end_date.strftime("%m/%d/%Y") %></h6>
+                    <p class="card-text">Sent to: <br><%= invitation.email %></p>
+                    <%= link_to "To trip", trip_path(invitation.trip), class:"card-link" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="container mt-3 mb-3">
-      <%= link_to 'My trips', trips_path, class:"btn btn-primary" %>
+  </div>
+
+<%# Dashboard of a traveler %>
+<% elsif user_signed_in? %>
+
+  <%# List of trips in the next 30 days %>
+  <div class="d-flex my-5 mx-5 justify-content-around">
+
+    <div class="container my-5 mx-3 py-3 col-6" style="background-color:powderblue;">
+      <h1 style="text-align:center;">Trips scheduled in the next 30 days:</h1>
+      <div class="justify-content-around card-grid">
+        <% @trips.each do |trip| %>
+          <% if trip.start_date < (Time.now + (86400 * 31)) %>
+            <div class="card mx-1 my-1" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= trip.name.capitalize %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %></h6>
+                <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
+                <%= link_to "More details", trip_path(trip), class:"card-link" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  <% else %>
+
+    <%# List of invitations received and still pending %>
+    <div class="container my-5 mx-3 py-3 col-6" style="background-color:powderblue;">
+      <h1 style="text-align:center;">Your pending invitations</h1>
+      <div class="justify-content-around card-grid">
+        <% @all_trips.each do |trip| %>
+            <% trip.invitations.each do |invitation| %>
+              <% if invitation.status == "Pending" && invitation.email == current_user.email %>
+                <div class="card mx-1 my-1" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= invitation.trip.name.capitalize %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= invitation.trip.start_date.strftime("%m/%d/%Y") %> - <%= invitation.trip.end_date.strftime("%m/%d/%Y") %></h6>
+                    <p class="card-text">Sent to: <br><%= invitation.email %></p>
+                    <div class="change-status mt-2">
+                      <%= simple_form_for invitation, method: :patch do |f| %>
+                        <%= f.input :status, label: "Change invitation status", collection: Invitation::STATUS %>
+                        <%= f.submit %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<%# Website's home page if not signed in %>
+<% else %>
+  <div class="container mt-5 mb-5">
     <h1>Hi, welcome to Flyinvite!</h1>
-  <% end %>
-</div>
+  </div>
+<% end %>

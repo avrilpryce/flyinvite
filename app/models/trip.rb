@@ -16,5 +16,4 @@ class Trip < ApplicationRecord
   validates :name, :city, :country, presence: true
   validates :name, uniqueness: true
   validates :start_date, :end_date, presence: true
-  validates :flight_class, inclusion: { in: FLIGHT_CLASSES }
 end

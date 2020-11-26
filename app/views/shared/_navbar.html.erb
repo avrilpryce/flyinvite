@@ -7,18 +7,27 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
+
+        <li class="nav-item active circle_green">
+          <%= link_to "#" do %>
+            <%= image_tag "Vectorplane.png", class: "plane" %>
+          <%end%>
         </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+         <li class="nav-item active circle_violet">
+          <%= link_to "#" do %>
+            <%= image_tag "bubble.png", class: "chatbubble" %>
+          <%end%>
+        </li>
+         <li class="nav-item active circle_violet">
+          <%= link_to "#" do %>
+            <%= image_tag "alertbell", class: "plane" %>
+          <%end%>
         </li>
         <li>
-          <%= link_to "Hi Avril", "#", class: "nav-link" %>
+          <p class="greeting">Hi Avril</p>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "profile.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

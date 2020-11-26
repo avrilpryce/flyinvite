@@ -9,5 +9,7 @@ class PagesController < ApplicationController
       @trips = current_user.trips
       @all_trips = Trip.all
     end
+
+    @no_navbar = true
   end
 end

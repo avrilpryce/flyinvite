@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # N:N relationships:
   has_many :owned_trips, class_name: "Trip"
 
   has_many :users_trips
@@ -11,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :flightbookings
 
+  # Validation:
   validates :first_name, :last_name, :username, :job_title, :company, presence: true
   validates :email, uniqueness: true
 end

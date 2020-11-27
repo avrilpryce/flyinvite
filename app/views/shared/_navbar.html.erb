@@ -12,10 +12,11 @@
       <% if user_signed_in? %>
 
         <li class="nav-item active circle_green">
-          <%= link_to "#" do %>
+          <%= link_to new_trip_path do %>
             <%= image_tag "Vectorplane.png", class: "plane" %>
           <%end%>
         </li>
+<<<<<<< Updated upstream
          <li class="nav-item active circle_violet">
           <%= link_to "#" do %>
             <%= image_tag "bubble.png", class: "chatbubble" %>
@@ -26,10 +27,24 @@
             <%= image_tag "alertbell", class: "plane" %>
           <%end%>
         </li>
+=======
+      
+        <% unless current_user.host %>
+          <li class="nav-item">
+            <%= link_to "Invitations", invitations_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      
+>>>>>>> Stashed changes
         <li>
           <p class="greeting">Hi Avril</p>
         </li>
+<<<<<<< Updated upstream
         <li class="nav-item dropdown">
+=======
+      
+        <li class="nav-item dropdown profile-icon">
+>>>>>>> Stashed changes
           <%= image_tag "profile.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Action", "#", class: "dropdown-item" %>

@@ -38,6 +38,7 @@ import "../plugins/concept-plugins/apexcharts/dist/apexcharts.min.js";
 import "../plugins/concept-plugins/chartjs/chart.min.js";
 import "../../assets/js/concept.min.js";
 import "../../assets/js/pages/dashboard.js";
+import "../../assets/js/pages/profile.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

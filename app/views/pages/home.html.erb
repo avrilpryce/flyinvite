@@ -12,7 +12,7 @@
       <div class="justify-content-around card-grid">
         <% @owned_trips.each do |trip| %>
           <% if trip.start_date < (Time.now + (86400 * 31)) %>
-            <div class="card mx-1 my-1" style="width: 18rem;">
+            <div class="card mx-1 my-1" style="width: 95%;">
               <div class="card-body">
                 <h5 class="card-title"><%= trip.name.capitalize %></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %></h6>
@@ -32,7 +32,7 @@
         <% @owned_trips.each do |trip| %>
             <% trip.invitations.each do |invitation| %>
               <% if invitation.status == "Pending" %>
-                <div class="card mx-1 my-1" style="width: 18rem;">
+                <div class="card mx-1 my-1" style="width: 95%;">
                   <div class="card-body">
                     <h5 class="card-title"><%= invitation.trip.name.capitalize %></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><%= invitation.trip.start_date.strftime("%m/%d/%Y") %> - <%= invitation.trip.end_date.strftime("%m/%d/%Y") %></h6>

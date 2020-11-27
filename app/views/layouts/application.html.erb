@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <% unless @no_navbar %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>

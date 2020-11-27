@@ -55,21 +55,23 @@
   </div>
   <div class="page-sidebar-inner">
       <div class="page-sidebar-menu">
+         <% if user_signed_in? && current_user.host %>
           <ul>
             <li>
-              <%= link_to root_path do %>
-                 <%= image_tag "Vectorplane.png", class: "fas fa-paper-plane" %>
+              <%= link_to trips_path do %>
+                <%= image_tag "Vectorplane.png", class: "fas fa-paper-plane" %>
               <% end %>  
             </li>
             <li>
-              <%= link_to root_path do %>
-                <%= image_tag "Vectorplane.png", class: "fas fa-paper-plane" %>
+              <%= link_to new_trip_path do %>
+               <i class="fas fa-plus"></i>
               <% end %>   
             </li>
           </ul>
+          <%end%>
         </div>
       </div>
       <div class="settings-menu-btn">
-        <%= button_to "Log out", destroy_user_session_path, method: "delete" %>
+        <%= button_to "Log out", destroy_user_session_path, method: "delete", class: "btn btn-outline-light"%>
       </div>
     </div><!-- /Page Sidebar -->

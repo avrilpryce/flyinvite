@@ -4,10 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;600;700&display=swap');
 //Halant medium, semi-bold, bold.
 @import url('https://fonts.googleapis.com/css2?family=Halant:wght@500;600;700&display=swap');
+//Rubik light, regular,medium, bold, extra-bold
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Rubik:wght@300;400;500;700;800&display=swap');
+//Poppins thin, light, regular, medium, bold
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Catamaran", "Helvetica", "sans-serif";
-$headers-font: "Halant", "Helvetica", "sans-serif";
+$body-font:'Poppins', sans-serif;
+$headers-font: 'Rubik', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

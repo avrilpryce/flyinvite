@@ -6,7 +6,7 @@
         <h1 class="text-center mb-5">Create a trip</h1>
 
         <%= simple_form_for @trip do |f| %>
-          <h3 class="text-center">Details</h3>
+          <h3 class="text-center mb-3">Details</h3>
           <%= f.input :name, label: "Trip Name" %>
           <%= f.input :street, label: "Address" %>
           <div class="row">
@@ -23,7 +23,7 @@
           <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {id: "range_start"} %>
           <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {id: "range_end"} %>
           <%= f.input :description, as: :text %>
-          <h3 class="text-center">Restrictions</h3>
+          <h3 class="text-center mt-5 mb-3">Restrictions</h3>
           <%= f.input :airport_code, label: "Airport (IATA code)" %>
           <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>
           <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>

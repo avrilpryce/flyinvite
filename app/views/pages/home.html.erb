@@ -60,7 +60,7 @@
                 <h5 class="card-title"><%= trip.name.capitalize %></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %></h6>
                 <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
-                <div class="btn btn-primary links"><%= link_to "More details", trip_path(trip), class:"card-link" %></div>
+                <div class="btn btn-primary links btx"><%= link_to "More details", trip_path(trip), class:"card-link" %></div>
               </div>
             </div>
           <% end %>
@@ -125,10 +125,10 @@
                                 <td>IMS NYC</td>
                                 <td>Murphy Cartwright</td>
                                 <td>Nov 29, 2020</td>
-                                <td><span class="badge badge-danger">Delayed/span></td>
+                                <td><span class="badge badge-danger">Delayed</span></td>
                             </tr>
                             <tr>
-                                <th scope="row">09415</th>
+                                <th scope="row">VY9415</th>
                                 <td>IMS NYC</td>
                                 <td>Gurpreet Holder</td>
                                 <td>Nov 29, 2020</td>
@@ -179,8 +179,7 @@
 <% elsif user_signed_in? %>
 
   <%# List of trips in the next 30 days %>
-  <div class="d-flex my-3 mx-5 justify-content-around">
-
+  <%# <div class="d-flex my-3 mx-5 justify-content-around"> %>
     <div class="container my-5 mx-3 py-3 col-6 cards-container">
       <h1 style="text-align:center;">Trips scheduled in the next 30 days:</h1>
       <div class="justify-content-around card-grid">
@@ -191,13 +190,12 @@
                 <h5 class="card-title"><%= trip.name.capitalize %></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %></h6>
                 <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
-                <div class="links"><%= link_to "More details", trip_path(trip), class:"card-link" %></div>
               </div>
             </div>
           <% end %>
         <% end %>
       </div>
-    </div>
+    <%# </div> %>
 
     <%# List of invitations received and still pending %>
     <div class="container my-5 mx-3 py-3 col-6 cards-container">

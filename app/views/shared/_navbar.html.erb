@@ -51,27 +51,39 @@
     <%= link_to root_path do %>
       <p class="text-light mb-0">fly</p>
       <p class="text-light">invite</p>
-    <% end %>    
+    <%end%>    
   </div>
   <div class="page-sidebar-inner">
-      <div class="page-sidebar-menu">
-         <% if user_signed_in? && current_user.host %>
-          <ul>
-            <li>
-              <%= link_to trips_path do %>
-                <%= image_tag "Vectorplane.png", class: "fas fa-paper-plane" %>
-              <% end %>  
-            </li>
+    <div class="page-sidebar-menu">
+      <% if user_signed_in? %>
+        <ul>
+          <li>
+            <%= link_to trips_path do %>
+              <%= image_tag "Vectorplane.png" %>
+            <%end%>  
+          </li>
+          <% if current_user.host %>
             <li>
               <%= link_to new_trip_path do %>
-               <i class="fas fa-plus"></i>
-              <% end %>   
+                <i class="fas fa-plus"></i>
+              <%end%>   
             </li>
-          </ul>
           <%end%>
-        </div>
+            <% unless current_user.host %>
+            <li>
+              <%= link_to invitations_path do %>
+                <i class="fas fa-ticket-alt fa-lg"></i>   
+              <%end%>   
+            </li>
+            <%end%>
+          </ul>
+        <%end%>
       </div>
-      <div class="settings-menu-btn">
-        <%= button_to "Finish", destroy_user_session_path, method: "delete", class: "btn btn-outline-light"%>
-      </div>
-    </div><!-- /Page Sidebar -->
+    </div>
+    <div class="settings-menu-btn">
+      <%= button_to "Finish", destroy_user_session_path, method: "delete", class: "btn btn-outline-light"%>
+    </div>
+</div><!-- /Page Sidebar -->
+
+
+               

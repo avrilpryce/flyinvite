@@ -9,6 +9,7 @@ puts "Clearing the DB of #{Trip.count} trips"
 
 FlightBooking.delete_all
 UsersTrip.delete_all
+Invitation.delete_all
 Trip.delete_all
 
 puts ""

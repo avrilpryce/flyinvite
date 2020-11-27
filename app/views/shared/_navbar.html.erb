@@ -80,9 +80,11 @@
         <%end%>
       </div>
     </div>
-    <div class="settings-menu-btn">
-      <%= button_to "Finish", destroy_user_session_path, method: "delete", class: "btn btn-outline-light"%>
-    </div>
+    <% if user_signed_in? %>
+      <div class="settings-menu-btn">
+        <%= button_to "Finish", destroy_user_session_path, method: "delete", class: "btn btn-outline-light"%>
+      </div>
+    <%end%>
 </div><!-- /Page Sidebar -->
 
 

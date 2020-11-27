@@ -1,3 +1,30 @@
+<div class="page-inner no-page-title">
+  <div id="main-wrapper">
+    <div class="row">
+      <div class="col-xl">
+        <div class="card">
+          <div class="card-body">
+            <% if current_user.host %>
+              <h2 class="card-title">Trips - <%= link_to "Create a trip", new_trip_path %></h2>
+            <% else %>
+              <h2 class="card-title">Trips</h2>
+            <% end %>
+            <ul class="list-group">
+              <% @trips.each do |trip| %>
+                <li class="list-group-item"><%= link_to trip.name, trip_path(trip) %><br><%= "#{trip.start_date.strftime("%m/%d/%Y")} - #{trip.end_date.strftime("%m/%d/%Y")}" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%
+=begin %>
+
 <div class="container mt-5">
   <h1> My trips </h1>
   <ul>
@@ -11,3 +38,6 @@
     </div>
   <% end %>
 </div>
+
+<%
+=end %>

@@ -51,23 +51,25 @@
     <%= link_to root_path do %>
       <p class="text-light mb-0">fly</p>
       <p class="text-light">invite</p>
-      <!--<%= image_tag "Vectorplane.png", class: "plane" %>-->
     <% end %>    
   </div>
   <div class="page-sidebar-inner">
       <div class="page-sidebar-menu">
           <ul>
             <li>
-              <a href="#" data-toggle="tooltip" data-placement="right" title="Dashboard"><i class="fas fa-paper-plane"></i></a>
+              <%= link_to root_path do %>
+                 <%= image_tag "Vectorplane.png", class: "fas fa-paper-plane" %>
+              <% end %>  
             </li>
             <li>
-              <a href="#" data-toggle="tooltip" data-placement="right" title="News"><i class="fas fa-globe-africa"></i></a>
+              <%= link_to root_path do %>
+                <%= image_tag "Vectorplane.png", class: "fas fa-paper-plane" %>
+              <% end %>   
             </li>
           </ul>
         </div>
       </div>
       <div class="settings-menu-btn">
-        <a href="#" class="settings-menu-link"><i class="fas fa-wrench"></i></a>
+        <%= button_to "Log out", destroy_user_session_path, method: "delete" %>
       </div>
     </div><!-- /Page Sidebar -->
-

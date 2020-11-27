@@ -1,8 +1,50 @@
 <%# Dashboard of a host %>
 <% if user_signed_in? && current_user.host %>
 
-<%
-=begin %>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ds-stat">
+                            <span class="ds-stat-name">Spend</span>
+                            <h3 class="ds-stat-number">67,856€<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>23%</span></h3>
+                            <div class="progress" style="height: 3px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ds-stat">
+                            <span class="ds-stat-name">Travelers</span>
+                            <h3 class="ds-stat-number">100<span class="ds-stat-percent"><i class="fas fa-caret-down"></i>7%</span></h3>
+                            <div class="progress" style="height: 3px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ds-stat">
+                            <span class="ds-stat-name">Flights</span>
+                            <h3 class="ds-stat-number">120<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>31%</span></h3>
+                            <div class="progress" style="height: 3px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ds-stat">
+                            <span class="ds-stat-name">Flights to Book</span>
+                            <h3 class="ds-stat-number">50<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>16%</span></h3>
+                            <div class="progress" style="height: 3px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
   <%# List of trips in the next 30 days %>
   <div class="d-flex my-3 mx-5 justify-content-around">
@@ -12,12 +54,13 @@
       <div class="justify-content-around card-grid">
         <% @owned_trips.each do |trip| %>
           <% if trip.start_date < (Time.now + (86400 * 31)) %>
+
             <div class="card mx-1 my-1" style="width: 95%;">
               <div class="card-body">
                 <h5 class="card-title"><%= trip.name.capitalize %></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %></h6>
                 <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
-                <div class="links"><%= link_to "More details", trip_path(trip), class:"card-link" %></div>
+                <div class="btn btn-primary links"><%= link_to "More details", trip_path(trip), class:"card-link" %></div>
               </div>
             </div>
           <% end %>
@@ -37,7 +80,7 @@
                     <h5 class="card-title"><%= invitation.trip.name.capitalize %></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><%= invitation.trip.start_date.strftime("%m/%d/%Y") %> - <%= invitation.trip.end_date.strftime("%m/%d/%Y") %></h6>
                     <p class="card-text">Sent to: <br><%= invitation.email %></p>
-                    <div class="links"><%= link_to "To trip", trip_path(invitation.trip), class:"card-link" %></div>
+                    <div class="btn btn-primary links"><%= link_to "To trip", trip_path(invitation.trip), class:"card-link" %></div>
                   </div>
                 </div>
               <% end %>
@@ -46,9 +89,91 @@
       </div>
     </div>
   </div>
+   <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Active Flights</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">FL#</th>
+                                <th scope="col">Trip</th>
+                                <th scope="col">Traveler</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">IB354</th>
+                                <td>Dirty Vegas</td>
+                                <td>Chritopher Palmer</td>
+                                <td>Nov 28, 2020</td>
+                                <td><span class="badge badge-success">On time</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">DL456</th>
+                                <td>IMS NYC</td>
+                                <td>Stuart Woodley</td>
+                                <td>Nov 29, 2020</td>
+                                <td><span class="badge badge-danger">Delayed</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">DL456</th>
+                                <td>IMS NYC</td>
+                                <td>Murphy Cartwright</td>
+                                <td>Nov 29, 2020</td>
+                                <td><span class="badge badge-danger">Delayed/span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">09415</th>
+                                <td>IMS NYC</td>
+                                <td>Gurpreet Holder</td>
+                                <td>Nov 29, 2020</td>
+                                <td><span class="badge badge-danger">Delayed</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">VY4869</th>
+                                <td>SXW Conference</td>
+                                <td>Marshall Wheeler</td>
+                                <td>Nov 30, 2020</td>
+                                <td><span class="badge badge-success">On time</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">VY4869</th>
+                                <td>SXW Conference<</td>
+                                <td>Nikki Blanchard</td>
+                                <td>>Nov 30, 2020/td>
+                                <td><span class="badge badge-success">On time</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>
 
-<%
-=end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%# Dashboard of a traveler %>
 <% elsif user_signed_in? %>

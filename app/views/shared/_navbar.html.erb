@@ -10,21 +10,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-
         <li>
           <p class="greeting">Hi <%= current_user.first_name.capitalize %></p>
         </li>
+      
         <li class="nav-item active circle_green">
           <%= link_to new_trip_path do %>
             <%= image_tag "Vectorplane.png", class: "plane" %>
           <%end%>
         </li>
-
-        <% unless current_user.host %>
-          <li class="nav-item">
-            <%= link_to "Invitations", invitations_path, class: "nav-link" %>
-          </li>
-        <% end %>
 
         <li class="nav-item dropdown">
           <%= image_tag "profile.png", class: "avatar dropdown-toggle profile-icon", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

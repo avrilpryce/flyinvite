@@ -11,13 +11,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body class="page-header-fixed page-sidebar-fixed">
-     <div class="page-container">
         <% unless @no_navbar %>
           <%= render 'shared/navbar' %>
         <% end %>
         <%= render 'shared/flashes' %>
         
+<body class="page-header-fixed page-sidebar-fixed">
+  <div class="page-container">
         <div class="page-content">
 
         <%# START - THIS IS THE SECONDARY NAVBAR, I HAVE COMMENTED OUT THIS SECTION TO SAVE FOR THE FUTURE TO USE THE JAVASCRIPT EFFECTS %>
@@ -188,21 +188,21 @@
                                             <li>
                                                 <a href="#"><span class="notification-badge bg-info"><i class="fas fa-at"></i></span>
                                                     <span class="notification-info">
-                                                        <span class="notification-info"><b>John Doe</b> mentioned you in a post "Update v1.5"</span>
+                                                        <span class="notification-info"><b>John Doe</b> Booking request sent</span>
                                                         <small class="notification-date">06:07</small>
                                                     </span></a>
                                             </li>
                                             <li>
                                                 <a href="#"><span class="notification-badge bg-danger"><i class="fas fa-bolt"></i></span>
                                                     <span class="notification-info">
-                                                        <span class="notification-info">4 new special offers from the apps you follow!</span>
+                                                        <span class="notification-info">New Traveler registerd</span>
                                                         <small class="notification-date">Yesterday</small>
                                                     </span></a>
                                             </li>
                                             <li>
                                                 <a href="#"><span class="notification-badge bg-success"><i class="fas fa-bullhorn"></i></span>
                                                     <span class="notification-info">
-                                                        <span class="notification-info">There is a meeting with <b>Ethan</b> in 15 minutes!</span>
+                                                        <span class="notification-info">Dirty Vegas trip waiting on first booking<b>Ethan</b>ATTENTION!</span>
                                                         <small class="notification-date">Yesterday</small>
                                                     </span></a>
                                             </li>
@@ -229,18 +229,17 @@
         <div class="page-inner no-page-title">
             <div id="main-wrapper">
                 <div class="content-header">
-                    <nav aria-label="breadcrumb">
+                    <%# <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-style-1">
                             <li class="breadcrumb-item"><a href="#">Layouts</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Fixed Sidebar &amp; Header</li>
                         </ol>
                     </nav>
-                    <h1 class="page-title">Fixed Sidebar &amp; Header</h1>
+                    <h1 class="page-title">Fixed Sidebar &amp; Header</h1> %>
                 </div>
                 <%= yield %>
             </div><!-- Main Wrapper -->
             
-
 
         <div class="page-footer">
             <p>2020 &copy; flyinvite</p>
@@ -326,7 +325,7 @@
                 <div class="right-sidebar-content">
                     <div class="right-sidebar-chat slimscroll">
                         <div class="chat-bubbles">
-                        <div class="chat-start-date">02/06/2017 5:58PM</div>
+                        <div class="chat-start-date">15/11/2020 5:58PM</div>
                             <div class="chat-bubble them">
                                 <div class="chat-bubble-img-container">
                                     <img src="../../assets/images/avatars/avatar1.png" alt="">
@@ -340,10 +339,10 @@
                                     <span class="chat-bubble-text">Hello!</span>
                                 </div>
                             </div>
-                        <div class="chat-start-date">03/06/2017 4:22AM</div>
+                        <div class="chat-start-date">15/11/2020 4:22AM</div>
                             <div class="chat-bubble me">
                                 <div class="chat-bubble-text-container">
-                                    <span class="chat-bubble-text">lorem</span>
+                                    <span class="chat-bubble-text">Trip Notification</span>
                                 </div>
                             </div>
                             <div class="chat-bubble them">
@@ -366,19 +365,5 @@
         </div>
     </div><!-- /Page Content -->
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </body>
 </html>

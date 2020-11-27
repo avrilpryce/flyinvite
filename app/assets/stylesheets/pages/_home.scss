@@ -19,7 +19,7 @@
 }
 
 .back {
-  background-image: linear-gradient(90deg, rgba(84,47,252,0.5) 0%, rgba(255,93,113,1) 100%), url(https://wallpapercave.com/wp/wp2574285.jpg); 
+  background-image: linear-gradient(90deg, rgba(84,47,252,0.5) 0%, rgba(255,93,113,1) 100%), url(https://wallpapercave.com/wp/wp2574285.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -62,5 +62,13 @@
 
 .home-btn:hover {
   opacity: 0.7;
+}
+
+.page-inner {
+  float: none !important;
+}
+
+.page-header {
+  left: 0px !important;
 }
 

@@ -1,13 +1,41 @@
 <div class="container mt-5 mb-5">
   <h1>Flight Search</h1>
-  <input type="text" id="auto-complete">
-  <div id="locations"></div>
-  </div>
-
-
-
-
-
+  <form>
+    <div class="row">
+      <select class="col-2 ml-3 mdb-select md-form" id="fare-class">
+        <option value="M">Economy</option>
+        <option value="W">Premium Economy</option>
+        <option value="C">Business</option>
+        <option value="F">First</option>
+      </select>
+      <select class="col-2 mdb-select md-form"id="route">
+        <option value="0">Round trip</option>
+        <option value="1">One way</option>
+      </select>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="BER" id="obDepartureAp">
+          <div id="locations"></div>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="FRA" id="ob_arrival_ap">
+          <div id="locations"></div>
+        </div>
+        <div class="col"> 
+          <input type="text" class="form-control" placeholder="Departure Date" id="ob_date">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Return Date" id="ib_date">>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-dark" id="search">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="container" id="flight-list"></div>
+</div>
 
 
   

@@ -9,7 +9,7 @@ class FlightBookingsController < ApplicationController
     # flights = open(url).read
     # flight_list = JSON.parse(flights)
 
-    # puts flight_list
+    # puts flight_list\\
 
    end
    
@@ -17,7 +17,7 @@ class FlightBookingsController < ApplicationController
    puts params
   end 
 
-    private 
+  private
 
 
   # def flight_search_params

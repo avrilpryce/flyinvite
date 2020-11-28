@@ -54,7 +54,6 @@
       <div class="justify-content-around card-grid">
         <% @owned_trips.each do |trip| %>
           <% if trip.start_date < (Time.now + (86400 * 31)) %>
-
             <div class="card mx-1 my-1" style="width: 95%;">
               <div class="card-body">
                 <h5 class="card-title"><%= trip.name.capitalize %></h5>
@@ -145,7 +144,7 @@
                                 <th scope="row">VY4869</th>
                                 <td>SXW Conference<</td>
                                 <td>Nikki Blanchard</td>
-                                <td>>Nov 30, 2020/td>
+                                <td>Nov 30, 2020</td>
                                 <td><span class="badge badge-success">On time</span></td>
                             </tr>
                         </tbody>

@@ -3,6 +3,9 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+ //= require jquery
+ //= require jquery_ujs
+ 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -24,6 +27,18 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "../plugins/flatpickr";
+import "../plugins/concept-plugins/switchery/switchery.min.js";
+import "../plugins/concept-plugins/icomoon/style.css";
+import "../plugins/concept-plugins/jquery/jquery-3.1.0.min.js";
+import "../plugins/concept-plugins/bootstrap/popper.min.js";
+import "../plugins/concept-plugins/bootstrap/js/bootstrap.min.js";
+import "../plugins/concept-plugins/jquery-slimscroll/jquery.slimscroll.min.js";
+import "../plugins/concept-plugins/apexcharts/dist/apexcharts.min.js";
+import "../plugins/concept-plugins/chartjs/chart.min.js";
+import "../../assets/js/concept.min.js";
+import "../../assets/js/pages/dashboard.js";
+import "../../assets/js/pages/profile.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

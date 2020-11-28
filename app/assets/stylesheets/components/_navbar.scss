@@ -1,5 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
+  align-items: center;
   background: white;
 }
 
@@ -7,6 +8,65 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-lewagon .navbar-brand {
+  opacity: 80%;
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.circle_green {
+  height: 40px;
   width: 40px;
+  background: $green-to-turquoise;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+  opacity: 80%;
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.circle_violet {
+  height: 50px;
+  width: 50px;
+  background: $violet-to-pink;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px
+}
+
+.plane {
+position: absolute;
+margin-right: 25%;
+margin-top: 25%;
+}
+
+.chatbubble {
+  margin: 30%;
+}
+
+.alertbell {
+  margin: 40%
+}
+
+.greeting {
+  align-items: center;
+  padding-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.profile-icon {
+  align-items: center;
+  padding-top: 5px;
+  opacity: 80%;
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.btx{
+color: white!important;
 }

@@ -9,6 +9,7 @@ puts "Clearing the DB of #{Trip.count} trips"
 
 FlightBooking.delete_all
 UsersTrip.delete_all
+Invitation.delete_all
 Trip.delete_all
 
 puts ""
@@ -23,13 +24,13 @@ end
 if User.exists?(:username => "traveler 1")
   traveler1 = User.where(username: "traveler 1").first
 else
-  traveler1 = User.create!(email: "traveler1@gmail.com", password: "123456", first_name: "John", last_name: "T1", job_title: "CFO", company: "Seeds'r'us", username: "traveler 1")
+  traveler1 = User.create!(email: "traveler1@gmail.com", password: "123456", first_name: "John", last_name: "Doe", job_title: "CFO", company: "Seeds'r'us", username: "traveler 1")
 end
 
 if User.exists?(:username => "traveler 2")
   traveler2 = User.where(username: "traveler 2").first
 else
-  traveler2 = User.create!(email: "traveler2@gmail.com", password: "123456", first_name: "Marc", last_name: "T2", job_title: "COO", company: "Seeds'r'us", username: "traveler 2")
+  traveler2 = User.create!(email: "traveler2@gmail.com", password: "123456", first_name: "Marc", last_name: "Twain", job_title: "COO", company: "Seeds'r'us", username: "traveler 2")
 end
 
 passengers = [traveler1, traveler2]

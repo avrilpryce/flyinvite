@@ -88,7 +88,11 @@ const fetchAirlineName = (iataCode) => {
 }
 
 
-fetchAirlineName("VY")
+const localTime = (standardTime) => {
+    let timeOb = new Date(standardTime)
+    timeOb = timeOb.toTimeString().slice(0,5)
+    console.log(timeOb)
+}
 
 
 const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route, ib_date }) => {
@@ -109,18 +113,28 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
             console.log(airlineShortName)
 
             html += 
-                `<div class="card">
-                <div class="row card-body">
-                    <div class="col my-n4 ml-2 card-image">
+            `<div class="card">
+                <div class="row card-body align-items-center">
+                  <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
+                    <input type="checkbox" aria-label="Select flight option.">
+                  </div>
+                  <div class="col-3 my-n4 ml-2 mb-n2 card-image">
                     <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIata}.png" alt="">
-                    </div>
-                    <div class="col">
-                    <p>${flight.price}€</p>
-                    <p>${airlineIata}</p>
-                    <p>${airlineShortName}</p>
-                    </div>
+                  </div>
+                  <div class="col-3">
+                    <h5><strong>${localTime(flight["route"][0]["local_departure"])} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
+                    <h5>${airlineIata}${flight["route"][0]["flight_no"]}</h5>
+                  </div>
+                  <div class="col ml-4">
+                    <h5><strong>${Math.round((Number(flight["duration"]["departure"])/60)/60)}hrs</strong></p>
+                    <h5>${flight["route"][0]["flyFrom"]} - ${flight["route"][0]["flyTo"]}</h5>
+                  </div>
+                  <div class="col">
+                    <h5><strong>${flight.price}€</strong></h5>
+                  </div>
                 </div>
-                </div>`
+            </div>`
+
 
         } )
         flightList.innerHTML = html

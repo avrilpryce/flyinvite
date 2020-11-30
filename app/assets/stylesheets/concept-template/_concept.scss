@@ -3581,10 +3581,10 @@ span.chat-title {
 }
 
 
-/* Page Sidebar */
+/* Page Sidebar (Left-most)*/
 
 .page-sidebar {
-    width: 61px;
+    width: 100px;
     background: #641eff;
     background: -moz-linear-gradient(top, #641eff 0%, #a307dd 100%);
     background: -webkit-linear-gradient(top, #641eff 0%,#a307dd 100%);
@@ -3597,6 +3597,8 @@ span.chat-title {
     -webkit-box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.29);
     -moz-box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.29);
     box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.29);
+    //changed to center buttons in sidebar - TH
+    padding-left: 15px;
 }
 
 .page-sidebar-fixed .secondary-sidebar {
@@ -3661,7 +3663,8 @@ span.chat-title {
 .page-sidebar .page-sidebar-menu ul {
     list-style: none;
     padding: 0;
-    width: 61px;
+    width: 70px;
+    height: 80px;
 }
 
 .page-sidebar .page-sidebar-menu ul li a {
@@ -3948,9 +3951,10 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
     height: auto;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 50%;
     border-top: 1px solid rgba(255,255,255,.1);
-    padding: 15px 0;
+    padding: 10px 15px;
+    
 }
 
 .settings-menu-btn a {
@@ -3972,11 +3976,11 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
 .page-sidebar-inner {
     height: 100%!important;
 }
-
+//Adjust height of nav icons with 'top' - TH
 .page-sidebar > .page-sidebar-inner {
     position: absolute!important;
     height: auto!important;
-    top: 50%;
+    top: 22%;
     transform: translateY(-50%);
 }
 
@@ -4192,19 +4196,19 @@ body.settings-visible .settings-sidebar {
 
 
 /* Page Content */
-
+//Removing padding for removed sidebar. If this has a bad knock-on effect on other pages, uncomment lines below to roll back. 
 .page-content {
     min-height: 56px;
     vertical-align: bottom;
     background: #F1F3F6;
-    width: calc(100% - 61px);
-    float: right;
-    margin-left: 61px;
+    //width: calc(100% - 61px);
+    //float: right;
+    //margin-left: 61px;
 }
 
-.page-sidebar-collapsed .page-content {
-    width: calc(100% - 61px);
-}
+//.page-sidebar-collapsed .page-content {
+//    width: calc(100% - 61px);
+//}
 
 _::-webkit-full-page-media, _:future, :root .page-content {
     vertical-align: top;
@@ -4242,7 +4246,7 @@ _::-webkit-full-page-media, _:future, :root .page-content {
 _::-webkit-full-page-media, _:future, :root .page-inner {
     padding-bottom: 0px;
 }
-
+//Might interact with JS in a way I don't understand - TH. 
 .page-header-fixed .page-inner {
     margin-top: 61px;
 }
@@ -4897,6 +4901,8 @@ _::-webkit-full-page-media, _:future, :root .page-inner {
 .profile-cover img {
     width: 100%;
     border-radius: 6px;
+    max-height: 40vh;
+    object-fit: cover;
 }
 
 .profile-cover:after {

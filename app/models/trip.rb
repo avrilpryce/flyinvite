@@ -12,6 +12,9 @@ class Trip < ApplicationRecord
 
   has_many :invitations, dependent: :destroy
 
+  # Cloudinary:
+  has_one_attached :photo
+
   # Validation:
   validates :name, :city, :country, presence: true
   validates :name, uniqueness: true

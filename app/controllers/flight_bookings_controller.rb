@@ -1,25 +1,24 @@
 # require 'json'
 # require 'open-uri'
 class FlightBookingsController < ApplicationController
+  #  @user_flight_selection = []
   
   def new
-    @flightBooking = FlightBooking.new
+    @flight_booking = FlightBooking.new
   end
   
   def create
-    @flightBooking = FlightBooking.new(flight_params)
-    @user= current_user
-    # @flightBooking.host = @host
+    @flight_booking = FlightBooking.create(flight_params)
+    @user = current_user
+    # How to get host tip_id?
+    @flight_booking.user = @user
+    @user_flight_selection << @flightBooking
 
-    # if @flightBooking.save
-    #   redirect_to trip_path(@trip)
-    # else
-    #   render :new
-    # end
   end
 
   def destroy
-    
+    @flight_booking = FlightBooking.find[:id]
+    @flight_booking.destroy
   end 
 
 private

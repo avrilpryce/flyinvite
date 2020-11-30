@@ -8,7 +8,7 @@ const arrivalOb = document.getElementById('ob_arrival_ap')
 const locationBox = document.getElementById('locations')
 const search = document.getElementById('search')
 const flightList = document.getElementById('flight-list')
-const flightSelect = document.getElementsByClassName('checkbox')
+
 
 
 // function selectAirport () {
@@ -110,7 +110,6 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const flights = data.data
             
             let html = ""
@@ -121,7 +120,7 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
                 let airlineIataDeparture = flight.route[0].airline
                 let airlineIataReturn = flight.route[1].airline
                 airlineShortName = fetchAirlineName(airlineIataDeparture)
-                console.log(airlineShortName)
+
     
                     html += 
                     `<div class="card">
@@ -211,11 +210,22 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
 
 } )
         flightList.innerHTML = html
+        const flightSelect = document.getElementsByClassName('checkbox')
+        console.log(flightSelect)
+        Array.prototype.forEach.call(flightSelect, flight => {
+            console.log(flight)
+
+        flight.addEventListener('click',(event)=> { 
+            if (flight.Checked == true ) {
+                console.log("Book")
+            } else if (flight.Checked == false){
+                console.log("Delete")
+            }
+
+        })
     })
+  })
 }
 
 
-flightSelect.addEventListener('click',(event)=> { 
-    const userInput = event.target.value
-    fetchApi(userInput)
-})
+

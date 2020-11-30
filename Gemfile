@@ -65,3 +65,6 @@ gem 'faker'
 
 gem 'open-uri'
 gem 'cloudinary', '~> 1.16.0'
+
+#Used by FlighBooking view and controller
+gem 'turbolinks_render'

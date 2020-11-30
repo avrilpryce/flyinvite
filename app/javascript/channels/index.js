@@ -108,8 +108,9 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
 
         flights.forEach (flight => {
         
-            let airlineIata = flight.route[0].airline
-            airlineShortName = fetchAirlineName(airlineIata)
+            let airlineIataDeparture = flight.route[0].airline
+            let airlineIataReturn = flight.route[1].airline
+            airlineShortName = fetchAirlineName(airlineIataDeparture)
             console.log(airlineShortName)
 
             html += 
@@ -119,15 +120,34 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
                     <input type="checkbox" aria-label="Select flight option.">
                   </div>
                   <div class="col-3 my-n4 ml-2 mb-n2 card-image">
-                    <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIata}.png" alt="">
+                    <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataDeparture}.png" alt="">
                   </div>
                   <div class="col-3">
                     <h5><strong>${localTime(flight["route"][0]["local_departure"])} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
-                    <h5>${airlineIata}${flight["route"][0]["flight_no"]}</h5>
+                    <h5>${airlineIataDeparture}${flight["route"][0]["flight_no"]}</h5>
                   </div>
                   <div class="col ml-4">
                     <h5><strong>${Math.round((Number(flight["duration"]["departure"])/60)/60)}hrs</strong></p>
                     <h5>${flight["route"][0]["flyFrom"]} - ${flight["route"][0]["flyTo"]}</h5>
+                  </div>
+                  <div class="col">
+                    <h5><strong>${flight.price}€</strong></h5>
+                  </div>
+                </div>
+                <div class="row card-body align-items-center">
+                  <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
+                    <input type="checkbox" aria-label="Select flight option.">
+                  </div>
+                  <div class="col-3 my-n4 ml-2 mb-n2 card-image">
+                    <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataReturn}.png" alt="">
+                  </div>
+                  <div class="col-3">
+                    <h5><strong>${localTime(flight["route"][1]["local_departure"])} - ${localTime(flight["route"][1]["local_arrival"])}</strong></h5>
+                    <h5>${airlineIataReturn}${flight["route"][1]["flight_no"]}</h5>
+                  </div>
+                  <div class="col ml-4">
+                    <h5><strong>${Math.round((Number(flight["duration"]["return"])/60)/60)}hrs</strong></p>
+                    <h5>${flight["route"][1]["flyFrom"]} - ${flight["route"][1]["flyTo"]}</h5>
                   </div>
                   <div class="col">
                     <h5><strong>${flight.price}€</strong></h5>

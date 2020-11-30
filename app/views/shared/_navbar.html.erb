@@ -58,6 +58,11 @@
       <% if user_signed_in? %>
         <ul>
           <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-home fa-2x"></i>
+            <%end%>  
+          </li>
+          <li>
             <%= link_to trips_path do %>
               <i class="fas fa-suitcase fa-2x"></i>
             <%end%>  

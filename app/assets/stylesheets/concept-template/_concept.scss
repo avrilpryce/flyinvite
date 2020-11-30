@@ -3954,6 +3954,7 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
     width: 50%;
     border-top: 1px solid rgba(255,255,255,.1);
     padding: 10px 15px;
+    
 }
 
 .settings-menu-btn a {
@@ -3979,7 +3980,7 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
 .page-sidebar > .page-sidebar-inner {
     position: absolute!important;
     height: auto!important;
-    top: 50%;
+    top: 25%;
     transform: translateY(-50%);
 }
 

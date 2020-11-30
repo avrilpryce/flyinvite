@@ -71,7 +71,13 @@ margin-top: 25%;
 color: white!important;
 }
 
-.log-out {
+.btn.btn-outline-light.log-out {
   border: none;
   color: #FFFFFF;
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+  }
 }

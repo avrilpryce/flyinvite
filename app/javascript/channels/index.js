@@ -8,6 +8,7 @@ const arrivalOb = document.getElementById('ob_arrival_ap')
 const locationBox = document.getElementById('locations')
 const search = document.getElementById('search')
 const flightList = document.getElementById('flight-list')
+const flightSelect = document.getElementsByClassName('checkbox')
 
 
 // function selectAirport () {
@@ -91,93 +92,130 @@ const fetchAirlineName = (iataCode) => {
 const localTime = (standardTime) => {
     let timeOb = new Date(standardTime)
     timeOb = timeOb.toTimeString().slice(0,5)
-    console.log(timeOb)
+}
+
+const localDate = (standardDate) => {
+    let timeOb = new Date(standardDate)
+    timeOb = timeOb.toDateString().slice(0,10)
 }
 
 
 const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route, ib_date }) => {
-    const url = `https://tequila-api.kiwi.com/v2/search?fly_from=${obDepartureAp}&fly_to=${ob_arrival_ap}&date_from=${ob_date}&date_to=${ob_date}&return_from=${ib_date}&return_to=${ib_date}&max_stopovers=${route}&selected_cabins=${fare_class}&apikey=${process.env.FLIGHT_SEARCH_API}`
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        const flights = data.data
+
+    flightList.innerHTML = " "
+
+    // if (route === "round") {
+
+        const url = `https://tequila-api.kiwi.com/v2/search?fly_from=${obDepartureAp}&fly_to=${ob_arrival_ap}&date_from=${ob_date}&date_to=${ob_date}&return_from=${ib_date}&return_to=${ib_date}&max_stopovers=0&selected_cabins=${fare_class}&flight_type=${route}&apikey=${process.env.FLIGHT_SEARCH_API}`
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            const flights = data.data
+            
+            let html = ""
+            let airlineShortName = ""
+    
+            flights.forEach (flight => {
+            
+                let airlineIataDeparture = flight.route[0].airline
+                let airlineIataReturn = flight.route[1].airline
+                airlineShortName = fetchAirlineName(airlineIataDeparture)
+                console.log(airlineShortName)
+    
+                    html += 
+                    `<div class="card">
+                        <div class="row card-body align-items-center">
+                          <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
+                            <input type="checkbox" class="checkbox" aria-label="Select flight option.">
+                          </div>
+                          <div class="col-3 my-n4 ml-2 mb-n2 card-image">
+                            <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataDeparture}.png" alt="">
+                          </div>
+                          <div class="col-3">
+                            <h5>${localDate(flight["route"][0]["local_departure"])}</h5>
+                            <h5><strong>${localTime(flight["route"][0]["local_departure"])} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
+                            <h5>${airlineIataDeparture}${flight["route"][0]["flight_no"]}</h5>
+                          </div>
+                          <div class="col ml-4">
+                            <h5><strong>${Math.round((Number(flight["duration"]["departure"])/60)/60)}hrs</strong></p>
+                            <h5>${flight["route"][0]["flyFrom"]} - ${flight["route"][0]["flyTo"]}</h5>
+                          </div>
+                          <div class="col">
+                            <h5><strong>${flight.price}€</strong></h5>
+                          </div>
+                        </div>
+                        <div class="row card-body align-items-center border-top">
+                          <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
+                          </div>
+                          <div class="col-3 my-n4 ml-2 mb-n2 card-image">
+                            <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataReturn}.png" alt="">
+                          </div>
+                          <div class="col-3">
+                            <h5>${localDate(flight["route"][1]["local_departure"])}</h5>
+                            <h5><strong>${localTime(flight["route"][1]["local_departure"])} - ${localTime(flight["route"][1]["local_arrival"])}</strong></h5>
+                            <h5>${airlineIataReturn}${flight["route"][1]["flight_no"]}</h5>
+                          </div>
+                          <div class="col ml-4">
+                            <h5><strong>${Math.round((Number(flight["duration"]["return"])/60)/60)}hrs</strong></p>
+                            <h5>${flight["route"][1]["flyFrom"]} - ${flight["route"][1]["flyTo"]}</h5>
+                          </div>
+                          <div class="col">
+                            <h5><strong>${flight.price}€</strong></h5>
+                          </div>
+                        </div>
+                    </div>`
         
-        let html = ""
-        let airlineShortName = ""
+    // } else {
+    //     const url = `https://tequila-api.kiwi.com/v2/search?fly_from=${obDepartureAp}&fly_to=${ob_arrival_ap}&date_from=${ob_date}&date_to=${ob_date}&max_stopovers=0&selected_cabins=${fare_class}&flight_type=${route}&apikey=${process.env.FLIGHT_SEARCH_API}`
+    //     fetch(url)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         const flights = data.data
+            
+    //         let html = ""
+    //         let airlineShortName = ""
+    
+    //         flights.forEach (flight => {
+            
+    //             let airlineIataDeparture = flight.route[0].airline
+    //             let airlineIataReturn = flight.route[1].airline
+    //             airlineShortName = fetchAirlineName(airlineIataDeparture)
+    //             console.log(airlineShortName)
+    
+    //                 html += 
+    //                 `<div class="card">
+    //                     <div class="row card-body align-items-center">
+    //                       <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
+    //                         <input type="checkbox" aria-label="Select flight option.">
+    //                       </div>
+    //                       <div class="col-3 my-n4 ml-2 mb-n2 card-image">
+    //                         <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataDeparture}.png" alt="">
+    //                       </div>
+    //                       <div class="col-3">
+    //                         <h5>${localDate(flight["route"][0]["local_departure"])}</h5>
+    //                         <h5><strong>${localTime(flight["route"][0]["local_departure"])} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
+    //                         <h5>${airlineIataDeparture}${flight["route"][0]["flight_no"]}</h5>
+    //                       </div>
+    //                       <div class="col ml-4">
+    //                         <h5><strong>${Math.round((Number(flight["duration"]["departure"])/60)/60)}hrs</strong></p>
+    //                         <h5>${flight["route"][0]["flyFrom"]} - ${flight["route"][0]["flyTo"]}</h5>
+    //                       </div>
+    //                       <div class="col">
+    //                         <h5><strong>${flight.price}€</strong></h5>
+    //                       </div>
+    //                     </div>
+    //                   </div>`
+    // }
 
-        flights.forEach (flight => {
-        
-            let airlineIataDeparture = flight.route[0].airline
-            let airlineIataReturn = flight.route[1].airline
-            airlineShortName = fetchAirlineName(airlineIataDeparture)
-            console.log(airlineShortName)
-
-            html += 
-            `<div class="card">
-                <div class="row card-body align-items-center">
-                  <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
-                    <input type="checkbox" aria-label="Select flight option.">
-                  </div>
-                  <div class="col-3 my-n4 ml-2 mb-n2 card-image">
-                    <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataDeparture}.png" alt="">
-                  </div>
-                  <div class="col-3">
-                    <h5><strong>${localTime(flight["route"][0]["local_departure"])} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
-                    <h5>${airlineIataDeparture}${flight["route"][0]["flight_no"]}</h5>
-                  </div>
-                  <div class="col ml-4">
-                    <h5><strong>${Math.round((Number(flight["duration"]["departure"])/60)/60)}hrs</strong></p>
-                    <h5>${flight["route"][0]["flyFrom"]} - ${flight["route"][0]["flyTo"]}</h5>
-                  </div>
-                  <div class="col">
-                    <h5><strong>${flight.price}€</strong></h5>
-                  </div>
-                </div>
-                <div class="row card-body align-items-center">
-                  <div class="input-group-text pick-flight col-1 mr-n4 mt-n25 ml-4">
-                    <input type="checkbox" aria-label="Select flight option.">
-                  </div>
-                  <div class="col-3 my-n4 ml-2 mb-n2 card-image">
-                    <img class="airline-logo my-n2"src="http://pics.avs.io/150/150/${airlineIataReturn}.png" alt="">
-                  </div>
-                  <div class="col-3">
-                    <h5><strong>${localTime(flight["route"][1]["local_departure"])} - ${localTime(flight["route"][1]["local_arrival"])}</strong></h5>
-                    <h5>${airlineIataReturn}${flight["route"][1]["flight_no"]}</h5>
-                  </div>
-                  <div class="col ml-4">
-                    <h5><strong>${Math.round((Number(flight["duration"]["return"])/60)/60)}hrs</strong></p>
-                    <h5>${flight["route"][1]["flyFrom"]} - ${flight["route"][1]["flyTo"]}</h5>
-                  </div>
-                  <div class="col">
-                    <h5><strong>${flight.price}€</strong></h5>
-                  </div>
-                </div>
-            </div>`
-
-
-        } )
+} )
         flightList.innerHTML = html
     })
 }
 
 
-
-
-
-
-
-
-// `<div class="card"><div class="card-body">${flight.price}</div></div>`
-
-
-// obDepartureAp
-// ob_arrival_ap
-// ob_date
-
-// fare_class
-// route
-
-// ib_departure_ap
-// ib_arrival_ap
-// ib_date
+flightSelect.addEventListener('click',(event)=> { 
+    const userInput = event.target.value
+    fetchApi(userInput)
+})

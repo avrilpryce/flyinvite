@@ -2943,7 +2943,7 @@ table.dataTable.display tbody tr.odd {
     padding-bottom: 0px;
     margin: 0px;
     border-bottom: none;
-    height: 61px;
+    height: 0px;
     position: relative;
     width: calc(100% - 200px);
     float: right;
@@ -2982,9 +2982,11 @@ table.dataTable.display tbody tr.odd {
     width: 60px!important;
 }
 
-.page-header-fixed .page-secondary-sidebar {
-    padding-top: 61px;
-}
+// NAV ***** THIS MAY BE IMPORTANT****** 
+
+//.page-header-fixed .page-secondary-sidebar {
+//    padding-top: 61px;
+//}
 
 .page-header-fixed .page-header .navbar-default {
     -webkit-transition: all .1s;
@@ -3051,15 +3053,15 @@ table.dataTable.display tbody tr.odd {
     z-index: 41;
 }
 
-.page-header .navbar-default {
-    background-color: transparent;
-    border: 0;
-    margin-bottom: 0;
-    height: 61px;
-    border-radius: 0;
-    padding: 0;
-    border-bottom: 1px solid #E5E9EC;
-}
+//.page-header .navbar-default {
+//    background-color: transparent;
+//    border: 0;
+//    margin-bottom: 0;
+//    height: 61px;
+//    border-radius: 0;
+//    padding: 0;
+//    border-bottom: 1px solid #E5E9EC;
+//}
 
 .page-header .navbar-default .container-fluid,
 .page-header .navbar-default .navbar-collapse {
@@ -3180,12 +3182,12 @@ table.dataTable.display tbody tr.odd {
     opacity: 1;
 }
 
-.right-sidebar-top {
-    background: #fff;
-    display: block;
-    height: 61px;
-    border-bottom: 1px solid #E5E9EC;
-}
+//.right-sidebar-top {
+//    background: #fff;
+//    display: block;
+    //height: 61px;
+//    border-bottom: 1px solid #E5E9EC;
+//}
 
 .page-right-sidebar .right-sidebar-close {
     float: right;
@@ -3614,9 +3616,10 @@ span.chat-title {
     overflow: hidden;
 }
 
-.page-header-fixed .secondary-sidebar {
-    padding-top: 61px;
-}
+//***** NAV ******
+//.page-header-fixed .secondary-sidebar {
+//    padding-top: 61px;
+//}
 
 .page-header-fixed .secondary-sidebar .secondary-sidebar-bar {
     z-index: 9;
@@ -3668,7 +3671,7 @@ span.chat-title {
 }
 
 .page-sidebar .page-sidebar-menu ul li a {
-    padding: 8px 8px;
+    padding: 0px 0px;
     line-height: 25px;
     margin: 5px 10px;
     border-radius: 50%;
@@ -3980,7 +3983,7 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
 .page-sidebar > .page-sidebar-inner {
     position: absolute!important;
     height: auto!important;
-    top: 22%;
+    top: 19%;
     transform: translateY(-50%);
 }
 
@@ -4216,12 +4219,13 @@ _::-webkit-full-page-media, _:future, :root .page-content {
 
 
 /* Page Inner */
-
+//******************** NAVBAR PADDING
 .page-inner {
     position: relative;
-    padding: 30px;
+    padding-top: 0px;
+    padding-left: 100px;
     width: calc(100% - 200px);
-    float: right;
+    //float: right;
 }
 
 .page-inner.white {
@@ -4247,9 +4251,9 @@ _::-webkit-full-page-media, _:future, :root .page-inner {
     padding-bottom: 0px;
 }
 //Might interact with JS in a way I don't understand - TH. 
-.page-header-fixed .page-inner {
-    margin-top: 61px;
-}
+//.page-header-fixed .page-inner {
+    //margin-top: 61px;
+//}
 
 .page-desc {
     font-size: 15px;

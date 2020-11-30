@@ -4897,6 +4897,8 @@ _::-webkit-full-page-media, _:future, :root .page-inner {
 .profile-cover img {
     width: 100%;
     border-radius: 6px;
+    max-height: 40vh;
+    object-fit: cover;
 }
 
 .profile-cover:after {

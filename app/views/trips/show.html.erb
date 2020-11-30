@@ -21,10 +21,10 @@
           <div class="profile-header-menu">
             <ul class="list-unstyled">
               <% if current_user == @trip.host %>
-                <li><%= link_to "Edit trip", edit_trip_path, class:"btn btn-outline-light" %></li>
-                <li><%= link_to "Delete trip", trip_path, method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-light" %></li>
+                <li><%= link_to "Edit trip", edit_trip_path, class:"btn btn-outline-primary" %></li>
+                <li><%= link_to "Delete trip", trip_path, method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-primary" %></li>
               <% else %>
-                <li><%= link_to "Search flights", "#", class:"btn btn-outline-light" %></li>
+                <li><%= link_to "Search flights", "#", class:"btn btn-outline-primary" %></li>
               <% end %>
             </ul>
           </div>
@@ -75,7 +75,7 @@
             <h5 class="card-title">Send invitations:</h5>
             <%= simple_form_for [@trip, @invitation] do |f| %>
               <%= f.input :email, label: "Email address" %>
-              <%= f.submit "Invite!", class:"btn btn-primary" %>
+              <%= f.submit "Invite", class:"btn btn-primary" %>
             <% end %> <br>
           </div>
         </div>

@@ -1,22 +1,38 @@
-<div class="container mt-5 mb-5">
-  <h1>Edit <%= @trip.name.capitalize %></h1>
-  <%= simple_form_for @trip do |f| %>
-    <h3>Details:</h3>
-    <%= f.input :name, label: "Name" %>
-    <%= f.input :street, label: "Street" %>
-    <%= f.input :zip, label: "Zip code" %>
-    <%= f.input :city, label: "City" %>
-    <%= f.input :country, label: "Country", as: :string %>
-    <%= f.input :start_date, label: "Start date" %>
-    <%= f.input :end_date, label: "End date" %>
-    <%= f.input :description, as: :text %>
-    <%= f.input :photo, as: :file %>
-    <h3>Restrictions:</h3>
-    <%= f.input :airport_code, label: "Airport (IATA code)" %>
-    <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>
-    <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
-    <%= f.input :latest_arrival, label: "Latest possible arrival at event" %>
-    <%= f.input :earliest_departure, label: "Earliest possible departure from event" %>
-    <%= f.submit %>
-  <% end %>
-</div>
+<div class="card p-10">
+  <div class="card-body pt-10">
+    <div class="row justify-content-center">
+      <div class="col-6 pt-10">
+        <!--<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-6">
+    </div>
+  </div>-->
+        <h1 class="text-center mb-5">Edit <%= @trip.name.capitalize %></h1>
+        <%= simple_form_for @trip do |f| %>
+          <h3 class="text-center mb-3">Details</h3>
+          <%= f.input :name, label: "Name" %>
+          <%= f.input :street, label: "Street" %>
+          <%= f.input :zip, label: "Zip code" %>
+          <%= f.input :city, label: "City" %>
+          <%= f.input :country, label: "Country", as: :string %>
+          <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {id: "range_start"} %>
+          <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {id: "range_end"} %>
+          <%= f.input :description, as: :text %>
+          <%= f.input :photo, as: :file %>
+          <h3 class="text-center mt-5 mb-3">Restrictions</h3>
+          <%= f.input :airport_code, label: "Airport (IATA code)" %>
+          <%= f.input :max_price, label: "Max price (€)", as: :numeric %>
+          <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
+
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :latest_arrival, label: "Latest possible arrival at event", as: :string, required: false, input_html: {id: "latest_arrival"} %>
+            </div>
+            <div class="col-6">
+               <%= f.input :earliest_departure, label: "Earliest possible departure from event", as: :string, required: false, input_html: {id: "earliest_departure"} %>
+            </div>
+          </div>
+
+          <%= f.submit %>
+        <% end %>
+      </div>

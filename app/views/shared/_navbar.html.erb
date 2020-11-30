@@ -59,20 +59,35 @@
         <ul>
           <li>
             <%= link_to trips_path do %>
-              <%= image_tag "Vectorplane.png" %>
+              <i class="fas fa-suitcase fa-2x"></i>
             <%end%>  
           </li>
+          <!--Add path to all flight when it is set up-->
+          <li>
+            <%= link_to new_trip_path do %>
+              <i class="fas fa-plane fa-2x"></i>
+            <%end%>   
+          </li>
+          <!--Add path to all flights when it is set up-->
+
           <% if current_user.host %>
             <li>
               <%= link_to new_trip_path do %>
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-paper-plane fa-2x"></i>
               <%end%>   
             </li>
+            <!--Add path to all travellers when it is set up-->
+             <li>
+              <%= link_to new_trip_path do %>
+                <i class="fas fa-user-friends fa-2x"></i>
+              <%end%>   
+            </li>
+            <!--Add path to all travellers when it is set up-->
           <%end%>
             <% unless current_user.host %>
             <li>
               <%= link_to invitations_path do %>
-                <i class="fas fa-ticket-alt fa-lg"></i>   
+                <i class="fas fa-ticket-alt fa-2x"></i>   
               <%end%>   
             </li>
             <%end%>
@@ -81,11 +96,19 @@
       </div>
     </div>
     <% if user_signed_in? %>
+
       <div class="settings-menu-btn">
-        <%= button_to "Finish", destroy_user_session_path, method: "delete", class: "btn btn-outline-light"%>
+        <%= button_to destroy_user_session_path, method: "delete", class: "btn btn-outline-light log-out" do %>
+          <i class="fas fa-sign-out-alt fa-2x"></i> 
+        <%end%>
       </div>
     <%end%>
 </div><!-- /Page Sidebar -->
+
+
+
+
+
 
 
                

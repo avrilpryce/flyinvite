@@ -3983,20 +3983,20 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
 .page-sidebar > .page-sidebar-inner {
     position: absolute!important;
     height: auto!important;
-    top: 19%;
+    top: 32%;
     transform: translateY(-50%);
 }
 
 .profile-menu a {
     display: block;
-    padding: 15px;
+    padding: 5px;
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
 .profile-menu a img {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    //border-radius: 30px;
 }
 
 

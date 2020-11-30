@@ -49,16 +49,15 @@
 <div class="page-sidebar">
   <div class="profile-menu">
     <%= link_to root_path do %>
-      <p class="text-light mb-0">fly</p>
-      <p class="text-light">invite</p>
+       <%= image_tag "flyinvitelogo.png", :size => "30x30", class: "text-left"%> 
     <%end%>    
+     <% if user_signed_in? %>
+      <p class="greeting text-light text-centerfont-weight-bold">Hi <%= current_user.first_name.capitalize %>!</p>
+    <%end%>
   </div>
   <div class="page-sidebar-inner">
     <div class="page-sidebar-menu">
       <% if user_signed_in? %>
-         <li>
-          <p class="greeting text-light text-center font-weight-bold">Hi <%= current_user.first_name.capitalize %></p>
-        </li>
         <ul>
           <li>
             <%= link_to root_path do %>

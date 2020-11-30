@@ -12,7 +12,7 @@ class FlightBookingsController < ApplicationController
     @user = current_user
     # How to get host tip_id?
     @flight_booking.user = @user
-    @user_flight_selection << @flightBooking
+    @user_flight_selection << @flight_booking
 
   end
 

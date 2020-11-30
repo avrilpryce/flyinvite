@@ -104,7 +104,7 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
 
     flightList.innerHTML = " "
 
-    // if (route === "round") {
+    // if (route == "round") {
 
         const url = `https://tequila-api.kiwi.com/v2/search?fly_from=${obDepartureAp}&fly_to=${ob_arrival_ap}&date_from=${ob_date}&date_to=${ob_date}&return_from=${ib_date}&return_to=${ib_date}&max_stopovers=0&selected_cabins=${fare_class}&flight_type=${route}&apikey=${process.env.FLIGHT_SEARCH_API}`
         fetch(url)
@@ -165,7 +165,7 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
                         </div>
                     </div>`
         
-    // } else {
+    // } else if (route == "oneway"){
     //     const url = `https://tequila-api.kiwi.com/v2/search?fly_from=${obDepartureAp}&fly_to=${ob_arrival_ap}&date_from=${ob_date}&date_to=${ob_date}&max_stopovers=0&selected_cabins=${fare_class}&flight_type=${route}&apikey=${process.env.FLIGHT_SEARCH_API}`
     //     fetch(url)
     //     .then(response => response.json())
@@ -213,12 +213,10 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
         const flightSelect = document.getElementsByClassName('checkbox')
         console.log(flightSelect)
         Array.prototype.forEach.call(flightSelect, flight => {
-            console.log(flight)
-
-        flight.addEventListener('click',(event)=> { 
-            if (flight.Checked == true ) {
+        flight.addEventListener('change',(event)=> { 
+            if (flight.checked == true ) {
                 console.log("Book")
-            } else if (flight.Checked == false){
+            } else if (flight.checked == false){
                 console.log("Delete")
             }
 
@@ -229,3 +227,7 @@ const fetchFlightApi = ({ obDepartureAp, ob_arrival_ap,ob_date,fare_class, route
 
 
 
+input.addEventListener('keydown',(event)=> { 
+    const userInput = event.target.value
+    fetchApi(userInput)
+})

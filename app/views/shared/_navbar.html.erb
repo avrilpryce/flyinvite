@@ -56,6 +56,9 @@
   <div class="page-sidebar-inner">
     <div class="page-sidebar-menu">
       <% if user_signed_in? %>
+         <li>
+          <p class="greeting text-light text-center">Hi <%= current_user.first_name.capitalize %></p>
+        </li>
         <ul>
           <li>
             <%= link_to root_path do %>
@@ -101,7 +104,6 @@
       </div>
     </div>
     <% if user_signed_in? %>
-
       <div class="settings-menu-btn">
         <%= button_to destroy_user_session_path, method: "delete", class: "btn btn-outline-light log-out" do %>
           <i class="fas fa-sign-out-alt fa-2x"></i> 

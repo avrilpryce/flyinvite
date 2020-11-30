@@ -127,7 +127,8 @@
       </div>
       <% end %>
       <% if current_user == @trip.host %>
-        <% if @trip.invitations.length > 0 %>
+      <% pending = @trip.invitations.where(status: "Pending") %>
+        <% if pending.length > 0 %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Pending invitations</h5>

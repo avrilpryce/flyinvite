@@ -49,31 +49,33 @@
 <div class="page-sidebar">
   <div class="profile-menu">
     <%= link_to root_path do %>
-      <p class="text-light mb-0">fly</p>
-      <p class="text-light">invite</p>
+       <%= image_tag "flyinvitelogo.png", :size => "30x30", class: "text-left"%> 
     <%end%>    
+     <% if user_signed_in? %>
+      <p class="greeting text-light text-centerfont-weight-bold">Hi <%= current_user.first_name.capitalize %>!</p>
+    <%end%>
   </div>
   <div class="page-sidebar-inner">
     <div class="page-sidebar-menu">
       <% if user_signed_in? %>
-         <li>
-          <p class="greeting text-light text-center">Hi <%= current_user.first_name.capitalize %></p>
-        </li>
         <ul>
           <li>
             <%= link_to root_path do %>
               <i class="fas fa-home fa-2x"></i>
+              <p><small>Home</small></p>
             <%end%>  
           </li>
           <li>
             <%= link_to trips_path do %>
               <i class="fas fa-suitcase fa-2x"></i>
+              <p><small>My Trips</small></p>
             <%end%>  
           </li>
           <!--Add path to all flight when it is set up-->
           <li>
             <%= link_to new_trip_path do %>
               <i class="fas fa-plane fa-2x"></i>
+              <p><small>My Flights</small></p>
             <%end%>   
           </li>
           <!--Add path to all flights when it is set up-->
@@ -82,12 +84,14 @@
             <li>
               <%= link_to new_trip_path do %>
                 <i class="fas fa-paper-plane fa-2x"></i>
+                <p><small>New Trip</small></p>
               <%end%>   
             </li>
             <!--Add path to all travellers when it is set up-->
              <li>
               <%= link_to new_trip_path do %>
                 <i class="fas fa-user-friends fa-2x"></i>
+                <p><small>Travellers</small></p>
               <%end%>   
             </li>
             <!--Add path to all travellers when it is set up-->
@@ -95,7 +99,8 @@
             <% unless current_user.host %>
             <li>
               <%= link_to invitations_path do %>
-                <i class="fas fa-ticket-alt fa-2x"></i>   
+                <i class="fas fa-ticket-alt fa-2x"></i> 
+                <p><small>Invites</small></p>  
               <%end%>   
             </li>
             <%end%>
@@ -105,8 +110,9 @@
     </div>
     <% if user_signed_in? %>
       <div class="settings-menu-btn">
+        <a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand fa-2x"></i></a>
         <%= button_to destroy_user_session_path, method: "delete", class: "btn btn-outline-light log-out" do %>
-          <i class="fas fa-sign-out-alt fa-2x"></i> 
+          <i class="fas fa-sign-out-alt fa-2x"></i>
         <%end%>
       </div>
     <%end%>

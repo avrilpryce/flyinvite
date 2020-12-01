@@ -7,7 +7,7 @@
     <div class="col-6">
     </div>
   </div>-->
-        <h3 class="text-center mt-5 mb-5 font-weight-bold">Edit '<%= @trip.name.capitalize %>'</h3>
+        <h2 class="text-center mt-5 mb-5">Edit '<%= @trip.name.capitalize %>'</h2>
         <%= simple_form_for @trip do |f| %>
           <%= f.input :name, label: "Name" %>
           <%= f.input :street, label: "Street" %>
@@ -26,7 +26,7 @@
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10"> 
-          <h3 class="text-center mt-5 mb-5 font-weight-bold">Edit restrictions</h3>
+          <h2 class="text-center mt-5 mb-5">Edit restrictions</h2>
           <%= f.input :airport_code, label: "Airport (IATA code)" %>
           <%= f.input :max_price, label: "Max price (€)", as: :numeric %>
           <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
@@ -39,8 +39,9 @@
               <%= f.input :earliest_departure, label: "Earliest allowed event departure", as: :string, required: false, input_html: {id: "earliest_departure"} %>
             </div>
           </div>
-
-          <%= f.submit %>
+          <div class="row justify-content-center" >
+            <%= f.submit %>
+          </div>
         <% end %>
       </div>
     </div>

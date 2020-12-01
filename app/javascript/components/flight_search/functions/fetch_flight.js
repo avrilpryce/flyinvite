@@ -48,7 +48,7 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
           let airlineIataReturn = flight.route[1].airline
 
           let localDateDepartureOb = localDate(flight["route"][0]["local_departure"])
-          // let localTimeDepartureOb = localTime(flight["route"][0]["local_departure"])
+          let localTimeDepartureOb = localTime(flight["route"][0]["local_departure"])
           // let localTimeArrivalOb =  localTime(flight["route"][0]["local_arrival"])           
 
           // let localDateDepartureIb = localDate(flight["route"][1]["local_departure"])
@@ -71,7 +71,7 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
                     </div>
                     <div class="col-3">
                       <h5>${localDateDepartureOb}</h5>
-                      <h5><strong>${localTime(flight["route"][0]["local_departure"])} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
+                      <h5><strong>${localTimeDepartureOb} - ${localTime(flight["route"][0]["local_arrival"])}</strong></h5>
                       <h5>${flightNumberOb}</h5>
                     </div>
                     <div class="col ml-4">
@@ -106,6 +106,9 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
             const flightCheckbox = document.getElementById(flight.id)
             // console.log(flightCheckbox)
             flightCheckbox.addEventListener('change', (event) => {
+
+              const routePrice = bookingPrice / 2
+
               if (flightCheckbox.checked == true) {
                   console.log("Book")
                   const chosenFlight = {
@@ -115,31 +118,32 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
                       arrival_airport_code: obArrivalAp,
                       airline: fetchAirlineName(airlineIataDeparture),
                       flight_number: flightNumberOb,
-                      price: " ", 
+                      price: routePrice, 
                       flight_class: fare_class,
-                      departure_date_local: ,
-                      arrival_date_local: ,
-                      departure_date_utc: ,
-                      arrival_date_utc: ,
-                      booked: false,
+                      departure_date_local: flight["route"][0]["local_departure"],
+                      arrival_date_local: flight["route"][0]["local_arrival"],
+                      departure_date_utc: flight["route"][0]["utc_departure"],
+                      arrival_date_utc: flight["route"][0]["utc_arrival"],
+                      booking_link: `https://www.kiwi.com/deep?booking_token=${flight.booking_token}`,
+                      booked: false
                     },
 
                     inbound: {
                       departure_airport_code: obArrivalAp,
-                      arrival_airport_code:obDepartureAp,
+                      arrival_airport_code: obDepartureAp,
                       airline: fetchAirlineName(airlineIataReturn),
                       flight_number: flightNumberIb,
-                      price: " ", 
+                      price: routePrice, 
                       flight_class: fare_class,
-                      departure_date_local: ,
-                      arrival_date_local: ,
-                      departure_date_utc: ,
-                      arrival_date_utc: ,
-                      booked: false,
+                      departure_date_local: flight["route"][1]["local_departure"],
+                      arrival_date_local: flight["route"][1]["local_arrival"],
+                      departure_date_utc: flight["route"][1]["utc_departure"],
+                      arrival_date_utc: flight["route"][1]["utc_arrival"],
+                      booking_link: `https://www.kiwi.com/deep?booking_token=${flight.booking_token}`,
+                      booked: false
                     },
-
-                    booking_link: ,
-                    price: bookingPrice,
+                    
+                    booking_price: bookingPrice
           
                   }
 

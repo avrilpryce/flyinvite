@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post 'search_flights', to: 'flight_bookings#find_location'
+  delete 'search_flights', to: 'flight_bookings#destroy_flight_selection'
+  
   devise_for :users
   root to: 'pages#home'
 

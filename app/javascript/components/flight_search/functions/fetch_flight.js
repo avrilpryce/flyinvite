@@ -1,31 +1,29 @@
 import Rails from '@rails/ujs' 
 
-const fetchAirlineName = (iataCode) => {
-    fetch(`https://iata-and-icao-codes.p.rapidapi.com/airline?iata_code=${iataCode}`, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": "362fb13d72mshf0c9075af340a2ap1ad897jsn80428ab5b0ff",
-                "x-rapidapi-host": "iata-and-icao-codes.p.rapidapi.com"
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            let airlineName = data[0].name
-            return airlineName
-        })
-}
+// const fetchAirlineName = (iataCode) => {
+//     fetch(`https://iata-and-icao-codes.p.rapidapi.com/airline?iata_code=${iataCode}`, {
+//             "method": "GET",
+//             "headers": {
+//                 "x-rapidapi-key": "362fb13d72mshf0c9075af340a2ap1ad897jsn80428ab5b0ff",
+//                 "x-rapidapi-host": "iata-and-icao-codes.p.rapidapi.com"
+//             }
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             let airlineName = data[0].name
+//             return airlineName
+//         })
+// }
 
 
 const localDate = (standardDate) => {
     let timeOb = new Date(standardDate)
     timeOb = timeOb.toDateString().slice(0,10)
-    console.log(timeOb)
 }
 
 const localTime = (standardTime) => {
     let timeOb = new Date(standardTime)
     timeOb = timeOb.toTimeString().slice(0, 5)
-    console.log(timeOb)
 }
 
 
@@ -39,8 +37,6 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
       .then(response => response.json())
       .then(data => {
         const flights = data.data
-
-        console.log(flights)
 
         flights.forEach(flight => {
 
@@ -108,6 +104,7 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
             flightCheckbox.addEventListener('change', (event) => {
 
               const routePrice = bookingPrice / 2
+              const bookingLink = `https://www.kiwi.com/deep?booking_token=${flight.booking_token}`
 
               if (flightCheckbox.checked == true) {
                   console.log("Book")
@@ -116,7 +113,7 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
                     outbound: {
                       departure_airport_code: obDepartureAp,
                       arrival_airport_code: obArrivalAp,
-                      airline: fetchAirlineName(airlineIataDeparture),
+                      airline: airlineIataDeparture,
                       flight_number: flightNumberOb,
                       price: routePrice, 
                       flight_class: fare_class,
@@ -124,14 +121,14 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
                       arrival_date_local: flight["route"][0]["local_arrival"],
                       departure_date_utc: flight["route"][0]["utc_departure"],
                       arrival_date_utc: flight["route"][0]["utc_arrival"],
-                      booking_link: `https://www.kiwi.com/deep?booking_token=${flight.booking_token}`,
+                      booking_link: bookingLink,
                       booked: false
                     },
 
                     inbound: {
                       departure_airport_code: obArrivalAp,
                       arrival_airport_code: obDepartureAp,
-                      airline: fetchAirlineName(airlineIataReturn),
+                      airline: airlineIataReturn,
                       flight_number: flightNumberIb,
                       price: routePrice, 
                       flight_class: fare_class,
@@ -167,6 +164,21 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
 
               } else if (flightCheckbox.checked == false) {
                   console.log("Delete")
+
+                  const formDataToDelete = new FormData();
+                  formDataToDelete.append("booking_link", bookingLink);
+
+
+                  Rails.ajax({
+                    url: "/search_flights",
+                    type: "delete",
+                    data: formDataToDelete,
+                    success: function(data) { 
+                      console.log("Deleted")
+                    },
+                    error: function(data) {alert('something went wrong!')}
+                  })
+              
 
               }
             })

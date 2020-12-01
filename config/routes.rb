@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :invitations, only: [ :new, :create ]
   end
   resources :invitations, only: [ :index, :show, :update ]
+  resources :users, only: [ :index ]
 end

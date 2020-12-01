@@ -141,7 +141,7 @@
 
     <%# Dashboard of a traveler %>
     <% elsif user_signed_in? %>
-    <div class="card">
+    <div class="card mt-3">
       <div class="d-flex my-3 mx-5 justify-content-around">
         <%# List of trips in the next 30 days %>
         <div class="container my-5 mx-3 py-3 col-6 cards-container">
@@ -206,7 +206,7 @@
                             <td><strong><%= invitation.trip.name.split.map(&:capitalize).join(' ') %></strong></td>
                             <td><%= "#{invitation.trip.start_date.strftime("%d/%m/%y")} - #{invitation.trip.end_date.strftime("%d/%m/%y")}" %></td>
                             <td><%= "#{invitation.trip.city.split.map(&:capitalize).join(' ')}, #{invitation.trip.country.upcase}" %></td>
-                            <td>
+                            <td class="td-btn">
                               <%= simple_form_for invitation, method: :patch do |f| %>
                                 <%= f.input :status, label: false, wrapper_html: {class: "form-inline"} do %>
                                   <%= f.input_field :status, collection: Invitation::STATUS, label: false %>

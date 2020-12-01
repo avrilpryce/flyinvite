@@ -100,7 +100,7 @@
     object-fit: cover;
     border-radius: 50%;
     padding: 4px 8px;
-    border: solid 2px #6f0bd9;
+    // border: solid 2px #6f0bd9;
   }
 }
 
@@ -110,6 +110,8 @@
   height: 20px !important;
 }
 
-#edit_invitation_30 > div > input {
-  padding: 1px 8px 1px 8px;
+.td-btn {
+  input[type=submit]{
+    padding: 0px 20px !important;
+  }
 }

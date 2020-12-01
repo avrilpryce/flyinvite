@@ -59,22 +59,22 @@
     <div class="page-sidebar-menu">
       <% if user_signed_in? %>
         <ul>
-          <li>
+          <li class="button-list">
             <%= link_to root_path do %>
-              <i class="fas fa-home fa-2x"></i>
+              <i class="fas fa-home"></i>
               <p><small>Home</small></p>
             <%end%>  
           </li>
-          <li>
+          <li class="button-list">
             <%= link_to trips_path do %>
-              <i class="fas fa-suitcase fa-2x"></i>
+              <i class="fas fa-suitcase"></i>
               <p><small>My Trips</small></p>
             <%end%>  
           </li>
           <!--Add path to all flight when it is set up-->
           <li>
             <%= link_to new_trip_path do %>
-              <i class="fas fa-plane fa-2x"></i>
+              <i class="fas fa-plane"></i>
               <p><small>My Flights</small></p>
             <%end%>   
           </li>
@@ -83,14 +83,14 @@
           <% if current_user.host %>
             <li>
               <%= link_to new_trip_path do %>
-                <i class="fas fa-paper-plane fa-2x"></i>
+                <i class="fas fa-paper-plane"></i>
                 <p><small>New Trip</small></p>
               <%end%>   
             </li>
             <!--Add path to all travellers when it is set up-->
              <li>
               <%= link_to new_trip_path do %>
-                <i class="fas fa-user-friends fa-2x"></i>
+                <i class="fas fa-user-friends"></i>
                 <p><small>Travellers</small></p>
               <%end%>   
             </li>
@@ -99,7 +99,7 @@
             <% unless current_user.host %>
             <li>
               <%= link_to invitations_path do %>
-                <i class="fas fa-ticket-alt fa-2x"></i> 
+                <i class="fas fa-ticket-alt"></i> 
                 <p><small>Invites</small></p>  
               <%end%>   
             </li>
@@ -110,9 +110,9 @@
     </div>
     <% if user_signed_in? %>
       <div class="settings-menu-btn">
-        <a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand fa-2x"></i></a>
+        <a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand"></i></a>
         <%= button_to destroy_user_session_path, method: "delete", class: "btn btn-outline-light log-out" do %>
-          <i class="fas fa-sign-out-alt fa-2x"></i>
+          <i class="fas fa-sign-out-alt"></i>
         <%end%>
       </div>
     <%end%>

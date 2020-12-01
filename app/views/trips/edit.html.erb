@@ -20,21 +20,29 @@
       </div>
     </div>
   </div>
-  <div class="card p-5 col-12">
-    <div class="card-body pt-10">
-      <div class="row justify-content-center">
-        <div class="col-6 mt-4 mb-4">
-          <%= f.input :description, as: :text, :input_html => {:rows => 6}%> 
-          <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload picture' %>
-        </div>
-        <div class="col-6 pt-10 d-flex justify-content-center">
-          <div class="col-6 mt-4">
-            <%= image_tag "", width: 300, class: "hidden upload", id: "photo-preview" %>
+  
+  <div class="row_new justify-space-between">
+    <div class="card col-6">
+      <div class="card-body pt-12 d-flex">
+        <div class="row col-12 justify-content-center">
+          <div class="col-12 mt-4 mb-4">
+            <%= f.input :description, as: :text, :input_html => {:rows => 6}%> 
+            <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload picture' %>
           </div>
         </div>
       </div>
     </div>
+    <div class="card col-6">
+      <div class="card-body pt-12 d-flex justify-content-center align-items-center">
+        <div>
+          <%= image_tag "", height: 200, class: "hidden", id: "photo-preview" %>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
 <div class="card p-5 col-12">
   <div class="card-body pt-10">
     <div class="row justify-content-center">

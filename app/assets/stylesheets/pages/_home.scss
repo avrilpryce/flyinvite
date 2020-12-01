@@ -90,3 +90,26 @@
     color: white !important;
   }
 }
+
+.dash-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  img {
+    height: 100%;
+    // width: 50%;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 4px 8px;
+    border: solid 2px #6f0bd9;
+  }
+}
+
+.table-btn {
+  margin-top: 0 !important;
+  margin-left: 16px !important;
+  height: 20px !important;
+}
+
+#edit_invitation_30 > div > input {
+  padding: 1px 8px 1px 8px;
+}

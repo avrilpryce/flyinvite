@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   has_many :flightbookings, dependent: :destroy
 
+  # Cloudinary:
+  has_one_attached :photo
+
   # Validation:
   validates :first_name, :last_name, :username, :job_title, :company, presence: true
   validates :email, uniqueness: true

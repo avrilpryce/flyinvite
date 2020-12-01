@@ -33,6 +33,8 @@
 
 
           <%= f.input :description, as: :text %>
+          <%= f.input :photo, as: :file %>
+          
           <h3 class="text-center mt-5 mb-3">Restrictions</h3>
           <%= f.input :airport_code, label: "Airport (IATA code)" %>
           <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>

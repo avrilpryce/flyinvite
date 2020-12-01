@@ -1,29 +1,88 @@
 <div class="row">
       <div class="col-lg-12">
         <div class="profile-cover">
-          <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483935/profile-bg_zh4oi2.jpg">
+          <% if @trip.photo.attached? %>
+            <%= cl_image_tag @trip.photo.key %>
+          <% else %>
+            <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483935/profile-bg_zh4oi2.jpg">
+          <% end %>
         </div>
         <div class="profile-header">
+          <div class="profile-img">
+            <% if @trip.host.photo.attached? %>
+              <%= cl_image_tag @trip.host.photo.key %>
+            <% else %>
+              <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar3_znnvez.png">
+            <% end %>
+          </div>
           <div class="profile-name">
-            <h3><%= @trip.name.capitalize %></h3>
+            <h3><%= @trip.name.split.map(&:capitalize).join(' ') %></h3>
+          </div>
+          <div class="profile-header-menu">
+            <ul class="list-unstyled">
+              <% if current_user == @trip.host %>
+                <li><%= link_to "Edit trip", edit_trip_path, class:"btn btn-outline-primary" %></li>
+                <li><%= link_to "Delete trip", trip_path, method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-primary" %></li>
+              <% else %>
+                <li><%= link_to "Search flights", "#", class:"btn btn-outline-primary" %></li>
+              <% end %>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-<div class="page-inner no-page-title contacts-app p-0">
+<div class="trip-inside no-page-title contacts-app p-0">
   <div id="main-wrapper">
   </div> 
   <div class="row">
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Trip Description</h5>
-          <p>Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-          Mollitia officia illum enim praesentium modi?</p>
+          <h5 class="card-title">Details:</h5>
+          <ul class="list-unstyled">
+            <li><strong>Address:</strong> <%= @trip.street.split.map(&:capitalize).join(' ') %>,<br> <%= @trip.zip %> <%= @trip.city.capitalize %>,<br> <%= @trip.country.upcase %></li>
+            <li><strong>Start:</strong> <%= @trip.start_date.strftime("%d/%m/%Y") %></li>
+            <li><strong>End:</strong> <%= @trip.end_date.strftime("%d/%m/%Y") %></li><br>
+          </ul>
         </div>
       </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Restrictions:</h5>
+            <ul class="list-unstyled">
+              <li><strong>Arrival airport:</strong> <%= @trip.airport_code.nil? ? "N/A" : @trip.airport_code.upcase %></li>
+              <li><strong>Price ceilling:</strong> <%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></li>
+              <li><strong>Travel class:</strong> <%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></li>
+              <li><strong>Latest arrival:</strong> <%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival %></li>
+              <li><strong>Earliest departure:</strong> <%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure %></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="post">
+            <h5 class="card-title">Trip description</h5>
+            <p><%= @trip.description %></p>
+          </div>
+        </div>
+      </div>
+      <% if current_user == @trip.host %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Send invitations:</h5>
+            <%= simple_form_for [@trip, @invitation] do |f| %>
+              <%= f.input :email, label: "Email address" %>
+              <%= f.submit "Invite", class:"btn btn-primary" %>
+            <% end %> <br>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <% if current_user != @trip.host %>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Host contact Info</h5>
@@ -33,45 +92,7 @@
           </ul>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <div class="post">
-            <h5 class="card-title">Details:</h5>
-            <ul>
-              <li><strong>Address:</strong> <%= @trip.street.capitalize %>, <%= @trip.zip %> <%= @trip.city.capitalize %>, <%= @trip.country.upcase %></li>
-              <li><strong>Start:</strong> <%= @trip.start_date %></li>
-              <li><strong>End:</strong> <%= @trip.end_date %></li><br>
-            </ul>
-            <h5 class="card-title">Restrictions:</h5>
-            <ul>
-              <li><strong>Arrival airport:</strong> <%= @trip.airport_code.nil? ? "N/A" : @trip.airport_code.upcase %></li>
-              <li><strong>Price ceilling:</strong> <%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></li>
-              <li><strong>Travel class:</strong> <%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></li>
-              <li><strong>Latest arrival:</strong> <%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival %></li>
-              <li><strong>Earliest departure:</strong> <%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <% if current_user == @trip.host %>
-        <div class="card">
-          <div class="card-body">
-            <div class="trips-btn-card d-flex">
-              <%= link_to "Edit trip", edit_trip_path, class:"btn btn-primary" %>
-              <%= link_to "Delete trip", trip_path, method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-primary" %>
-            </div>
-            <h5 class="card-title">Create invitations:</h5>
-            <%= simple_form_for [@trip, @invitation] do |f| %>
-              <%= f.input :email, label: "Email address" %>
-              <%= f.submit "Invite!", class:"btn btn-primary" %>
-            <% end %> <br>
-          </div>
-        </div>
       <% end %>
-    </div>
-    <div class="col-md-3">
       <% if @trip.users.count > 0 %>
       <div class="card">
         <div class="card-body">
@@ -79,18 +100,22 @@
           <div class="story-list">
             <% @trip.users.each do |participant| %>
               <div class="story">
-                <% random_index = rand(1..5) %>
-                <% case random_index %>
-                <% when 1 %>
-                <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar3_znnvez.png" alt="">
-                <% when 2 %>
-                <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar1_fujnmo.png" alt="">
-                <% when 3 %>
-                <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar2_da1iqq.png" alt="">
-                <% when 4 %>
-                <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483935/avatar5_ikfpkw.png" alt="">
-                <% when 5 %>
-                <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483935/avatar4_l74h38.png" alt="">
+                <% if participant.photo.attached? %>
+                  <%= cl_image_tag participant.photo.key %>
+                <% else %>
+                  <% random_index = rand(1..5) %>
+                  <% case random_index %>
+                  <% when 1 %>
+                  <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar3_znnvez.png" alt="">
+                  <% when 2 %>
+                  <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar1_fujnmo.png" alt="">
+                  <% when 3 %>
+                  <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar2_da1iqq.png" alt="">
+                  <% when 4 %>
+                  <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483935/avatar5_ikfpkw.png" alt="">
+                  <% when 5 %>
+                  <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483935/avatar4_l74h38.png" alt="">
+                  <% end %>
                 <% end %>
                 <div class="story-info">
                   <span class="story-author"><%= participant.first_name.capitalize %> <%= participant.last_name.capitalize %></span>
@@ -102,17 +127,18 @@
       </div>
       <% end %>
       <% if current_user == @trip.host %>
-        <% if @trip.invitations.length > 0 %>
+      <% pending = @trip.invitations.where(status: "Pending") %>
+        <% if pending.length > 0 %>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Pending invitations</h5>
-              <div class="story-list">
+              <div class="list-unstyled">
                 <% @trip.invitations.each do |invitation| %>
                   <% if invitation.status == "Pending" %>
                     <div class="story">
                       <div class="story-info">
-                        <%= invitation.email %><br>Sent on: <%= invitation.created_at %>
-                      </div>
+                        <%= invitation.email %><br><%= invitation.created_at.strftime("%d/%m/%Y") %> - <%= invitation.created_at.strftime("%H:%M") %> (UTC)
+                      </div><br>
                     </div>
                   <% end %>
                 <% end %> 

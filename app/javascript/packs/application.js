@@ -27,7 +27,6 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import "../plugins/flatpickr";
 import "../plugins/concept-plugins/switchery/switchery.min.js";
 import "../plugins/concept-plugins/icomoon/style.css";
 import "../plugins/concept-plugins/jquery/jquery-3.1.0.min.js";
@@ -43,7 +42,10 @@ import "../../assets/js/pages/profile.js";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+import { initiateFlatPickr } from "../plugins/flatpickr";
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initiateFlatPickr();
 });

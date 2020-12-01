@@ -2943,7 +2943,7 @@ table.dataTable.display tbody tr.odd {
     padding-bottom: 0px;
     margin: 0px;
     border-bottom: none;
-    height: 61px;
+    height: 0px;
     position: relative;
     width: calc(100% - 200px);
     float: right;
@@ -2982,9 +2982,11 @@ table.dataTable.display tbody tr.odd {
     width: 60px!important;
 }
 
-.page-header-fixed .page-secondary-sidebar {
-    padding-top: 61px;
-}
+// NAV ***** THIS MAY BE IMPORTANT****** 
+
+//.page-header-fixed .page-secondary-sidebar {
+//    padding-top: 61px;
+//}
 
 .page-header-fixed .page-header .navbar-default {
     -webkit-transition: all .1s;
@@ -3051,15 +3053,15 @@ table.dataTable.display tbody tr.odd {
     z-index: 41;
 }
 
-.page-header .navbar-default {
-    background-color: transparent;
-    border: 0;
-    margin-bottom: 0;
-    height: 61px;
-    border-radius: 0;
-    padding: 0;
-    border-bottom: 1px solid #E5E9EC;
-}
+//.page-header .navbar-default {
+//    background-color: transparent;
+//    border: 0;
+//    margin-bottom: 0;
+//    height: 61px;
+//    border-radius: 0;
+//    padding: 0;
+//    border-bottom: 1px solid #E5E9EC;
+//}
 
 .page-header .navbar-default .container-fluid,
 .page-header .navbar-default .navbar-collapse {
@@ -3180,12 +3182,12 @@ table.dataTable.display tbody tr.odd {
     opacity: 1;
 }
 
-.right-sidebar-top {
-    background: #fff;
-    display: block;
-    height: 61px;
-    border-bottom: 1px solid #E5E9EC;
-}
+//.right-sidebar-top {
+//    background: #fff;
+//    display: block;
+    //height: 61px;
+//    border-bottom: 1px solid #E5E9EC;
+//}
 
 .page-right-sidebar .right-sidebar-close {
     float: right;
@@ -3581,10 +3583,10 @@ span.chat-title {
 }
 
 
-/* Page Sidebar */
+/* Page Sidebar (Left-most)*/
 
 .page-sidebar {
-    width: 61px;
+    width: 100px;
     background: #641eff;
     background: -moz-linear-gradient(top, #641eff 0%, #a307dd 100%);
     background: -webkit-linear-gradient(top, #641eff 0%,#a307dd 100%);
@@ -3597,6 +3599,8 @@ span.chat-title {
     -webkit-box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.29);
     -moz-box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.29);
     box-shadow: 2px 0px 4px 0px rgba(0,0,0,0.29);
+    //changed to center buttons in sidebar - TH
+    padding-left: 15px;
 }
 
 .page-sidebar-fixed .secondary-sidebar {
@@ -3612,9 +3616,10 @@ span.chat-title {
     overflow: hidden;
 }
 
-.page-header-fixed .secondary-sidebar {
-    padding-top: 61px;
-}
+//***** NAV ******
+//.page-header-fixed .secondary-sidebar {
+//    padding-top: 61px;
+//}
 
 .page-header-fixed .secondary-sidebar .secondary-sidebar-bar {
     z-index: 9;
@@ -3661,11 +3666,12 @@ span.chat-title {
 .page-sidebar .page-sidebar-menu ul {
     list-style: none;
     padding: 0;
-    width: 61px;
+    width: 70px;
+    height: 80px;
 }
 
 .page-sidebar .page-sidebar-menu ul li a {
-    padding: 8px 8px;
+    padding: 0px 0px;
     line-height: 25px;
     margin: 5px 10px;
     border-radius: 50%;
@@ -3948,9 +3954,10 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
     height: auto;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 50%;
     border-top: 1px solid rgba(255,255,255,.1);
-    padding: 15px 0;
+    padding: 10px 15px;
+    
 }
 
 .settings-menu-btn a {
@@ -3972,24 +3979,24 @@ body:not(.collapsed-sidebar) .secondary-sidebar-menu ul li .sub-menu:before {
 .page-sidebar-inner {
     height: 100%!important;
 }
-
+//Adjust height of nav icons with 'top' - TH
 .page-sidebar > .page-sidebar-inner {
     position: absolute!important;
     height: auto!important;
-    top: 50%;
+    top: 32%;
     transform: translateY(-50%);
 }
 
 .profile-menu a {
     display: block;
-    padding: 15px;
+    padding: 5px;
     border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
 .profile-menu a img {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    //border-radius: 30px;
 }
 
 
@@ -4192,19 +4199,19 @@ body.settings-visible .settings-sidebar {
 
 
 /* Page Content */
-
+//Removing padding for removed sidebar. If this has a bad knock-on effect on other pages, uncomment lines below to roll back. 
 .page-content {
     min-height: 56px;
     vertical-align: bottom;
     background: #F1F3F6;
-    width: calc(100% - 61px);
-    float: right;
-    margin-left: 61px;
+    //width: calc(100% - 61px);
+    //float: right;
+    //margin-left: 61px;
 }
 
-.page-sidebar-collapsed .page-content {
-    width: calc(100% - 61px);
-}
+//.page-sidebar-collapsed .page-content {
+//    width: calc(100% - 61px);
+//}
 
 _::-webkit-full-page-media, _:future, :root .page-content {
     vertical-align: top;
@@ -4212,12 +4219,13 @@ _::-webkit-full-page-media, _:future, :root .page-content {
 
 
 /* Page Inner */
-
+//******************** NAVBAR PADDING
 .page-inner {
     position: relative;
-    padding: 30px;
+    padding-top: 0px;
+    padding-left: 100px;
     width: calc(100% - 200px);
-    float: right;
+    //float: right;
 }
 
 .page-inner.white {
@@ -4242,10 +4250,10 @@ _::-webkit-full-page-media, _:future, :root .page-content {
 _::-webkit-full-page-media, _:future, :root .page-inner {
     padding-bottom: 0px;
 }
-
-.page-header-fixed .page-inner {
-    margin-top: 61px;
-}
+//Might interact with JS in a way I don't understand - TH. 
+//.page-header-fixed .page-inner {
+    //margin-top: 61px;
+//}
 
 .page-desc {
     font-size: 15px;
@@ -4897,6 +4905,8 @@ _::-webkit-full-page-media, _:future, :root .page-inner {
 .profile-cover img {
     width: 100%;
     border-radius: 6px;
+    max-height: 40vh;
+    object-fit: cover;
 }
 
 .profile-cover:after {

@@ -49,3 +49,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initiateFlatPickr();
 });
+
+//Not working 
+previewImageOnFileSelect();
+import { previewImageOnFileSelect } from "../plugins/photo_preview.js";

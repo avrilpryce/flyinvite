@@ -29,7 +29,7 @@
             </div>
          </div>
         <%= f.input :description, as: :text %>
-        <%= f.input :photo, as: :file %>    
+        <%= f.input :photo, as: :file, input_html: { class: 'd-none'} , label_html: { class: 'btn btn-primary'}, label: 'Upload picture' %>  
       </div>
     </div>
   </div>
@@ -50,8 +50,8 @@
               <%= f.input :earliest_departure, label: "Earliest allowed event departure", as: :string, required: false, input_html: {id: "earliest_departure"} %>
           </div>
           </div>
-          <div class="row justify-content-center" >
-            <%= f.submit %>
+          <div class="row justify-content-center mt-4" >
+            <%= f.submit class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

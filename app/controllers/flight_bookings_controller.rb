@@ -8,12 +8,9 @@ class FlightBookingsController < ApplicationController
   end
   
   def create
-    @flight_booking = FlightBooking.create(flight_params)
-    @user = current_user
-    # How to get host tip_id?
-    @flight_booking.user = @user
-    @user_flight_selection << @flight_booking
-
+    @flight_booking = FlightBooking.new(flight_params)
+    @flight_booking.user = current_user
+    @flight_booking.save
   end
 
   def destroy

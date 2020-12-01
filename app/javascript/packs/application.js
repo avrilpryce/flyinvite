@@ -41,11 +41,16 @@ import "../../assets/js/pages/profile.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-
 import { initiateFlatPickr } from "../plugins/flatpickr";
+import { flightSearch } from "../components/flight_search/flight_search.js"
+
+
+// Calling imported Functions with Event Listener
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initiateFlatPickr();
+  flightSearch();
 });
+

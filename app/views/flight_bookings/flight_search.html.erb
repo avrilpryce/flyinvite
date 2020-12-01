@@ -8,19 +8,19 @@
         <option value="C">Business</option>
         <option value="F">First</option>
       </select>
-      <select class="col-2 mdb-select md-form"id="route">
+      <%# <select class="col-2 mdb-select md-form"id="route">
         <option value="round">Round trip</option>
         <option value="oneway">One way</option>
-      </select>
+      </select> %>
       </div>
       <div class="form-row">
         <div class="col">
           <input type="text" class="form-control" placeholder="BER" id="obDepartureAp">
-          <div id="locations"></div>
+          <div id="departure-airports"></div>
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="FRA" id="ob_arrival_ap">
-          <div id="locations"></div>
+          <input type="text" class="form-control" placeholder="FRA" id="obArrivalAp">
+          <div id="arrival-airports"></div>
         </div>
         <div class="col"> 
           <input type="text" class="form-control" placeholder="Departure Date" id="ob_date">
@@ -35,7 +35,7 @@
     </div>
   </form>
   <div class="container" id="flight-list"></div>
-  <button class="btn btn-primary">Confirm Selection</button>
+  <button class="btn btn-primary" id="select-flights">Confirm Selection</button>
 </div>
 
 

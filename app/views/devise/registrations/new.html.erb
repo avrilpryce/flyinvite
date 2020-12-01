@@ -2,51 +2,45 @@
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10">
-
         <h2 class="text-center mt-5 mb-5 font-weight-bold">Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+            <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+            <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name,
+            <%= f.input :first_name,
                 required: true %>
-    <%= f.input :last_name,
+            <%= f.input :last_name,
                 required: true %>
-    <%= f.input :username,
+            <%= f.input :username,
                 required: true %>
-    <%= f.input :job_title,
+            <%= f.input :job_title,
                 required: true %>
-    <%= f.input :company,
+            <%= f.input :company,
                 required: true %>
-    <%= f.input :host,
+            <div class="mt-5"><%= f.input :host,
                 required: true,
                 as: :radio_buttons %>
-    <%= f.input :photo, label: "Profile Picture",
+            </div>
+            <div class="mt-4">
+              <%= f.input :photo, label: "Profile Picture",
                 required: true,
                 as: :file %>
-
+            </div>
+            <div class="row justify-content-center">
+              <%= f.button :submit, "Sign up" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="row justify-content-center">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
-</div>
-</div>
-</div>

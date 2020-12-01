@@ -3,10 +3,9 @@
     <div class="row justify-content-center">
       <div class="col-6 pt-10">
 
-        <h1 class="text-center mb-5">Create a trip</h1>
+        <h3 class="text-center mt-5 mb-5 font-weight-bold">Create a trip</h3>
 
         <%= simple_form_for @trip do |f| %>
-          <h3 class="text-center mb-3">Details</h3>
           <%= f.input :name, label: "Trip Name" %>
           <%= f.input :street, label: "Address" %>
           <div class="row">
@@ -39,7 +38,7 @@
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10"> 
-        <h3 class="text-center mt-5 mb-3">Restrictions</h3>
+        <h3 class="text-center mt-5 mb-5 font-weight-bold">Restrictions</h3>
         <%= f.input :airport_code, label: "Airport (IATA code)" %>
         <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>
         <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>

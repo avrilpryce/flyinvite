@@ -1,3 +1,8 @@
+
+<%# DO NOT REMOVE -  hidden div to get trip id %>
+<div id="trip" data-id="<%= params[:trip_id] %>"></div>
+<%# ---------------------------------------------- %>
+
 <div class="container mt-5 mb-5">
   <h1>Flight Search</h1>
   <form>
@@ -37,6 +42,7 @@
   <div class="container" id="flight-list"></div>
   <button class="btn btn-primary" id="select-flights">Confirm Selection</button>
 </div>
+
 
 
 

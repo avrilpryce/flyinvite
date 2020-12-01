@@ -1,3 +1,4 @@
+import Rails from '@rails/ujs' 
 
 const fetchAirlineName = (iataCode) => {
     fetch(`https://iata-and-icao-codes.p.rapidapi.com/airline?iata_code=${iataCode}`, {
@@ -26,7 +27,6 @@ const localTime = (standardTime) => {
     timeOb = timeOb.toTimeString().slice(0, 5)
     console.log(timeOb)
 }
-
 
 
 const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_date}) => {
@@ -142,13 +142,32 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
                       booking_link: `https://www.kiwi.com/deep?booking_token=${flight.booking_token}`,
                       booked: false
                     },
-                    
+
                     booking_price: bookingPrice
           
                   }
+                  
+                  const tripId = document.querySelector("#trip").dataset.id
+
+                  const formData = new FormData();
+                  formData.append("flight_booking", JSON.stringify(chosenFlight));
+
+
+                  Rails.ajax({
+                    url: `/trips/${tripId}/flight_bookings`,
+                    type: "post",
+                    data: formData,
+                    success: function(data) { 
+                      console.log("Created")
+                    },
+                    error: function(data) {alert('something went wrong!')}
+                  })
+              
+                  console.log(chosenFlight)
 
               } else if (flightCheckbox.checked == false) {
                   console.log("Delete")
+
               }
             })
         })

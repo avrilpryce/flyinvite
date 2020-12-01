@@ -51,9 +51,9 @@
     <%= link_to root_path do %>
        <%= image_tag "flyinvitelogo.png", :size => "40x40", class: "text-left"%> 
     <%end%>    
-     <% if user_signed_in? %>
-      <p class="greeting text-light text-centerfont-weight-bold">Hi <%= current_user.first_name.capitalize %>!</p>
-    <%end%>
+     <%# if user_signed_in? %>
+      <%# <p class="greeting text-light text-centerfont-weight-bold">Hi <%= current_user.first_name.capitalize %>!</p> %>
+    <%# end %>
   </div>
   <div class="page-sidebar-inner">
     <div class="page-sidebar-menu">
@@ -83,13 +83,13 @@
           <% if current_user.host %>
             <li>
               <%= link_to new_trip_path do %>
-                <i class="fas fa-paper-plane"></i>
+                <i class="fas fa-plus"></i>
                 <p><small>New Trip</small></p>
               <%end%>   
             </li>
             <!--Add path to all travellers when it is set up-->
              <li>
-              <%= link_to new_trip_path do %>
+              <%= link_to users_path do %>
                 <i class="fas fa-user-friends"></i>
                 <p><small>Travellers</small></p>
               <%end%>   

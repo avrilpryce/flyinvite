@@ -82,3 +82,11 @@
 #main-wrapper {
   margin: 0 12%;
 }
+
+.dashcard:hover {
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  background: linear-gradient(to bottom, #641EFF 0%,#A307DD 100%);
+  .whitetext {
+    color: white !important;
+  }
+}

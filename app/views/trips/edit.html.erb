@@ -7,7 +7,7 @@
     <div class="col-6">
     </div>
   </div>-->
-        <h3 class="text-center mt-5 mb-5 font-weight-bold">Edit <%= @trip.name.capitalize %></h3>
+        <h3 class="text-center mt-5 mb-5 font-weight-bold">Edit '<%= @trip.name.capitalize %>'</h3>
         <%= simple_form_for @trip do |f| %>
           <%= f.input :name, label: "Name" %>
           <%= f.input :street, label: "Street" %>

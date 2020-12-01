@@ -54,8 +54,8 @@
               <li><strong>Arrival airport:</strong> <%= @trip.airport_code.nil? ? "N/A" : @trip.airport_code.upcase %></li>
               <li><strong>Price ceilling:</strong> <%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></li>
               <li><strong>Travel class:</strong> <%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></li>
-              <li><strong>Latest arrival:</strong> <%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival %></li>
-              <li><strong>Earliest departure:</strong> <%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure %></li>
+              <li><strong>Latest arrival:</strong> <%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival.strftime("%d/%m/%Y") %></li>
+              <li><strong>Earliest departure:</strong> <%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure.strftime("%d/%m/%Y") %></li>
             </ul>
         </div>
       </div>

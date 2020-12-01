@@ -82,3 +82,36 @@
 #main-wrapper {
   margin: 0 12%;
 }
+
+.dashcard:hover {
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  background: linear-gradient(to bottom, #641EFF 0%,#A307DD 100%);
+  .whitetext {
+    color: white !important;
+  }
+}
+
+.dash-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  img {
+    height: 100%;
+    // width: 50%;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 4px 8px;
+    // border: solid 2px #6f0bd9;
+  }
+}
+
+.table-btn {
+  margin-top: 0 !important;
+  margin-left: 16px !important;
+  height: 20px !important;
+}
+
+.td-btn {
+  input[type=submit]{
+    padding: 0px 20px !important;
+  }
+}

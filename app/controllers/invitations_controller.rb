@@ -28,7 +28,8 @@ class InvitationsController < ApplicationController
       @trip.users << current_user
     end
     
-    redirect_to trip_path(@trip)
+    redirect_to trip_path(@trip) if @invitation.status == "Accepted"
+    redirect_to root_path if @invitation.status == "Declined"
   end
 
   private

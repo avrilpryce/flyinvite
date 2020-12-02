@@ -2,12 +2,31 @@
 # require 'open-uri'
 class FlightBookingsController < ApplicationController
 
+  def index
+    if current_user.host
+      host_trips = current_user.owned_trips
+      @trips = []
+      host_trips.each do |host_trip|
+        if FlightBooking.where(trip_id: host_trip.id).length > 0
+          @trips << host_trip
+        end
+      end
+    else
+      @flight_bookings = FlightBooking.where(user_id: current_user.id)
+    end
+  end
+
+  def mark_as_booked
+    @flight_booking = FlightBooking.find(params[:flight_booking_id])
+    @flight_booking.update(booked: true)
+    redirect_to flight_bookings_path
+  end
+
   def new
     @flight_booking = FlightBooking.new
   end
 
   def create
-
     @trip = Trip.find(params[:trip_id])
     flight_hash = params[:flight_booking]
     flight_hash = JSON.parse(flight_hash)

@@ -10,6 +10,7 @@
 
 .airports {
   border: white;
+  list-style: none !important;
   width: 50%;
   &:hover {
     background-color: #F1F3F6;

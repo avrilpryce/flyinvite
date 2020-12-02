@@ -55,7 +55,7 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
           const flightNumberIb = `${airlineIataReturn}${flight["route"][1]["flight_no"]}`
           const bookingPrice = flight.price
     
-    
+ //flight cards code   
          const html =
               `<div class="card">
                   <div class="row card-body align-items-center">

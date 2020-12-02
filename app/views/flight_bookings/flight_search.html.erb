@@ -3,11 +3,13 @@
 <div id="trip" data-id="<%= params[:trip_id] %>"></div>
 <%# ---------------------------------------------- %>
 
-<div class="container mt-5 mb-5">
-  <h1>Flight Search</h1>
+<div class="container mt-5 mb-5 bg-primary rounded">
+  <div class="row mb-3 ml-1">
+    <h1 class="text-light mt-3">Flight Search</h1>
+  </div>
   <form>
     <div class="row">
-      <select class="col-2 ml-3 mdb-select md-form" id="fare-class">
+      <select class="col-2 mt-2 mb-3 ml-4 mdb-select md-form" id="fare-class">
         <option value="M">Economy</option>
         <option value="W">Premium Economy</option>
         <option value="C">Business</option>
@@ -17,30 +19,34 @@
         <option value="round">Round trip</option>
         <option value="oneway">One way</option>
       </select> %>
+    </div>
+
+    <div class="form-row">
+      <div class="col ml-1 mb-5">
+        <input type="text" class="form-control" placeholder="BER" id="obDepartureAp">
+        <div id="departure-airports"></div>
       </div>
-      <div class="form-row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="BER" id="obDepartureAp">
-          <div id="departure-airports"></div>
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="FRA" id="obArrivalAp">
-          <div id="arrival-airports"></div>
-        </div>
-        <div class="col"> 
-          <input type="text" class="form-control" placeholder="Departure Date" id="ob_date">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Return Date" id="ib_date">
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-dark" id="search">Search</button>
-        </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="FRA" id="obArrivalAp">
+        <div id="arrival-airports"></div>
+      </div>
+      <div class="col"> 
+        <input type="text" class="form-control" placeholder="Departure Date" id="ob_date">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Return Date" id="ib_date">
+      </div>
+      <div class="col mt-2 ml-2">
+        <button type="button" class="btn btn-dark" id="search">Search</button>
       </div>
     </div>
+    
+  </div>
   </form>
+
+  <!--js flight list-->
   <div class="container" id="flight-list"></div>
-  <button class="btn btn-primary" id="select-flights">Confirm Selection</button>
+  <button class="btn btn-primary pt-2" id="select-flights">Confirm Selection</button>
 </div>
 
 

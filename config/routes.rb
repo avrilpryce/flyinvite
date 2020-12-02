@@ -15,4 +15,4 @@ Rails.application.routes.draw do
   resources :users, only: [ :index ]
 end
 
-  # verb 'path', to: 'controller#action'
+  # verb 'path', to: 'controller#action

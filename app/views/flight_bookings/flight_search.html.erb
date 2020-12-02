@@ -46,9 +46,24 @@
 
   <!--js flight list-->
   <div class="container" id="flight-list"></div>
-  <button class="btn btn-primary pt-2" id="select-flights">Confirm Selection</button>
+  <button class="btn btn-primary pt-2" id="select-flights" data-toggle="modal" data-target="#flightConfirm">Confirm Selection</button>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="flightConfirm" tabindex="-1" role="dialog" aria-labelledby="flightConfirmLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body mt-3">
+        <p>You will now be taken off-site to complete your purchase. Continue?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

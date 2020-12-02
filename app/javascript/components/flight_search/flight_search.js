@@ -29,12 +29,12 @@ const flightSearch = () => {
         
         departureOb.addEventListener('keyup',(event)=> { 
             const userInput = event.target.value
-            fetchLocationApi(userInput, "departure-airports")
+            fetchLocationApi(userInput, "departure-airports", "obDepartureAp")
         })
 
         arrivalOb.addEventListener('keyup',(event)=> { 
             const userInput = event.target.value
-            fetchLocationApi(userInput, "arrival-airports")
+            fetchLocationApi(userInput, "arrival-airports", "obArrivalAp")
         })
 
     }   

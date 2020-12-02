@@ -57,3 +57,4 @@ document.addEventListener('turbolinks:load', () => {
 //Not working 
 previewImageOnFileSelect();
 import { previewImageOnFileSelect } from "../plugins/photo_preview.js";
+

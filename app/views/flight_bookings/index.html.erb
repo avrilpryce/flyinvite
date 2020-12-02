@@ -41,7 +41,7 @@
                         <% if flight.booked %>
                           <td>Booked</td>
                         <% else %>
-                          <td>Pending - <%= link_to "Mark as booked", flight_booking_mark_as_booked_path(flight), method: :patch, data: { confirm: "Mark this flight as booked?" } %></td>
+                          <td><%= link_to "Mark as booked", flight_booking_mark_as_booked_path(flight), method: :patch, class: "btn btn-primary", data: { confirm: "Mark this flight as booked?" } %></td>
                         <% end %>
                       </tr>
                     <% end %>

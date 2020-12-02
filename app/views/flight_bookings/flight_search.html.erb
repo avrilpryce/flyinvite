@@ -1,3 +1,8 @@
+
+<%# DO NOT REMOVE -  hidden div to get trip id %>
+<div id="trip" data-id="<%= params[:trip_id] %>"></div>
+<%# ---------------------------------------------- %>
+
 <div class="container mt-5 mb-5">
   <h1>Flight Search</h1>
   <form>
@@ -8,25 +13,25 @@
         <option value="C">Business</option>
         <option value="F">First</option>
       </select>
-      <select class="col-2 mdb-select md-form"id="route">
-        <option value="0">Round trip</option>
-        <option value="1">One way</option>
-      </select>
+      <%# <select class="col-2 mdb-select md-form"id="route">
+        <option value="round">Round trip</option>
+        <option value="oneway">One way</option>
+      </select> %>
       </div>
       <div class="form-row">
         <div class="col">
           <input type="text" class="form-control" placeholder="BER" id="obDepartureAp">
-          <div id="locations"></div>
+          <div id="departure-airports"></div>
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="FRA" id="ob_arrival_ap">
-          <div id="locations"></div>
+          <input type="text" class="form-control" placeholder="FRA" id="obArrivalAp">
+          <div id="arrival-airports"></div>
         </div>
         <div class="col"> 
           <input type="text" class="form-control" placeholder="Departure Date" id="ob_date">
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="Return Date" id="ib_date">>
+          <input type="text" class="form-control" placeholder="Return Date" id="ib_date">
         </div>
         <div class="col">
           <button type="button" class="btn btn-dark" id="search">Search</button>
@@ -35,21 +40,11 @@
     </div>
   </form>
   <div class="container" id="flight-list"></div>
+  <button class="btn btn-primary" id="select-flights">Confirm Selection</button>
 </div>
 
 
 
-  <div class="row">
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-  </div>
 
-  <div class="row">
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
-  </div %>
-
-
-  flight.route[0].local_departure
+  
+  

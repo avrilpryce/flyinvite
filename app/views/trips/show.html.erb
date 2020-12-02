@@ -24,7 +24,7 @@
                 <li><%= link_to "Edit trip", edit_trip_path, class:"btn btn-outline-primary" %></li>
                 <li><%= link_to "Delete trip", trip_path, method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-primary" %></li>
               <% else %>
-                <li><%= link_to "Search flights", "#", class:"btn btn-outline-primary" %></li>
+                <li><%= link_to "Search flights", trip_search_flights_path(@trip.id), class:"btn btn-outline-primary" %></li>
               <% end %>
             </ul>
           </div>

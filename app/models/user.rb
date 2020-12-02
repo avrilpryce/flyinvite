@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :users_trips
   has_many :trips, through: :users_trips
 
-  has_many :flightbookings
+  has_many :flightbookings, dependent: :destroy
 
   # Cloudinary:
   has_one_attached :photo

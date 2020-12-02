@@ -16,3 +16,9 @@
     background-color: #F1F3F6;
   }
 }
+
+.search-btn {
+  &:hover {
+    text-decoration: none;
+  }
+}

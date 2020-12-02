@@ -1,13 +1,7 @@
 <div class="card p-5 col-12">
-
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10">
-        <!--<div class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-6">
-    </div>
-  </div>-->
         <h2 class="text-center mt-5 mb-5">Edit '<%= @trip.name.capitalize %>'</h2>
         <%= simple_form_for @trip do |f| %>
           <%= f.input :name, label: "Name" %>
@@ -41,35 +35,28 @@
       </div>
     </div>
   </div>
-
-
-
-<div class="card p-5 col-12">
-  <div class="card-body pt-10">
-    <div class="row justify-content-center">
-      <div class="col-6 pt-10">
-        <h2 class="text-center mt-5 mb-5">Edit restrictions</h2>
-        <%= f.input :airport_code, label: "Airport (IATA code)" %>
-        <%= f.input :max_price, label: "Max price (€)", as: :numeric %>
-        <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
-        <div class="row">
-          <div class="col-6">
-            <%= f.input :latest_arrival, label: "Latest allowed event arrival", as: :string, required: false, input_html: {id: "latest_arrival"} %>
+  
+  <div class="card p-5 col-12">
+    <div class="card-body pt-10">
+      <div class="row justify-content-center">
+        <div class="col-6 pt-10">
+          <h2 class="text-center mt-5 mb-5">Edit restrictions</h2>
+          <%= f.input :airport_code, label: "Airport (IATA code)" %>
+          <%= f.input :max_price, label: "Max price (€)", as: :numeric %>
+          <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :latest_arrival, label: "Latest allowed event arrival", as: :string, required: false, input_html: {id: "latest_arrival"} %>
+            </div>
+            <div class="col-6">
+              <%= f.input :earliest_departure, label: "Earliest allowed event departure", as: :string, required: false, input_html: {id: "earliest_departure"} %>
+            </div>
           </div>
-          <div class="col-6">
-            <%= f.input :earliest_departure, label: "Earliest allowed event departure", as: :string, required: false, input_html: {id: "earliest_departure"} %>
+          <div class="row justify-content-center mt-4" >
+            <%= f.submit class: "btn btn-primary" %>
           </div>
-        </div>
-        <div class="row justify-content-center mt-4" >
-          <%= f.submit class: "btn btn-primary" %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-<!--
-<div class="card p-10">
-<%= image_tag "", class: "hidden", id: "photo-preview" %>
-</div>
--->

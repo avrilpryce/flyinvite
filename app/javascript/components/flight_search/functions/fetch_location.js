@@ -4,7 +4,8 @@ const fetchLocationApi = (userinput, htmlId ) => {
         .then(data => {
 
             let html = ""
-            const locations = data.locations
+            const locations = data.locations.slice(0,5)
+            console.log(locations)
             locations.forEach(location => {
                 html += `<li><input class="airports" value="${location.id}"></input></li>`
             })

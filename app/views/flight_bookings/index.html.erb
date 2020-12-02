@@ -1,0 +1,106 @@
+<!-- This is the view -->
+<!-- Host page -->
+<% if current_user.host %>
+
+  <div class="row">
+    <div class="col">
+      <div class="card mt-5">
+        <div class="card-body">
+          <div class="contact-list">
+            <div class="contact-list-header">
+              <h2 class="float-left mb-5">My flights <small>(All local times)</small></h2>
+            </div>
+            <% @trips.each do |trip| %>
+              <div class="table-responsive">
+              <h4><%= trip.name.split.map(&:capitalize).join(' ') %></h4>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Passenger</th>
+                      <th scope="col">Route</th>
+                      <th scope="col">Departure</th>
+                      <th scope="col">Arrival</th>
+                      <th scope="col">FL#</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Book</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% trip.flight_bookings.each do |flight| %>
+                      <tr>
+                        <th></th>
+                        <td><%= flight.user.first_name %><br><%= flight.user.last_name %></td>
+                        <td><%= flight.departure_airport_code %><br><%= flight.arrival_airport_code %></td>
+                        <td><%= flight.departure_date_local.strftime("%d/%m/%Y") %><br><%= flight.departure_date_local.strftime("%H:%M") %></td>
+                        <td><%= flight.arrival_date_local.strftime("%d/%m/%Y") %><br><%= flight.arrival_date_local.strftime("%H:%M") %></td>
+                        <td><%= flight.flight_number %><br><%= flight.airline %></td>
+                        <td><%= flight.price %>€</td>
+                        <td><%= link_to "Kiwi.com", flight.booking_link %></td>
+                        <% if flight.booked %>
+                          <td>Booked</td>
+                        <% else %>
+                          <td>Pending - <%= link_to "Mark as booked", flight_booking_mark_as_booked_path(flight), method: :patch, data: { confirm: "Mark this flight as booked?" } %></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            <% end %>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="row">
+    <div class="col">
+      <div class="card mt-5">
+        <div class="card-body">
+          <div class="contact-list">
+            <div class="contact-list-header">
+              <h2 class="float-left mb-5">My flights <small>(All local times)</small></h2>
+            </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Trip</th>
+                      <th scope="col">Route</th>
+                      <th scope="col">Departure</th>
+                      <th scope="col">Arrival</th>
+                      <th scope="col">FL#</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @flight_bookings.each do |flight| %>
+                      <tr>
+                        <th></th>
+                        <td><%= flight.trip.name.split.map(&:capitalize).join(' ') %></td>
+                        <td><%= flight.departure_airport_code %><br><%= flight.arrival_airport_code %></td>
+                        <td><%= flight.departure_date_local.strftime("%d/%m/%Y") %><br><%= flight.departure_date_local.strftime("%H:%M") %></td>
+                        <td><%= flight.arrival_date_local.strftime("%d/%m/%Y") %><br><%= flight.arrival_date_local.strftime("%H:%M") %></td>
+                        <td><%= flight.flight_number %><br><%= flight.airline %></td>
+                        <% if flight.booked %>
+                          <td>Booked</td>
+                        <% else %>
+                          <td>Pending</td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

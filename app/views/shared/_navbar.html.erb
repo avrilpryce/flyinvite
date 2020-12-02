@@ -68,15 +68,12 @@
               <p><small>My Trips</small></p>
             <%end%>  
           </li>
-          <!--Add path to all flight when it is set up-->
           <li>
-            <%= link_to new_trip_path do %>
+            <%= link_to flight_bookings_path do %>
               <i class="fas fa-plane"></i>
               <p><small>My Flights</small></p>
             <%end%>   
           </li>
-          <!--Add path to all flights when it is set up-->
-
           <% if current_user.host %>
             <li>
               <%= link_to new_trip_path do %>

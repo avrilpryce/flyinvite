@@ -15,19 +15,19 @@
           <%= f.input :zip, label: "Zip code" %>
           <%= f.input :city, label: "City" %>
           <%= f.input :country, label: "Country", as: :string %>
-          <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {id: "range_start"} %>
-          <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {id: "range_end"} %>
+          <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {class: "datepicker"} %>
         </div>
       </div>
     </div>
   </div>
-  
+
   <div class="row_new justify-space-between">
     <div class="card col-6">
       <div class="card-body pt-12 d-flex">
         <div class="row col-12 justify-content-center">
           <div class="col-12 mt-4 mb-4">
-            <%= f.input :description, as: :text, :input_html => {:rows => 6}%> 
+            <%= f.input :description, as: :text, :input_html => {:rows => 6}%>
             <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload new picture' %>
           </div>
         </div>
@@ -47,7 +47,7 @@
 <div class="card p-5 col-12">
   <div class="card-body pt-10">
     <div class="row justify-content-center">
-      <div class="col-6 pt-10"> 
+      <div class="col-6 pt-10">
         <h2 class="text-center mt-5 mb-5">Edit restrictions</h2>
         <%= f.input :airport_code, label: "Airport (IATA code)" %>
         <%= f.input :max_price, label: "Max price (€)", as: :numeric %>

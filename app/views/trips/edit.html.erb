@@ -1,37 +1,5 @@
-
-<div class="container mt-5 mb-5">
-  <h1>Edit <%= @trip.name.capitalize %></h1>
-  <%= simple_form_for @trip do |f| %>
-    <h3>Details:</h3>
-    <%= f.input :name, label: "Name" %>
-    <%= f.input :street, label: "Street" %>
-    <%= f.input :zip, label: "Zip code" %>
-    <%= f.input :city, label: "City" %>
-    <%= f.input :country, label: "Country", as: :string %>
-    <%= f.input :start_date, label: "Start date" %>
-    <%= f.input :end_date, label: "End date" %>
-    <h3>Restrictions:</h3>
-    <%= f.input :airport_code, label: "Airport (IATA code)" %>
-    <%= f.input :max_price, label: "Price ceilling (€)", as: :numeric %>
-    <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
-    <%= f.input :latest_arrival, label: "Latest possible arrival at event" %>
-    <%= f.input :earliest_departure, label: "Earliest possible departure from event" %>
-    <%= f.submit %>
-  <% end %>
-</div>
-
-
-
-
-
-
-
-
-=======
-<div class="card p-10">
-=======
 <div class="card p-5 col-12">
->>>>>>> 711f8e6b76ceed1a2717f54ec1b7a29fb272aff3
+
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10">
@@ -60,15 +28,15 @@
         <div class="row col-12 justify-content-center">
           <div class="col-12 mt-4 mb-4">
             <%= f.input :description, as: :text, :input_html => {:rows => 6}%> 
-            <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload picture' %>
+            <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload new picture' %>
           </div>
         </div>
       </div>
     </div>
     <div class="card col-6">
-      <div class="card-body pt-12 d-flex justify-content-center align-items-center">
+      <div class="card-body pt-12 d-flex justify-content-center align-items-center preview-box">
         <div>
-          <%= image_tag "", height: 200, class: "hidden", id: "photo-preview" %>
+          <%= image_tag "", class: "hidden", id: "photo-preview" %>
         </div>
       </div>
     </div>

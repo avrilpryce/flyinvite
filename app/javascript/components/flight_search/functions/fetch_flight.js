@@ -19,11 +19,13 @@ import Rails from '@rails/ujs'
 const localDate = (standardDate) => {
     let timeOb = new Date(standardDate)
     timeOb = timeOb.toDateString().slice(0,10)
+    return timeOb
 }
 
 const localTime = (standardTime) => {
     let timeOb = new Date(standardTime)
     timeOb = timeOb.toTimeString().slice(0, 5)
+    return timeOb
 }
 
 

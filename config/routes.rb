@@ -11,11 +11,8 @@ Rails.application.routes.draw do
     get 'search_flights', to: 'flight_bookings#flight_search'
   end
   resources :invitations, only: [ :index, :show, :update ]
-<<<<<<< HEAD
   resources :flight_bookings, only: [ :destroy, :update ]
-=======
   resources :users, only: [ :index ]
->>>>>>> 711f8e6b76ceed1a2717f54ec1b7a29fb272aff3
 end
 
   # verb 'path', to: 'controller#action'

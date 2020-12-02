@@ -28,14 +28,16 @@
         <div class="row col-12 justify-content-center">
           <div class="col-12 mt-4 mb-4">
             <%= f.input :description, as: :text, :input_html => {:rows => 6}%> 
-            <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload picture' %>
+            <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload new picture' %>
           </div>
         </div>
       </div>
     </div>
     <div class="card col-6">
-      <div class="card-body pt-12 d-flex justify-content-center align-items-center">
-        <%= image_tag "", height: 200, class: "hidden", id: "photo-preview" %>
+      <div class="card-body pt-12 d-flex justify-content-center align-items-center preview-box">
+        <div>
+          <%= image_tag "", class: "hidden", id: "photo-preview" %>
+        </div>
       </div>
     </div>
   </div>

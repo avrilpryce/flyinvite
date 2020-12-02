@@ -8,6 +8,7 @@ const flightSearch = () => {
     const search = document.getElementById('search')
     const departureOb = document.getElementById('obDepartureAp')
     const arrivalOb = document.getElementById('obArrivalAp')
+    const searchButton = document.getElementById('select-flights')
 
     if (departureOb && search && arrivalOb) {
 
@@ -38,6 +39,8 @@ const flightSearch = () => {
         })
 
     }   
+
+    searchButton.style.display = 'block !important' ; 
 
 }
 

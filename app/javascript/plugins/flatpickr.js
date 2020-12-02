@@ -1,23 +1,18 @@
 import flatpickr from "flatpickr";
 
-import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
-
 const initiateFlatPickr = () => {
-  flatpickr("#range_start", {
-    altInput: true,
-    plugins: [new rangePlugin({ input: "#range_end" })],
-  
-  });
-  
+  flatpickr(".datepicker", {dateFormat: "d/m/Y"});
+
+
   flatpickr("#latest_arrival", {
     altInput: true,
     enableTime: true
   });
-  
+
   flatpickr("#earliest_departure", {
     altInput: true,
     enableTime: true
-  }); 
+  });
 }
 
 export { initiateFlatPickr }

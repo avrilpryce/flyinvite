@@ -22,8 +22,15 @@ class FlightBookingsController < ApplicationController
     redirect_to flight_bookings_path
   end
 
+  def flight_search
+    @flight_booking = FlightBooking.new
+    @trip = Trip.find(params[:trip_id])
+  end
+
   def new
     @flight_booking = FlightBooking.new
+    @trip = Trip.find(params[:trip_id])
+
   end
 
   def create

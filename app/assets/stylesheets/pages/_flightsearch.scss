@@ -1,4 +1,17 @@
 
-.flight_searchbox {
-  color: linear-gradient(to bottom, #641eff 0%, #a307dd 100%);
+.flight-searchbox {
+  background-color: linear-gradient(to bottom, #641eff 0%, #a307dd 100%);
+}
+
+.autofill-airport {
+  list-style: none !important;
+}
+
+.airports {
+  border: white;
+  list-style: none !important;
+  width: 50%;
+  &:hover {
+    background-color: #F1F3F6;
+  }
 }

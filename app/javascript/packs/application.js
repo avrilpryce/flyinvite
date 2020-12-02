@@ -54,3 +54,9 @@ document.addEventListener('turbolinks:load', () => {
   flightSearch();
 });
 
+<<<<<<< HEAD
+=======
+//Not working 
+previewImageOnFileSelect();
+import { previewImageOnFileSelect } from "../plugins/photo_preview.js";
+>>>>>>> 711f8e6b76ceed1a2717f54ec1b7a29fb272aff3

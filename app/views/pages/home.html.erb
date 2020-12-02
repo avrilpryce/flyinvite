@@ -1,236 +1,288 @@
-<%# Dashboard of a host %>
-<% if user_signed_in? && current_user.host %>
-
 <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="ds-stat">
-                            <span class="ds-stat-name">Spend</span>
-                            <h3 class="ds-stat-number">67,856€<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>23%</span></h3>
-                            <div class="progress" style="height: 3px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="ds-stat">
-                            <span class="ds-stat-name">Travelers</span>
-                            <h3 class="ds-stat-number">100<span class="ds-stat-percent"><i class="fas fa-caret-down"></i>7%</span></h3>
-                            <div class="progress" style="height: 3px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="ds-stat">
-                            <span class="ds-stat-name">Flights</span>
-                            <h3 class="ds-stat-number">120<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>31%</span></h3>
-                            <div class="progress" style="height: 3px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="ds-stat">
-                            <span class="ds-stat-name">Flights to Book</span>
-                            <h3 class="ds-stat-number">50<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>16%</span></h3>
-                            <div class="progress" style="height: 3px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-  <%# List of trips in the next 30 days %>
-  <div class="d-flex my-3 mx-5 justify-content-around">
-
-    <div class="container my-5 mx-3 py-3 col-6 cards-container">
-      <h1 style="text-align:center;">Trips scheduled in the next 30 days:</h1>
-      <div class="justify-content-around card-grid">
-        <% @owned_trips.each do |trip| %>
-          <% if trip.start_date < (Time.now + (86400 * 31)) %>
-            <div class="card mx-1 my-1" style="width: 95%;">
-              <div class="card-body">
-                <h5 class="card-title"><%= trip.name.capitalize %></h5>
-                <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%d/%m/%Y") %> - <%= trip.end_date.strftime("%d/%m/%Y") %></h6>
-                <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
-                <div class="btn btn-primary links btx"><%= link_to "More details", trip_path(trip), class:"card-link" %></div>
+  <div class="col-12">
+    <%# Dashboard of a host %>
+    <% if user_signed_in? && current_user.host %>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="ds-stat">
+              <span class="ds-stat-name">Spend</span>
+              <h3 class="ds-stat-number">12,856€<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>23%</span></h3>
+              <div class="progress" style="height: 3px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    
-    <%# List of invitations send and still pending %>
-    <div class="container my-5 mx-3 py-3 col-6 cards-container">
-      <h1 style="text-align:center;">Invitations still pending:</h1>
-      <div class="justify-content-around card-grid">
-        <% @owned_trips.each do |trip| %>
-            <% trip.invitations.each do |invitation| %>
-              <% if invitation.status == "Pending" %>
-                <div class="card mx-1 my-1" style="width: 95%;">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= invitation.trip.name.capitalize %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= invitation.trip.start_date.strftime("%d/%m/%Y") %> - <%= invitation.trip.end_date.strftime("%d/%m/%Y") %></h6>
-                    <p class="card-text">Sent to: <br><%= invitation.email %></p>
-                    <div class="btn btn-primary links"><%= link_to "To trip", trip_path(invitation.trip), class:"card-link" %></div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-   <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Active Flights</h5>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">FL#</th>
-                                <th scope="col">Trip</th>
-                                <th scope="col">Traveler</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">IB354</th>
-                                <td>Dirty Vegas</td>
-                                <td>Chritopher Palmer</td>
-                                <td>Nov 28, 2020</td>
-                                <td><span class="badge badge-success">On time</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">DL456</th>
-                                <td>IMS NYC</td>
-                                <td>Stuart Woodley</td>
-                                <td>Nov 29, 2020</td>
-                                <td><span class="badge badge-danger">Delayed</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">DL456</th>
-                                <td>IMS NYC</td>
-                                <td>Murphy Cartwright</td>
-                                <td>Nov 29, 2020</td>
-                                <td><span class="badge badge-danger">Delayed</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">VY9415</th>
-                                <td>IMS NYC</td>
-                                <td>Gurpreet Holder</td>
-                                <td>Nov 29, 2020</td>
-                                <td><span class="badge badge-danger">Delayed</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">VY4869</th>
-                                <td>SXW Conference</td>
-                                <td>Marshall Wheeler</td>
-                                <td>Nov 30, 2020</td>
-                                <td><span class="badge badge-success">On time</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">VY4869</th>
-                                <td>SXW Conference<</td>
-                                <td>Nikki Blanchard</td>
-                                <td>Nov 30, 2020</td>
-                                <td><span class="badge badge-success">On time</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>      
             </div>
         </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%# Dashboard of a traveler %>
-<% elsif user_signed_in? %>
-
-  <%# List of trips in the next 30 days %>
-  <%# <div class="d-flex my-3 mx-5 justify-content-around"> %>
-    <div class="container my-5 mx-3 py-3 col-6 cards-container">
-      <h1 style="text-align:center;">Trips scheduled in the next 30 days:</h1>
-      <div class="justify-content-around card-grid">
-        <% @trips.each do |trip| %>
-          <% if trip.start_date < (Time.now + (86400 * 31)) %>
-            <div class="card mx-1 my-1" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title"><%= trip.name.capitalize %></h5>
-                <h6 class="card-subtitle mb-2 text-muted"><%= trip.start_date.strftime("%d/%m/%Y") %> - <%= trip.end_date.strftime("%d/%m/%Y") %></h6>
-                <p class="card-text"><%= trip.city.capitalize %>, <br> <%= trip.country.upcase %></p>
-              </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="ds-stat">
+            <span class="ds-stat-name">Travelers</span>
+            <h3 class="ds-stat-number">27<span class="ds-stat-percent"><i class="fas fa-caret-down"></i>7%</span></h3>
+            <div class="progress" style="height: 3px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-          <% end %>
-        <% end %>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="ds-stat">
+            <span class="ds-stat-name">Flights</span>
+            <h3 class="ds-stat-number">48<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>31%</span></h3>
+            <div class="progress" style="height: 3px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="ds-stat">
+            <span class="ds-stat-name">Flights to Book</span>
+            <h3 class="ds-stat-number">17<span class="ds-stat-percent"><i class="fas fa-caret-up"></i>16%</span></h3>
+            <div class="progress" style="height: 3px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
       </div>
-    <%# </div> %>
+    </div>
 
-    <%# List of invitations received and still pending %>
-    <div class="container my-5 mx-3 py-3 col-6 cards-container">
-      <h1 style="text-align:center;">Your pending invitations</h1>
-      <div class="justify-content-around card-grid">
-        <% @all_trips.each do |trip| %>
-            <% trip.invitations.each do |invitation| %>
-              <% if invitation.status == "Pending" && invitation.email == current_user.email %>
-                <div class="card mx-1 my-1" style="width: 18rem;">
+    <div class="d-flex my-3 mx-5 justify-content-around">
+      <%# List of trips in the next 30 days %>
+      <div class="container my-5 mx-3 py-3 col-6 cards-container">
+        <h1 style="text-align:center;">Trips scheduled (next 30 days):</h1>
+        <div class="justify-content-around card-grid">
+          <% @owned_trips.each do |trip| %>
+            <% if trip.start_date < (Time.now + (86400 * 31)) %>
+              <div class="card mx-1 my-1 dashcard" onclick="window.location='<%= trip_url(trip) %>';" style="width: 95%;">
+                <div class="card-body">
+                  <h5 class="card-title whitetext"><%= trip.name.split.map(&:capitalize).join(' ') %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted whitetext">From: <%= trip.start_date.strftime("%d/%m/%Y") %> <br>To: <%= trip.end_date.strftime("%d/%m/%Y") %></h6>
+                  <p class="card-text whitetext"><%= trip.city.split.map(&:capitalize).join(' ') %>, <br> <%= trip.country.upcase %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    
+      <%# List of invitations send and still pending %>
+      <div class="container my-5 mx-3 py-3 col-6 cards-container">
+        <h1 style="text-align:center;">Pending invitations:</h1>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Trip</th>
+                <th scope="col">Email</th>
+                <th scope="col">Sent on</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @owned_trips.each do |trip| %>
+              <% trip.invitations.each do |invitation| %>
+                  <% if invitation.status == "Pending" %>
+                    <tr class='clickable-row' onclick="window.location='<%= trip_url(invitation.trip) %>';">
+                      <th></th>
+                      <td><%= invitation.trip.name.split.map(&:capitalize).join(' ') %></td>
+                      <td><%= invitation.email %></td>
+                      <td><%= invitation.created_at.strftime("%d/%m/%Y") %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Active flights</h5>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">FL#</th>
+                    <th scope="col">Trip</th>
+                    <th scope="col">Traveler</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @owned_trips.each do |trip| %>
+                    <% trip.flight_bookings.each do |flight| %>
+                      <tr>
+                        <th scope="row"><%= flight.flight_number %></th>
+                        <td><%= flight.trip.name.split.map(&:capitalize).join(' ') %></td>
+                        <td><%= flight.user.first_name.capitalize %> <%= flight.user.last_name.capitalize %></td>
+                        <td><%= flight.departure_date_local.strftime("%d/%m/%Y") %></td>
+                        <% status = ["On time", "On time", "On time", "On time", "Delayed", "Cancelled"] %>
+                        <% flight_status = status.sample %>
+                        <% if flight_status == "On time" %>
+                          <td><span class="badge badge-success"><%= flight_status %></span></td>
+                        <% elsif flight_status == "Delayed" %>
+                          <td><span class="badge badge-warning"><%= flight_status %></span></td>
+                        <% else %>
+                          <td><span class="badge badge-danger"><%= flight_status %></span></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# Dashboard of a traveler %>
+    <% elsif user_signed_in? %>
+    <div class="card mt-3">
+      <div class="d-flex my-3 mx-5 justify-content-around">
+        <%# List of trips in the next 30 days %>
+        <div class="container my-5 mx-3 py-3 col-6 cards-container">
+          <h1 class="mb-3" style="text-align:center;">Trips scheduled (next 30 days):</h1>
+          <div class="justify-content-around card-grid">
+            <% @trips.each do |trip| %>
+              <% if trip.start_date < (Time.now + (86400 * 31)) %>
+                <div class="card mx-1 my-1 dashcard" onclick="window.location='<%= trip_url(trip) %>';" style="width: 95%;">
                   <div class="card-body">
-                    <h5 class="card-title"><%= invitation.trip.name.capitalize %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= invitation.trip.start_date.strftime("%d/%m/%Y") %> - <%= invitation.trip.end_date.strftime("%d/%m/%Y") %></h6>
-                    <p class="card-text">Sent to: <br><%= invitation.email %></p>
-                    <div class="change-status mt-2">
-                      <%= simple_form_for invitation, method: :patch do |f| %>
-                        <%= f.input :status, label: "Change invitation status", collection: Invitation::STATUS %>
-                        <%= f.submit %>
-                      <% end %>
-                    </div>
+                    <h5 class="card-title whitetext"><%= trip.name.split.map(&:capitalize).join(' ') %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted whitetext">From: <%= trip.start_date.strftime("%d/%m/%Y") %> <br>To: <%= trip.end_date.strftime("%d/%m/%Y") %></h6>
+                    <p class="card-text whitetext"><%= trip.city.split.map(&:capitalize).join(' ') %>, <br> <%= trip.country.upcase %></p>
                   </div>
                 </div>
               <% end %>
             <% end %>
-        <% end %>
+          </div>
+        </div>
+      
+        <%# List of invitations send and still pending %>
+        <div class="container my-5 mx-3 py-3 col-6 cards-container">
+          <h1 class="mb-3" style="text-align:center;">My profile:</h1>
+          <div class="card">
+            <div class="dash-profile">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key %>
+              <% else %>
+                <img src="https://res.cloudinary.com/hachiles/image/upload/v1606483934/avatar3_znnvez.png">
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= current_user.first_name %> <%= current_user.last_name %></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Username: <%= current_user.username %><br><%= current_user.email %></h6>
+                <p class="card-text"><%= current_user.company %><br><%= current_user.job_title %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">My invitations</h5>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <%# <th scope="col"></th> %>
+                      <th scope="col">Trip</th>
+                      <th scope="col">Dates</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @all_trips.each do |trip| %>
+                      <% trip.invitations.each do |invitation| %>
+                        <% if invitation.status == "Pending" && invitation.email == current_user.email %>
+                          <tr>
+                            <%# <th></th> %>
+                            <td><strong><%= invitation.trip.name.split.map(&:capitalize).join(' ') %></strong></td>
+                            <td><%= "#{invitation.trip.start_date.strftime("%d/%m/%y")} - #{invitation.trip.end_date.strftime("%d/%m/%y")}" %></td>
+                            <td><%= "#{invitation.trip.city.split.map(&:capitalize).join(' ')}, #{invitation.trip.country.upcase}" %></td>
+                            <td class="td-btn">
+                              <%= simple_form_for invitation, method: :patch do |f| %>
+                                <%= f.input :status, label: false, wrapper_html: {class: "form-inline"} do %>
+                                  <%= f.input_field :status, collection: Invitation::STATUS, label: false %>
+                                  <%= f.button :submit, "Apply", class: "table-btn" %>
+                                <% end %>
+                              <% end %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">My flights</h5>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">FL#</th>
+                      <th scope="col">Trip</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Take-off</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @trips.each do |trip| %>
+                      <% trip.flight_bookings.each do |flight| %>
+                        <% if flight.user == current_user %>
+                          <tr>
+                            <th scope="row"><%= flight.flight_number %></th>
+                            <td><%= flight.trip.name.split.map(&:capitalize).join(' ') %></td>
+                            <td><%= flight.departure_date_local.strftime("%d/%m/%Y") %></td>
+                            <td><%= flight.departure_date_local.strftime("%H:%M") %></td>
+                            <% status = ["On time", "On time", "On time", "On time", "Delayed", "Cancelled"] %>
+                            <% flight_status = status.sample %>
+                            <% if flight_status == "On time" %>
+                              <td><span class="badge badge-success"><%= flight_status %></span></td>
+                            <% elsif flight_status == "Delayed" %>
+                              <td><span class="badge badge-warning"><%= flight_status %></span></td>
+                            <% else %>
+                              <td><span class="badge badge-danger"><%= flight_status %></span></td>
+                            <% end %>
+                          </tr>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>      
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-<%# Website's home page if not signed in %>
-<% else %>
-  <div class="back">
-    <div class="home-content">
-      <h1 class="text-light">flyinvite</h1>
-      <h4 class="text-light">Organizing business travel has never been more simple.</h4>
-      <%= link_to "Log in", new_user_session_path, class:"home-btn" %>
-      <%= link_to "Sign up", new_user_registration_path, class:"home-btn" %>
-    </div>
+    <%# Website's home page if not signed in %>
+    <% else %>
+      <div class="back">
+        <div class="home-content">
+          <h1 class="text-light">flyinvite</h1>
+          <h4 class="text-light">Organizing business travel has never been more simple.</h4>
+          <%= link_to "Log in", new_user_session_path, class:"home-btn" %>
+          <%= link_to "Sign up", new_user_registration_path, class:"home-btn" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

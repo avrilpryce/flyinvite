@@ -1,21 +1,50 @@
-<div class="container mt-5 mb-5">
-  <h1>My invitations:</h1>
-  <% @invitations.each do |invitation| %>
-    <h3>Trip's name: <%= invitation.trip.name.capitalize %></h3>
-    <ul>
-      <li>Trip's host: <%= invitation.trip.host.first_name.capitalize %> <%= invitation.trip.host.last_name.capitalize %></li>
-      <li>Trip's location: <%= invitation.trip.street.capitalize %>, <%= invitation.trip.zip %> <%= invitation.trip.city.capitalize %>, <%= invitation.trip.country.upcase %></li>
-      <li>Trip starts on: <%= invitation.trip.start_date %></li>
-      <li>Trip ends on: <%= invitation.trip.end_date %></li>
-      <li>Invitation's status: <%= invitation.status %></li>
-    </ul>
-    <% if invitation.status == "Pending" %>
-      <div class="change-status mt-2">
-        <%= simple_form_for invitation, method: :patch do |f| %>
-        <%= f.input :status, label: "Change invitation status", collection: Invitation::STATUS %>
-        <%= f.submit %>
-        <% end %>
+<div class="row">
+  <div class="col">
+    <div class="card mt-5">
+      <div class="card-body">
+        <div class="contact-list">
+          <div class="contact-list-header">
+            <h2 class="float-left">My invitations</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Trip</th>
+                  <th scope="col">Host</th>
+                  <th scope="col">Dates</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @invitations.each do |invite| %>
+                  <tr>
+                    <th></th>
+                    <td><%= invite.trip.name.split.map(&:capitalize).join(' ') %></td>
+                    <td><%= invite.trip.host.first_name.capitalize %> <%= invite.trip.host.last_name.capitalize %></td>
+                    <td><%= "#{invite.trip.start_date.strftime("%d/%m/%y")} - #{invite.trip.end_date.strftime("%d/%m/%y")}" %></td>
+                    <td><%= invite.trip.city.split.map(&:capitalize).join(' ') %>, <%= invite.trip.country.upcase %></td>
+                    <% if invite.status == "Pending" %>
+                      <td class="td-btn">
+                        <%= simple_form_for invite, method: :patch do |f| %>
+                          <%= f.input :status, label: false, wrapper_html: {class: "form-inline"} do %>
+                            <%= f.input_field :status, collection: Invitation::STATUS, label: false %>
+                            <%= f.button :submit, "Apply", class: "table-btn" %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                    <% else %>
+                      <td><%= invite.status %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div> 
       </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>

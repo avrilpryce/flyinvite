@@ -10,8 +10,13 @@ Rails.application.routes.draw do
     resources :flight_bookings, only: [ :new, :create ]
     get 'search_flights', to: 'flight_bookings#flight_search'
   end
+  
   resources :invitations, only: [ :index, :show, :update ]
-  resources :flight_bookings, only: [ :destroy, :update ]
+
+  resources :flight_bookings, only: [ :index, :destroy, :update ] do
+    patch "mark_as_booked", to: "flight_bookings#mark_as_booked", as: :mark_as_booked
+  end
+
   resources :users, only: [ :index ]
 end
 

@@ -14,7 +14,6 @@ const flightSearch = () => {
 
         search.addEventListener('click',(event)=> { 
             const loadingButton = document.getElementById("loading-spinner")
-            console.log(loadingButton)
             loadingButton.style.display = '' ; 
             const fareClass = document.getElementById('fare-class')
             // const route = document.getElementById('route')

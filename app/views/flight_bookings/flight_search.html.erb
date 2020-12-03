@@ -3,21 +3,21 @@
 <%# ---------------------------------------------- %>
 <!--traveler restriction card-->
 <div class="container mt-5 mb-5 rounded restrictions-card shadow">
-  <h1>Booking Restrictions</h1>
+  <h1 class="pb-2">Booking Restrictions for '<%=@trip.name %>'</h1>
   <div class="d-flex justify-content-between booking-restrictions">
     <div>
       <div class="p-2 ml-3">
         <i class="far fa-calendar-alt text-primary"></i>
         Start date
       </div>
-      <p class="pl-3 font-weight-bold text-center"><%= @trip.start_date.strftime("%b, %d %Y") %></p>
+      <p class="pl-4 font-weight-bold text-center"><%= @trip.start_date.strftime("%b, %d %Y") %></p>
     </div>
     <div>
       <div class="p-2 ml-3">
         <i class="far fa-calendar-alt text-primary"></i>
         End date
       </div>
-      <p class="pl-3 font-weight-bold text-center"><%= @trip.end_date.strftime("%b, %d %Y") %></p>
+      <p class="pl-4 font-weight-bold text-center"><%= @trip.end_date.strftime("%b, %d %Y") %></p>
     </div>
     <div>
       <div class="p-2">
@@ -40,7 +40,7 @@
         </svg>
         Travel class
       </div>
-      <p class="pl-5 font-weight-bold"><%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></p>
+      <p class="pl-4 font-weight-bold"><%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></p>
     </div>
     <div>
       <div class="p-2">

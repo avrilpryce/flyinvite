@@ -30,22 +30,11 @@
   }
 }
 
-.flight-search-button:hover {
-    background-color: white !important;
-    color: #8014F1 !important;
-  }
+.passenger svg text{
+  fill: purple !important;
+}
 
-  .travel-class-dropdown {
-    background-color: transparent;
-    color: white;
-    border: none;
-
-    option {
-      background-color: white !important;
-    }
-
-  }
-
-
-
+.booking-restrictions {
+  padding-bottom: 20px;
+}
 

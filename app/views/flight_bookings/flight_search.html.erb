@@ -3,58 +3,58 @@
 <%# ---------------------------------------------- %>
 <!--traveler restriction card-->
 <div class="container mt-5 mb-5 rounded restrictions-card shadow">
-  <h1>Booking Restrictions</h1>
-  <div class="d-flex justify-content-between">
+  <h1 class="pb-2">Booking Restrictions for '<%=@trip.name %>'</h1>
+  <div class="d-flex justify-content-between booking-restrictions">
     <div>
       <div class="p-2 ml-3">
-        <i class="far fa-calendar-alt"></i>
+        <i class="far fa-calendar-alt text-primary"></i>
         Start date
       </div>
-      <p class="pl-5"><%= @trip.start_date.strftime("%b, %d %Y") %></p>
+      <p class="pl-4 font-weight-bold text-center"><%= @trip.start_date.strftime("%b, %d %Y") %></p>
     </div>
     <div>
       <div class="p-2 ml-3">
-        <i class="far fa-calendar-alt"></i>
+        <i class="far fa-calendar-alt text-primary"></i>
         End date
       </div>
-      <p class="pl-5"><%= @trip.end_date.strftime("%b, %d %Y") %></p>
+      <p class="pl-4 font-weight-bold text-center"><%= @trip.end_date.strftime("%b, %d %Y") %></p>
     </div>
     <div>
       <div class="p-2">
-        <i class="fas fa-plane"></i>
+        <i class="fas fa-plane text-primary"></i>
         Arrival airport
       </div>
-      <p class="pl-5"><%= @trip.airport_code.nil? ? "N/A" : @trip.airport_code.upcase %></p>
+      <p class="pl-5 font-weight-bold"><%= @trip.airport_code.nil? ? "N/A" : @trip.airport_code.upcase %></p>
     </div>
     <div>
       <div class="p-2">
-        <i class="fas fa-money-bill"></i>
+        <i class="fas fa-money-bill text-primary"></i>
         Price ceiling
       </div>
-      <p class="pl-5"><%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></p>
+      <p class="pl-5 font-weight-bold"><%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></p>
     </div>
     <div>
-      <div class="p-2 align-items-center">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3.59 2.80133C2.81 2.1615 2.81 1.11971 3.59 0.479877C4.37 -0.159959 5.64 -0.159959 6.42 0.479877C7.2 1.11971 7.2 2.1615 6.42 2.80133C5.63 3.44937 4.37 3.44937 3.59 2.80133ZM2 11.4883V4.10561H0V11.4883C0 13.7524 2.24 15.5898 5 15.5898H11V13.9492H5C3.34 13.9492 2 12.85 2 11.4883ZM16 14.827L10.93 10.668H7.5V7.64932C8.9 8.59267 11.1 9.42117 13 9.42117V7.64932C11.34 7.66573 9.39 6.93566 8.33 5.9759L6.93 4.70444C6.74 4.53217 6.5 4.39272 6.24 4.29428C5.95 4.17944 5.62 4.10561 5.28 4.10561H5.25C4.01 4.10561 3 4.93412 3 5.9513V10.668C3 12.0297 4.34 13.1289 6 13.1289H11.07L14.57 16L16 14.827Z" fill="#646464"/>
+      <div class="p-2 align-items-center passenger">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="purple" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.59 2.80133C2.81 2.1615 2.81 1.11971 3.59 0.479877C4.37 -0.159959 5.64 -0.159959 6.42 0.479877C7.2 1.11971 7.2 2.1615 6.42 2.80133C5.63 3.44937 4.37 3.44937 3.59 2.80133ZM2 11.4883V4.10561H0V11.4883C0 13.7524 2.24 15.5898 5 15.5898H11V13.9492H5C3.34 13.9492 2 12.85 2 11.4883ZM16 14.827L10.93 10.668H7.5V7.64932C8.9 8.59267 11.1 9.42117 13 9.42117V7.64932C11.34 7.66573 9.39 6.93566 8.33 5.9759L6.93 4.70444C6.74 4.53217 6.5 4.39272 6.24 4.29428C5.95 4.17944 5.62 4.10561 5.28 4.10561H5.25C4.01 4.10561 3 4.93412 3 5.9513V10.668C3 12.0297 4.34 13.1289 6 13.1289H11.07L14.57 16L16 14.827Z" fill="#8605b4"/>
         </svg>
         Travel class
       </div>
-      <p class="pl-5"><%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></p>
+      <p class="pl-4 font-weight-bold"><%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></p>
     </div>
     <div>
       <div class="p-2">
-        <i class="fas fa-clock"></i>
+        <i class="fas fa-clock text-primary"></i>
         Latest arrival
       </div>
-      <p class="pl-5"><%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival.strftime("%d/%m/%Y") %></p>
+      <p class="pl-5 font-weight-bold"><%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
       <div class="p-2">
-        <i class="fas fa-clock"></i>
+        <i class="fas fa-clock text-primary"></i>
         Earliest departure
       </div>
-      <p class="pl-5"><%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure.strftime("%d/%m/%Y") %></p>
+      <p class="pl-5 font-weight-bold"><%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure.strftime("%d/%m/%Y") %></p>
     </div>
   </div>
 </div>

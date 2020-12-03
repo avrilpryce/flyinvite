@@ -1,7 +1,8 @@
 require 'faker'
 require "open-uri"
+require 'date'
 
-flight_classes = ["Economy", "Business", "First Class"]
+flight_classes = ["Economy", "Prenium Economy", "Business", "First Class"]
 airlines = ["Air France", "Luxair", "British Airways", "Iberia", "Delta", "Ryanair", "KLM"]
 
 # Cleaning the DB
@@ -209,4 +210,408 @@ puts "Seeding new trips, please wait..."
 end
 
 puts ""
-puts "Seeding completed, #{seeder.username} was used to create #{Trip.count} trips!"
+puts "Seeder is done, creating Avril's demo trips"
+puts "please wait..."
+
+# Demo seed
+# Create Avril's demo account
+def create_avril
+  avril = User.create!(email: "avril@gmail.com", password: "123456", first_name: "Avril", last_name: "Pryce", username: "Fab_Avril", job_title: "CEO", company: "Clubs'r'us", host: true)
+  avril_file = URI.open('https://res.cloudinary.com/hachiles/image/upload/v1606922833/Profile_Pic_bk8gpv.png')
+  avril.photo.attach(io: avril_file, filename: 'avril.png', content_type: 'image/png')
+  return avril
+end
+
+# Create demo's traveler
+def create_michelle
+  michelle = User.create!(email: "m.williams@gmail.com", password: "123456", first_name: "Michelle", last_name: "Williams", username: "Destiny_Michelle", job_title: "Singer", company: "Destiny's Child")
+  michelle_file = URI.open('https://res.cloudinary.com/hachiles/image/upload/v1606923235/michelle_williams_headshot_crop_2_swjqjw.jpg')
+  michelle.photo.attach(io: michelle_file, filename: 'michelle.png', content_type: 'image/png')
+  return michelle
+end
+
+# Check if Avril and Michelle exist and have a photo. Deletes them if bad. Creates them when deleted or if they don't exist.
+if User.exists?(:username => "Fab_Avril")
+  if User.where(username: "Fab_Avril").first.photo.attached?
+    avril = User.where(username: "Fab_Avril").first
+  else
+    User.where(username: "Fab_Avril").first.delete
+    avril = create_avril
+  end
+else
+  avril = create_avril
+end
+
+if User.exists?(:username => "Destiny_Michelle")
+  if User.where(username: "Destiny_Michelle").first.photo.attached?
+    michelle = User.where(username: "Destiny_Michelle").first
+  else
+    User.where(username: "Destiny_Michelle").first.delete
+    michelle = create_michelle
+  end
+else
+  michelle = create_michelle
+end
+
+# Methods to create demo trips
+def create_la_tech(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+  trip = Trip.new(
+    name: "Tech Conference",
+    street: "N Heliotrope Dr",
+    zip: "CA 90029",
+    city: "Los Angeles",
+    country: "United States",
+    max_price: 600,
+    flight_class: "Economy",
+    start_date: DateTime.new(2020, 12, 11, 11, 00, 00),
+    end_date: DateTime.new(2020, 12, 15, 18, 00, 00),
+    airport_code: "LAX",
+    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi?"
+  )
+    
+  # Attaching a picture to the trip
+  file = URI.open('https://res.cloudinary.com/hachiles/image/upload/v1606924144/los-angeles_main_1440x800_h9vupz.jpg')
+  trip.photo.attach(io: file, filename: 'trip.png', content_type: 'image/png')
+  trip.host = avril
+  trip.save
+
+  # Selecting passengers
+  user1 = traveler1
+  user2 = traveler2
+  user3 = traveler3
+
+  # Assigning these users to the trip
+  trip.users << user1
+  trip.users << user2
+  trip.users << user3
+
+  # Generating a flightBooking for user1
+  flight = FlightBooking.new(
+    flight_number: "DL#{rand(1000..9999)}",
+    departure_airport_code: "JFK",
+    arrival_airport_code: trip.airport_code,
+    airline: "Delta",
+    price: rand(300..600),
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 7),
+    arrival_date_local: trip.start_date - 3600
+  )
+  flight.trip = trip
+  flight.user = user1
+  flight.save
+
+  # Generating a flightBooking for user2
+  flight = FlightBooking.new(
+    flight_number: "BA#{rand(1000..9999)}",
+    departure_airport_code: "LHR",
+    arrival_airport_code: trip.airport_code,
+    airline: "British",
+    price: 595,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 15),
+    arrival_date_local: trip.start_date - (3600 * 2)
+  )
+  flight.trip = trip
+  flight.user = user2
+  flight.save
+
+  # Generating a flightBooking for user3
+  flight = FlightBooking.new(
+    flight_number: "JB#{rand(1000..9999)}",
+    departure_airport_code: "LAS",
+    arrival_airport_code: trip.airport_code,
+    airline: "Jet Blue",
+    price: 325,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 4),
+    arrival_date_local: trip.start_date - 3600
+  )
+  flight.trip = trip
+  flight.user = user3
+  flight.save
+
+  puts ""
+  puts "#{trip.name} created"
+end
+
+def create_ny_music(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+  trip = Trip.new(
+    name: "Pop Concert",
+    street: "11th Avenue",
+    zip: "NY 43679",
+    city: "New York",
+    country: "United States",
+    max_price: 500,
+    flight_class: "Economy",
+    start_date: DateTime.new(2020, 12, 18, 16, 00, 00),
+    end_date: DateTime.new(2020, 12, 21, 19, 00, 00),
+    airport_code: "JFK",
+    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi?"
+  )
+    
+  # Attaching a picture to the trip
+  file = URI.open('https://res.cloudinary.com/hachiles/image/upload/v1606924143/new-york-city-skyline-CHEAPNYCFLIGHT1017_opicdr.jpg')
+  trip.photo.attach(io: file, filename: 'trip.png', content_type: 'image/png')
+  trip.host = avril
+  trip.save
+
+  # Selecting passengers
+  user1 = traveler4
+  user2 = traveler5
+  user3 = traveler3
+
+  # Assigning these users to the trip
+  trip.users << user1
+  trip.users << user2
+  trip.users << user3
+
+  # Generating a flightBooking for user1
+  flight = FlightBooking.new(
+    flight_number: "DL#{rand(1000..9999)}",
+    departure_airport_code: "ATL",
+    arrival_airport_code: trip.airport_code,
+    airline: "Delta",
+    price: rand(300..450),
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 7),
+    arrival_date_local: trip.start_date - 3600
+  )
+  flight.trip = trip
+  flight.user = user1
+  flight.save
+
+  # Generating a flightBooking for user2
+  flight = FlightBooking.new(
+    flight_number: "AC#{rand(1000..9999)}",
+    departure_airport_code: "YUL",
+    arrival_airport_code: trip.airport_code,
+    airline: "Air Canada",
+    price: 467,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 6),
+    arrival_date_local: trip.start_date - (3600 * 1)
+  )
+  flight.trip = trip
+  flight.user = user2
+  flight.save
+
+  # Generating a flightBooking for user3
+  flight = FlightBooking.new(
+    flight_number: "DL#{rand(1000..9999)}",
+    departure_airport_code: "MIA",
+    arrival_airport_code: trip.airport_code,
+    airline: "Delta",
+    price: 398,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 4),
+    arrival_date_local: trip.start_date - 3600
+  )
+  flight.trip = trip
+  flight.user = user3
+  flight.save
+
+  puts ""
+  puts "#{trip.name} created"
+end
+
+def create_lv_bday(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+  trip = Trip.new(
+    name: "Vegas Birthday",
+    street: "Las Vegas Bd.",
+    zip: "NV 67934",
+    city: "Las Vegas",
+    country: "United States",
+    max_price: 1500,
+    flight_class: "Business",
+    start_date: DateTime.new(2020, 12, 26, 16, 00, 00),
+    end_date: DateTime.new(2020, 12, 28, 19, 00, 00),
+    airport_code: "LAS",
+    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi?"
+  )
+    
+  # Attaching a picture to the trip
+  file = URI.open('https://res.cloudinary.com/hachiles/image/upload/v1606731978/35cy0djk12vrit0zp17tbgafvl9v.jpg')
+  trip.photo.attach(io: file, filename: 'trip.png', content_type: 'image/png')
+  trip.host = avril
+  trip.save
+
+  # Selecting passengers
+  user1 = traveler4
+  user2 = traveler5
+  user3 = michelle
+
+  # Assigning these users to the trip
+  trip.users << user1
+  trip.users << user2
+  trip.users << user3
+
+  # Generating a flightBooking for user1
+  flight = FlightBooking.new(
+    flight_number: "DL#{rand(1000..9999)}",
+    departure_airport_code: "MIA",
+    arrival_airport_code: trip.airport_code,
+    airline: "Delta",
+    price: 1340,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 10),
+    arrival_date_local: trip.start_date - (3600 * 2)
+  )
+  flight.trip = trip
+  flight.user = user1
+  flight.save
+
+  # Generating a flightBooking for user2
+  flight = FlightBooking.new(
+    flight_number: "JB#{rand(1000..9999)}",
+    departure_airport_code: "LAX",
+    arrival_airport_code: trip.airport_code,
+    airline: "Jet Blue",
+    price: 930,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 5),
+    arrival_date_local: trip.start_date - (3600 * 2)
+  )
+  flight.trip = trip
+  flight.user = user2
+  flight.save
+
+  # Generating a flightBooking for user3
+  flight = FlightBooking.new(
+    flight_number: "DL#{rand(1000..9999)}",
+    departure_airport_code: "JFK",
+    arrival_airport_code: trip.airport_code,
+    airline: "Delta",
+    price: 1420,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 11),
+    arrival_date_local: trip.start_date - (3600 * 3)
+  )
+  flight.trip = trip
+  flight.user = user3
+  flight.save
+
+  puts ""
+  puts "#{trip.name} created"
+end
+
+def create_mi_music(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+  trip = Trip.new(
+    name: "Electro Festival",
+    street: "Beach Drive",
+    zip: "FL 98432",
+    city: "Miami",
+    country: "United States",
+    max_price: 700,
+    flight_class: "Economy",
+    start_date: DateTime.new(2020, 12, 04, 16, 00, 00),
+    end_date: DateTime.new(2020, 12, 06, 19, 00, 00),
+    airport_code: "MIA",
+    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
+    Mollitia officia illum enim praesentium modi?"
+  )
+    
+  # Attaching a picture to the trip
+  file = URI.open('https://res.cloudinary.com/hachiles/image/upload/v1606925574/Ultra-Music-Festival-2019_haesuo.jpg')
+  trip.photo.attach(io: file, filename: 'trip.png', content_type: 'image/png')
+  trip.host = avril
+  trip.save
+
+  # Selecting passengers
+  user1 = traveler4
+  user2 = traveler5
+  user3 = traveler3
+
+  # Assigning these users to the trip
+  trip.users << user1
+  trip.users << user2
+  trip.users << user3
+
+  # Generating a flightBooking for user1
+  flight = FlightBooking.new(
+    flight_number: "DL#{rand(1000..9999)}",
+    departure_airport_code: "ORD",
+    arrival_airport_code: trip.airport_code,
+    airline: "Delta",
+    price: 460,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 7),
+    arrival_date_local: trip.start_date - (3600 * 2)
+  )
+  flight.trip = trip
+  flight.user = user1
+  flight.save
+
+  # Generating a flightBooking for user2
+  flight = FlightBooking.new(
+    flight_number: "JB#{rand(1000..9999)}",
+    departure_airport_code: "LAX",
+    arrival_airport_code: trip.airport_code,
+    airline: "Jet Blue",
+    price: 640,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 10),
+    arrival_date_local: trip.start_date - (3600 * 2)
+  )
+  flight.trip = trip
+  flight.user = user2
+  flight.save
+
+  # Generating a flightBooking for user3
+  flight = FlightBooking.new(
+    flight_number: "AF#{rand(1000..9999)}",
+    departure_airport_code: "CDG",
+    arrival_airport_code: trip.airport_code,
+    airline: "Air France",
+    price: 695,
+    flight_class: trip.flight_class,
+    departure_date_local: trip.start_date - (3600 * 11),
+    arrival_date_local: trip.start_date - (3600 * 3)
+  )
+  flight.trip = trip
+  flight.user = user3
+  flight.save
+
+  puts ""
+  puts "#{trip.name} created"
+end
+
+# Call methods to create trips
+create_la_tech(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+create_ny_music(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+create_lv_bday(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+create_mi_music(traveler1, traveler2, traveler3, traveler4, traveler5, avril, michelle)
+
+puts ""
+puts "Creating a few invitations"
+
+# Create invitations
+la_tech = Trip.find_by(street: "N Heliotrope Dr")
+inv1 = Invitation.create!(trip_id: la_tech.id, email: "ulysse.bondy@hotmail.com")
+
+ny_music = Trip.find_by(street: "11th Avenue")
+inv2 = Invitation.create!(trip_id: ny_music.id, email: "traveler1@gmail.com")
+inv3 = Invitation.create!(trip_id: ny_music.id, email: "m.williams@gmail.com")
+
+lv_bday = Trip.find_by(street: "Las Vegas Bd.")
+inv4 = Invitation.create!(trip_id: lv_bday.id, email: "ulysse.bondy@hotmail.com")
+inv5 = Invitation.create!(trip_id: lv_bday.id, email: "traveler2@gmail.com")
+
+
+
+puts ""
+puts "Seeding completed, have a good day!"

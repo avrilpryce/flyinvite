@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flyinvite</title>
+    <title>flyinvite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,13 +9,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <%= favicon_link_tag %>
   </head>
 
         <% unless @no_navbar %>
           <%= render 'shared/navbar' %>
         <% end %>
-        <%= render 'shared/flashes' %>
-        
+
+
 <body class="page-header-fixed page-sidebar-fixed">
   <div class="page-container">
         <div class="page-content">
@@ -174,10 +176,10 @@
                       <!-- Collect the nav links, forms, and other content for toggling -->
                       <!--
                       <div class="collapse navbar-collapse justify-content-between" id="bs-example-navbar-collapse-1">
-                          <ul class="nav navbar-nav mr-auto"> 
+                          <ul class="nav navbar-nav mr-auto">
                               <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand"></i></a></li>
                           </ul>
-          
+
                         </div> -->
                         <!-- /.navbar-collapse -->
                         <!-->
@@ -245,7 +247,7 @@
                 </div>
                 <%= yield %>
             </div><!-- Main Wrapper -->
-            
+
 
         <div class="page-footer">
         </div>

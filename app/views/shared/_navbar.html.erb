@@ -58,32 +58,32 @@
         <ul>
           <li class="button-list">
             <%= link_to root_path do %>
-              <i class="fas fa-home"></i>
+              <i class="fas fa-home fa-2x"></i>
               <p><small>Home</small></p>
             <%end%>  
           </li>
           <li class="button-list">
             <%= link_to trips_path do %>
-              <i class="fas fa-suitcase"></i>
+              <i class="fas fa-suitcase fa-2x"></i>
               <p><small>My Trips</small></p>
             <%end%>  
           </li>
           <li>
             <%= link_to flight_bookings_path do %>
-              <i class="fas fa-plane"></i>
+              <i class="fas fa-plane fa-2x"></i>
               <p><small>My Flights</small></p>
             <%end%>   
           </li>
           <% if current_user.host %>
             <li>
               <%= link_to new_trip_path do %>
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-plus fa-2x"></i>
                 <p><small>New Trip</small></p>
               <%end%>   
             </li>
              <li>
               <%= link_to users_path do %>
-                <i class="fas fa-user-friends"></i>
+                <i class="fas fa-user-friends fa-2x"></i>
                 <p><small>Travellers</small></p>
               <%end%>   
             </li>
@@ -91,7 +91,7 @@
             <% unless current_user.host %>
             <li>
               <%= link_to invitations_path do %>
-                <i class="fas fa-ticket-alt"></i> 
+                <i class="fas fa-ticket-alt fa-2x"></i> 
                 <p><small>Invites</small></p>  
               <%end%>   
             </li>

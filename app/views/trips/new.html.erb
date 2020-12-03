@@ -1,10 +1,9 @@
+<%= simple_form_for @trip do |f| %>
 <div class="card p-12">
-
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10">
         <h2 class="text-center mt-5 mb-5">Create a trip</h2>
-        <%= simple_form_for @trip do |f| %>
           <%= f.input :name, label: "Trip Name" %>
           <%= f.input :street, label: "Address" %>
           <div class="row">
@@ -34,7 +33,7 @@
       <div class="card-body pt-12 d-flex">
         <div class="row col-12 justify-content-center">
           <div class="col-12 mt-4 mb-4">
-            <%= f.input :description, as: :text, :input_html => {:rows => 6}%>
+            <%= f.input :description, as: :text, :input_html => {:rows => 10}%>
             <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload picture' %>
           </div>
         </div>
@@ -43,7 +42,8 @@
     <div class="card col-6">
       <div class="card-body pt-12 d-flex justify-content-center align-items-center preview-box">
         <div>
-          <%= image_tag "", class: "hidden", id: "photo-preview" %>
+          <!--<%= image_tag "", class: "hidden", id: "photo-preview" %>-->
+          <%= image_tag "https://res.cloudinary.com/hachiles/image/upload/v1606993472/128729957_1019923191814990_8999176841093007894_n_axnirc.png", class: "hidden", id: "photo-preview" %>
         </div>
       </div>
     </div>
@@ -68,10 +68,10 @@
           </div>
           <div class="row justify-content-center mt-4" >
             <%= f.submit class: "btn btn-primary mb-5" %>
-          </div>
-        <%end%>
+          </div>      
       </div>
     </div>
   </div>`
 </div>
+<%end%>
 

@@ -47,7 +47,7 @@
     <div class="d-flex my-3 mx-5 justify-content-around">
       <%# List of trips in the next 30 days %>
       <div class="container my-5 mx-3 py-3 col-6 cards-container">
-        <h1 style="text-align:center;">Trips scheduled (next 30 days):</h1>
+        <h1 class="responsive-font-header" style="text-align:center; font-size: 2rem;">Trips scheduled (next 30 days):</h1>
         <div class="justify-content-around card-grid">
           <% @owned_trips.each do |trip| %>
             <% if trip.start_date < (Time.now + (86400 * 31)) %>
@@ -65,7 +65,7 @@
 
       <%# List of invitations send and still pending %>
       <div class="container my-5 mx-3 py-3 col-6 cards-container">
-        <h1 style="text-align:center;">Pending invitations:</h1>
+        <h1 class="responsive-font-header" style="text-align:center; font-size: 2rem">Pending invitations:</h1>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
@@ -145,7 +145,7 @@
       <div class="d-flex my-3 mx-5 justify-content-around">
         <%# List of trips in the next 30 days %>
         <div class="container my-5 mx-3 py-3 col-6 cards-container">
-          <h1 class="mb-3" style="text-align:center;">Trips scheduled (next 30 days):</h1>
+          <h1 class="mb-3 responsive-font-header" style="text-align:center; font-size: 2rem">Trips scheduled (next 30 days):</h1>
           <div class="justify-content-around card-grid">
             <% @trips.each do |trip| %>
               <% if trip.start_date < (Time.now + (86400 * 31)) %>
@@ -163,7 +163,7 @@
 
         <%# List of invitations send and still pending %>
         <div class="container my-5 mx-3 py-3 col-6 cards-container">
-          <h1 class="mb-3" style="text-align:center;">My profile:</h1>
+          <h1 class="mb-3 responsive-font-header" style="text-align:center; font-size: 2rem">My profile:</h1>
           <div class="card">
             <div class="dash-profile">
               <% if current_user.photo.attached? %>

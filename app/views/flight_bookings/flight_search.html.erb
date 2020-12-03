@@ -6,6 +6,20 @@
   <h1>Booking Restrictions</h1>
   <div class="d-flex justify-content-between">
     <div>
+      <div class="p-2 ml-3">
+        <i class="far fa-calendar-alt"></i>
+        Start date
+      </div>
+      <p class="pl-5"><%= @trip.start_date.strftime("%b, %d %Y") %></p>
+    </div>
+    <div>
+      <div class="p-2 ml-3">
+        <i class="far fa-calendar-alt"></i>
+        End date
+      </div>
+      <p class="pl-5"><%= @trip.end_date.strftime("%b, %d %Y") %></p>
+    </div>
+    <div>
       <div class="p-2">
         <i class="fas fa-plane"></i>
         Arrival airport
@@ -17,7 +31,7 @@
         <i class="fas fa-money-bill"></i>
         Price ceiling
       </div>
-      <p class="pl-5"> <%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></p>
+      <p class="pl-5"><%= @trip.max_price.nil? ? "N/A" : "#{@trip.max_price}€" %></p>
     </div>
     <div>
       <div class="p-2 align-items-center">
@@ -26,24 +40,25 @@
         </svg>
         Travel class
       </div>
-      <p class="pl-5"> <%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></p>
+      <p class="pl-5"><%= @trip.flight_class.nil? || @trip.flight_class == "" ? "N/A" : @trip.flight_class.capitalize %></p>
     </div>
     <div>
       <div class="p-2">
         <i class="fas fa-clock"></i>
-        Latest arrival at event
+        Latest arrival
       </div>
-      <p class="pl-5"> <%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival.strftime("%d/%m/%Y") %></p>
+      <p class="pl-5"><%= @trip.latest_arrival.nil? ? "N/A" : @trip.latest_arrival.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
       <div class="p-2">
         <i class="fas fa-clock"></i>
-        Earliest departure from event
+        Earliest departure
       </div>
-      <p class="pl-5"> <%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure.strftime("%d/%m/%Y") %></p>
+      <p class="pl-5"><%= @trip.earliest_departure.nil? ? "N/A" : @trip.earliest_departure.strftime("%d/%m/%Y") %></p>
     </div>
   </div>
 </div>
+
 <!--js flight searchbox-->
 <div class="container mt-5 mb-5 rounded flight-searchbox shadow">
   <div class="row mb-3 ml-1">
@@ -51,7 +66,7 @@
   </div>
   <form>
     <div class="row">
-      <select class="col-2 mt-2 mb-3 ml-4 mdb-select md-form" id="fare-class">
+      <select class="col-2 mt-2 mb-3 ml-4 mdb-select md-form rounded" id="fare-class">
         <option value="M">Economy</option>
         <option value="W">Premium Economy</option>
         <option value="C">Business</option>
@@ -77,8 +92,8 @@
       <div class="col">
         <input type="text" class="form-control datepicker" placeholder="Return Date" id="ib_date">
       </div>
-      <div class="col mt-2 ml-2">
-        <button type="button" class="btn btn-outline-light search-btn" id="search">Search</button>
+      <div class="col ml-5 confirm-search">
+        <button type="button" class="btn btn-outline-light btn-lg" id="search">Search</button>
       </div>
     </div>
   </div>

@@ -122,11 +122,11 @@
                         <% status = ["On time", "On time", "On time", "On time", "Delayed", "Cancelled"] %>
                         <% flight_status = status.sample %>
                         <% if flight_status == "On time" %>
-                          <td><span class="badge badge-success"><%= flight_status %></span></td>
+                          <td><span class="badge badge-success flight-badge"><%= flight_status %></span></td>
                         <% elsif flight_status == "Delayed" %>
-                          <td><span class="badge badge-warning"><%= flight_status %></span></td>
+                          <td><span class="badge badge-warning flight-badge"><%= flight_status %></span></td>
                         <% else %>
-                          <td><span class="badge badge-danger"><%= flight_status %></span></td>
+                          <td><span class="badge badge-danger flight-badge"><%= flight_status %></span></td>
                         <% end %>
                       </tr>
                     <% end %>
@@ -254,11 +254,11 @@
                             <% status = ["On time", "On time", "On time", "On time", "Delayed", "Cancelled"] %>
                             <% flight_status = status.sample %>
                             <% if flight_status == "On time" %>
-                              <td><span class="badge badge-success"><%= flight_status %></span></td>
+                              <td><span class="badge badge-success flight-badge"><%= flight_status %></span></td>
                             <% elsif flight_status == "Delayed" %>
-                              <td><span class="badge badge-warning"><%= flight_status %></span></td>
+                              <td><span class="badge badge-warning flight-badge"><%= flight_status %></span></td>
                             <% else %>
-                              <td><span class="badge badge-danger"><%= flight_status %></span></td>
+                              <td><span class="badge badge-danger flight-badge"><%= flight_status %></span></td>
                             <% end %>
                           </tr>
                         <% end %>

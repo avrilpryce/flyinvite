@@ -4,32 +4,30 @@ const fetchLocationApi = (userinput, locationBoxId, inputId ) => {
         .then(data => {
 
             const locationBox = document.getElementById(locationBoxId)                 // find location box 
-
-            const locations = data.locations.slice(0,5)                                // select first 5 airport locations from the location api
+           
+            const locations = data.locations.slice(0,5)                               // select first 5 airport locations from the location api
+            locationBox.innerHTML = " "
             locations.forEach(location => {                                           // iterate over the 5 airports
 
                 const airportElementId = `airports-${location.id}` // save element unique id in a variable
-                const airportIata = `<li class="airports" id="${airportElementId}">${location.id}</li>`    // create html to insert with uniq id
-                locationBox.style.display = 'block';
-                locationBox.insertAdjacentHTML("beforeend", airportIata);             // insert beforeend location box
+                const airportIataHTML = `<li class="airports" id="${airportElementId}">${location.id}</li>`    // create html to insert with uniq id
+                locationBox.insertAdjacentHTML("beforeend", airportIataHTML);             // insert beforeend location box
 
                 const airportElement = document.getElementById(airportElementId)
                 airportElement.addEventListener('click', (event)=> {                         // add event listener on click
                     const inputField = document.getElementById(inputId)
                     inputField.value = airportElement.innerHTML                           // a. find input  and  b. put inner text of element in input   
-                    const airportOption = document.getElementsByClassName("airports");     
-                    console.log(airportOption)
-                    airportOption.style.display = 'none';                                               // a. find input options
+                    const airportOptions = document.getElementsByClassName("airports");     
+                    console.log(airportOptions)
+                    locationBox.innerHTML = " ";                                               // a. find input options
                 })
                 
                 document.addEventListener('mouseup', function(e) {
                     if (!locationBox.contains(e.target)) {
-                        locationBox.style.display = 'none';
+                        locationBox.innerHTML = " ";
                     }
-                    });
+                });
     
-                elementIdNumber +=1
-
             })
         })
 }

@@ -45,15 +45,17 @@
   </div>
   </form>
 
+<%# Spinner %>
   <div class="d-flex justify-content-center">
-    <div class="spinner-border text-secondary mt-20" style="width: 10rem; height: 10rem;" role="status">
+    <div id="loading-spinner" class="spinner-border text-secondary mt-20" style="width: 10rem; height: 10rem; display: none;" role="status" >
       <span class="sr-only">Loading...</span>
     </div>
   </div>
 
-  <!--js flight list-->
+  <!--js flight list & confirm button-->
   <div class="container" id="flight-list"></div>
-  <button class="btn btn-primary pt-2 mt-5 mb-5" id="select-flights" data-toggle="modal" data-target="#flightConfirm">Confirm Selection</button>
+  <%# This button has styled display none becasue of js purposes %>
+  <button class="btn btn-primary pt-2 mt-5 mb-5" id="select-flights" data-toggle="modal" data-target="#flightConfirm" style="display: none;">Confirm Selection</button>
 </div>
 
 

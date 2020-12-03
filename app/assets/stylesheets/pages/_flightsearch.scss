@@ -16,3 +16,16 @@
     background-color: #F1F3F6;
   }
 }
+
+.confirm-search .btn-lg {
+  color:white;
+  opacity: 85%;
+  height: 42px;
+  width: 100px;
+  line-height: 1;
+  &:hover {
+  opacity: 100%;
+  color: white;
+  background-color: transparent;
+  }
+}

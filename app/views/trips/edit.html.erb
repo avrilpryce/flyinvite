@@ -1,62 +1,69 @@
+<%= simple_form_for @trip do |f| %>
+
 <div class="card p-5 col-12">
   <div class="card-body pt-10">
     <div class="row justify-content-center">
       <div class="col-6 pt-10">
         <h2 class="text-center mt-5 mb-5">Edit '<%= @trip.name.capitalize %>'</h2>
-        <%= simple_form_for @trip do |f| %>
-          <%= f.input :name, label: "Name" %>
-          <%= f.input :street, label: "Street" %>
-          <%= f.input :zip, label: "Zip code" %>
-          <%= f.input :city, label: "City" %>
-          <%= f.input :country, label: "Country", as: :string %>
-          <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {class: "datepicker"} %>
-        </div>
-      </div>
-    </div>
-  </div>
+       
+        <%= f.input :name, label: "Name" %>
+        <%= f.input :street, label: "Street" %>
+        <%= f.input :zip, label: "Zip code" %>
+        <%= f.input :city, label: "City" %>
+        <%= f.input :country, label: "Country", as: :string %>
+        <%= f.input :start_date, label: "Start date", as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.input :end_date, label: "End date", as: :string, required: false, input_html: {class: "datepicker"} %>
 
-  <div class="row_new justify-space-between">
-    <div class="card col-6">
-      <div class="card-body pt-12 d-flex">
-        <div class="row col-12 justify-content-center">
-          <div class="col-12 mt-4 mb-4">
-            <%= f.input :description, as: :text, :input_html => {:rows => 6}%>
-            <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload new picture' %>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="card col-6">
-      <div class="card-body pt-12 d-flex justify-content-center align-items-center preview-box">
-        <div>
-          <%= image_tag "", class: "hidden", id: "photo-preview" %>
+  </div>
+</div>
+
+<div class="row_new justify-space-between">
+  <div class="card col-6">
+    <div class="card-body pt-12 d-flex">
+      <div class="row col-12 justify-content-center">
+        <div class="col-12 mt-4 mb-4">
+          <%= f.input :description, as: :text, :input_html => {:rows => 10}%>
+          <%= f.input :photo, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input'}, label_html: { class: 'btn btn-primary'}, label: 'Upload new picture' %>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="card p-5 col-12">
-    <div class="card-body pt-10">
-      <div class="row justify-content-center">
-        <div class="col-6 pt-10">
-          <h2 class="text-center mt-5 mb-5">Edit restrictions</h2>
-          <%= f.input :airport_code, label: "Airport (IATA code)" %>
-          <%= f.input :max_price, label: "Max price (€)", as: :numeric %>
-          <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
-          <div class="row">
-            <div class="col-6">
-              <%= f.input :latest_arrival, label: "Latest allowed event arrival", as: :string, required: false, input_html: {id: "latest_arrival"} %>
-            </div>
-            <div class="col-6">
-              <%= f.input :earliest_departure, label: "Earliest allowed event departure", as: :string, required: false, input_html: {id: "earliest_departure"} %>
-            </div>
-          </div>
-          <div class="row justify-content-center mt-4" >
-            <%= f.submit class: "btn btn-primary" %>
-          </div>
+  <div class="card col-6">
+    <div class="card-body pt-12 d-flex justify-content-center align-items-center preview-box">
+      <div>
+        <% if @trip.photo.attached? %>
+          <%= cl_image_tag @trip.photo.key, class: "hidden", id: "photo-preview" %>
+        <% else %>
+          <%= image_tag "primarylogo.png", class: "hidden", id: "photo-preview" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+  
+<div class="card p-5 col-12">
+  <div class="card-body pt-10">
+    <div class="row justify-content-center">
+      <div class="col-6 pt-10">
+        <h2 class="text-center mt-5 mb-5">Edit restrictions</h2>
+        <%= f.input :airport_code, label: "Airport (IATA code)" %>
+        <%= f.input :max_price, label: "Max price (€)", as: :numeric %>
+        <%= f.input :flight_class, label: "Travel class", collection: Trip::FLIGHT_CLASSES %>
+        <div class="row">
+          <div class="col-6">
+            <%= f.input :latest_arrival, label: "Latest allowed event arrival", as: :string, required: false, input_html: {id: "latest_arrival"} %>
+          </div>
+          <div class="col-6">
+            <%= f.input :earliest_departure, label: "Earliest allowed event departure", as: :string, required: false, input_html: {id: "earliest_departure"} %>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-4" >
+          <%= f.submit class: "btn btn-primary" %>         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

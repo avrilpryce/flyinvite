@@ -36,7 +36,7 @@
         <% if @trip.photo.attached? %>
           <%= cl_image_tag @trip.photo.key, class: "hidden", id: "photo-preview" %>
         <% else %>
-          <%= cl_image_tag "https://res.cloudinary.com/hachiles/image/upload/v1606993472/128729957_1019923191814990_8999176841093007894_n_axnirc.png", class: "hidden", id: "photo-preview" %>
+          <%= cl_image_tag "https://res.cloudinary.com/hachiles/image/upload/w_300,h_300,c_scale/v1606993472/128729957_1019923191814990_8999176841093007894_n_axnirc.png", class: "hidden", id: "photo-preview" %>
         <% end %>
       </div>
     </div>

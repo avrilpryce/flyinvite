@@ -266,11 +266,8 @@ def create_la_tech(traveler1, traveler2, traveler3, traveler4, traveler5, avril,
     start_date: DateTime.new(2020, 12, 11, 11, 00, 00),
     end_date: DateTime.new(2020, 12, 15, 18, 00, 00),
     airport_code: "LAX",
-    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi?"
+    description: "LA TechCon 2020 is the meeting place for all things new and disruptive. The most hyped tech at this year’s show has to be Tesla’s first line of consumer-ready cybernetic brain implants. Choose your dreams today!
+    Press passes are limited, so make sure to book by the deadline. Hotel and restaurant recommendations are available at request. "
   )
     
   # Attaching a picture to the trip
@@ -350,11 +347,9 @@ def create_ny_music(traveler1, traveler2, traveler3, traveler4, traveler5, avril
     start_date: DateTime.new(2020, 12, 18, 16, 00, 00),
     end_date: DateTime.new(2020, 12, 21, 19, 00, 00),
     airport_code: "JFK",
-    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi?"
+    description: "New York’s fastest-growing folk-grime fusion showcase. 
+    Food, drinks and accommodation are all courtesy of NewWave Records. Your booth at the after-party is already booked. 
+    Your label has told me they will not cover any flights over €500, so please keep in-budget. "
   )
     
   # Attaching a picture to the trip
@@ -434,11 +429,9 @@ def create_lv_bday(traveler1, traveler2, traveler3, traveler4, traveler5, avril,
     start_date: DateTime.new(2020, 12, 26, 16, 00, 00),
     end_date: DateTime.new(2020, 12, 28, 19, 00, 00),
     airport_code: "LAS",
-    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi?"
+    description: "Vegas Baby! We’ve got two luxury suites in Caesar’s Palace and front-row tickets for Tom Jones. Please behave yourselves as Mr. Jones is a close and personal friend of mine. 
+    For anyone coming from NY, let me know if I should organise an airport shuttle. 
+    I cannot be held personally liable if you blow your life savings at the blackjack table."
   )
     
   # Attaching a picture to the trip
@@ -518,11 +511,8 @@ def create_mi_music(traveler1, traveler2, traveler3, traveler4, traveler5, avril
     start_date: DateTime.new(2020, 12, 04, 16, 00, 00),
     end_date: DateTime.new(2020, 12, 06, 19, 00, 00),
     airport_code: "MIA",
-    description: "Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi? Quisque vel tellus sit amet quam efficitur sagittis. Fusce aliquam pulvinar suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-    Commodi iure nisi unde quas repellat eaque, eos ea voluptatibus praesentium eum, earum vitae consequuntur molestiae. 
-    Mollitia officia illum enim praesentium modi?"
+    description: "Welcome back to Miami! You guys are no strangers to Beach Drive, and it’s grown even bigger since your last visit. Word got around since your 2017show and the venue is completely booked out. No pressure though. 
+    Your manager wants you all at the venue by noon December 5th for set-up. He also wants to make it very clear that there’s no time to party, as your flight back for the homecoming gig is bright and early on the 6th. You have been warned."
   )
     
   # Attaching a picture to the trip

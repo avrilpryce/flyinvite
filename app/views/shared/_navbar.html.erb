@@ -57,32 +57,32 @@
       <% if user_signed_in? %>
         <ul>
           <li class="button-list">
-            <%= link_to root_path do %>
+            <%= link_to root_path, class: "pb-1" do %>
               <i class="fas fa-home fa-2x"></i>
               <p><small>Home</small></p>
             <%end%>  
           </li>
           <li class="button-list">
-            <%= link_to trips_path do %>
+            <%= link_to trips_path, class: "pb-1" do %>
               <i class="fas fa-suitcase fa-2x"></i>
               <p><small>My Trips</small></p>
             <%end%>  
           </li>
           <li>
-            <%= link_to flight_bookings_path do %>
+            <%= link_to flight_bookings_path, class: "pb-1" do %>
               <i class="fas fa-plane fa-2x"></i>
               <p><small>My Flights</small></p>
             <%end%>   
           </li>
           <% if current_user.host %>
             <li>
-              <%= link_to new_trip_path do %>
+              <%= link_to new_trip_path, class: "pb-1" do %>
                 <i class="fas fa-plus fa-2x"></i>
                 <p><small>New Trip</small></p>
               <%end%>   
             </li>
              <li>
-              <%= link_to users_path do %>
+              <%= link_to users_path, class: "pb-1" do %>
                 <i class="fas fa-user-friends fa-2x"></i>
                 <p><small>Travellers</small></p>
               <%end%>   
@@ -90,7 +90,7 @@
           <%end%>
             <% unless current_user.host %>
             <li>
-              <%= link_to invitations_path do %>
+              <%= link_to invitations_path, class: "pb-1" do %>
                 <i class="fas fa-ticket-alt fa-2x"></i> 
                 <p><small>Invites</small></p>  
               <%end%>   
@@ -102,8 +102,8 @@
     </div>
     <% if user_signed_in? %>
       <div class="settings-menu-btn">
-        <a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand"></i></a>
-        <%= button_to destroy_user_session_path, method: "delete", class: "btn btn-outline-light log-out" do %>
+        <a href="javascript:void(0)" id="toggle-fullscreen"><i class="fas fa-expand fa-lg"></i></a>
+        <%= button_to destroy_user_session_path, method: "delete", class: "btn btn-outline-light log-out fa-lg" do %>
           <i class="fas fa-sign-out-alt"></i>
         <%end%>
       </div>

@@ -115,7 +115,9 @@
   <!--js flight list & confirm button-->
   <div class="container" id="flight-list"></div>
   <%# This button has styled display none becasue of js purposes %>
-  <button class="btn btn-primary pt-2 mt-5 mb-5" id="select-flights" data-toggle="modal" data-target="#flightConfirm" style="display: none;">Confirm Selection</button>
+  <div class="row justify-content-center">
+    <button class="btn btn-primary btn-lg rounded-pill w-50 pt-2 mt-5 mb-5" id="select-flights" data-toggle="modal" data-target="#flightConfirm" style="display: none;">Confirm Selection</button>
+  </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="flightConfirm" tabindex="-1" role="dialog" aria-labelledby="flightConfirmLabel" aria-hidden="true">
@@ -132,4 +134,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> 

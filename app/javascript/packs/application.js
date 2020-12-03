@@ -43,7 +43,7 @@ import "../../assets/js/pages/profile.js";
 // import { initSelect2 } from '../components/init_select2';
 import { initiateFlatPickr } from "../plugins/flatpickr";
 import { flightSearch } from "../components/flight_search/flight_search.js"
-
+import { previewImageOnFileSelect } from "../plugins/photo_preview.js";
 
 // Calling imported Functions with Event Listener
 
@@ -52,8 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initiateFlatPickr();
   flightSearch();
+  previewImageOnFileSelect();
 });
 
-//Not working 
-previewImageOnFileSelect();
-import { previewImageOnFileSelect } from "../plugins/photo_preview.js";
+

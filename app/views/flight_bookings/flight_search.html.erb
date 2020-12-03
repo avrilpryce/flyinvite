@@ -20,8 +20,7 @@
         <option value="oneway">One way</option>
       </select> %>
     </div>
-
-    <div class="form-row">
+    <div class="row form-row align-items-start">
       <div class="col ml-2 mb-5">
         <input type="text" class="form-control" placeholder="BER" id="obDepartureAp">
         <%# <input type="text" class="form-control" placeholder="BER" id="autocomplete"> %>
@@ -29,7 +28,7 @@
       </div>
       <div class="col">
         <input type="text" class="form-control" placeholder="FRA" id="obArrivalAp">
-        <div class="autofill-airport " id="arrival-airports"></div>
+        <div class="autofill-airport pl-3 " id="arrival-airports"></div>
       </div>
       <div class="col">
         <input type="text" class="form-control datepicker" placeholder="Departure Date" id="ob_date">
@@ -37,16 +36,14 @@
       <div class="col">
         <input type="text" class="form-control datepicker" placeholder="Return Date" id="ib_date">
       </div>
-      <div class="col mt-2 ml-2">
-        <button type="button" class="btn btn-dark" id="search">Search</button>
+      <div class="col mt-2 ml-2 align-self-start mt-n2">
+        <button type="button" class="btn btn-outline-light btn-lg rounded-pill w-100" id="search">Search</button>
       </div>
     </div>
-
-  </div>
   </form>
 
 <%# Spinner %>
-  <div class="d-flex justify-content-center">
+  <div id="loading-spinner-div" class="d-flex justify-content-center align-items-center">
     <div id="loading-spinner" class="spinner-border text-secondary mt-20" style="width: 10rem; height: 10rem; display: none;" role="status" >
       <span class="sr-only">Loading...</span>
     </div>

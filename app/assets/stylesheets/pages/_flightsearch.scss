@@ -2,6 +2,7 @@
 .flight-searchbox {
   background: linear-gradient(#641eff, #a307dd);
   height: 180px;
+  border-radius: 5px !important;
 }
 
 .autofill-airport {
@@ -17,24 +18,40 @@
   }
 }
 
-.confirm-search .btn-lg {
-  color:white;
-  opacity: 85%;
-  height: 42px;
-  width: 100px;
-  line-height: 1;
-  &:hover {
-  opacity: 100%;
-  color: white;
-  background-color: transparent;
-  }
-}
-
 .passenger svg text{
   fill: purple !important;
 }
 
 .booking-restrictions {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
+
+.travel-class-dropdown {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.travel-class-dropdown > option { 
+  color: black;
+  border-radius: 10px;
+}
+
+.flight-search-button {
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: #641eff !important;
+  opacity: 95%;
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+.lighter {
+  background-color: white !important;
+}
+
+
 

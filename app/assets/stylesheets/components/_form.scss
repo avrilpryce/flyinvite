@@ -12,14 +12,19 @@ input[type=submit]:hover{
 }
 
 
-
 .simple_form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+// Flight search form 
+
 .pick-flight {
   background-color: white!important;
   border: white!important;
+}
+
+.autofill-airport {
+   background-color: white!important;
 }

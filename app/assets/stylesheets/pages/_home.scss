@@ -2,7 +2,7 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .cards-container {
@@ -114,4 +114,8 @@
   input[type=submit]{
     padding: 0px 20px !important;
   }
+}
+
+.responsive-font-header {
+  font-size: calc(20px + (26 - 20) * ((100vw - 1100px) / (1440 - 1100))) !important;
 }

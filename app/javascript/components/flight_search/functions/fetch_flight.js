@@ -185,9 +185,18 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
               }
             })
         })
+        const loadingButton = document.getElementById("loading-spinner")
+        loadingButton.style.display = "none" ; 
+        const searchButton = document.getElementById('select-flights')
+        searchButton.style.display = ''; 
+        console.log(searchButton)
       })
 
 
+
+
+
+      
 }
 
 export {

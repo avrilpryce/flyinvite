@@ -38,8 +38,7 @@ const fetchFlightApi = ({ obDepartureAp, obArrivalAp, ob_date, fare_class, ib_da
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        const flights = data.data
-
+        let flights = data.data.slice(1,5)  // For presentation purposes - to limit the amount of flights returned by the API 10                   
         flights.forEach(flight => {
 
           let airlineIataDeparture = flight.route[0].airline

@@ -5,14 +5,16 @@ class FlightBookingsController < ApplicationController
   def index
     if current_user.host
       host_trips = current_user.owned_trips
-      @trips = []
+      trips_unsorted = []
       host_trips.each do |host_trip|
         if FlightBooking.where(trip_id: host_trip.id).length > 0
-          @trips << host_trip
+          trips_unsorted << host_trip
         end
       end
+      @trips = trips_unsorted.sort_by(&:created_at).reverse
     else
-      @flight_bookings = FlightBooking.where(user_id: current_user.id)
+      flight_bookings_unsorted = FlightBooking.where(user_id: current_user.id)
+      @flight_bookings = flight_bookings_unsorted.sort_by(&:created_at).reverse
     end
   end
 

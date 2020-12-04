@@ -3674,6 +3674,7 @@ span.chat-title {
     padding: 0px 0px;
     line-height: 25px;
     margin: 5px 10px;
+    padding-top: 10px;
     border-radius: 50%;
     width: 100%;
     display: block;
@@ -3684,10 +3685,11 @@ span.chat-title {
     -moz-transition: all .2s;
     -o-transition: all .2s;
     transition: all .2s;
+    opacity: 90%;
 }
 
 .page-sidebar .page-sidebar-menu ul li a:hover {
-    background: rgba(255,255,255,.15);
+    opacity: 100%;
 }
 
 .secondary-sidebar-menu {

@@ -5,51 +5,58 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    .back {
+    .wrapper {
       background-image: linear-gradient(90deg, rgba(84, 47, 252, 0.5) 0%, rgba(255, 93, 113, 1) 100%), url(https://wallpapercave.com/wp/wp2574285.jpg);
       background-size: cover;
       background-position: center;
-      height: calc(100vh - 325px);
-      width: 100vw;
+      position: fixed;
       padding: 0;
-      padding-top: 315px;
-      margin: -10px;
+      margin: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* align-content: center; */
+      /* align-items: flex-end; */
+      align-items: center;
+      color: white;
+
 
     }
 
-    .button-404 {
-      width: max-content;
-      height: 30px;
+
+    h3 {
+      color: white;
+      font-family: Rubik, sans-serif;
+      font-size: 60px;
+      margin-bottom: 0;
+      font-weight: 300;
+    }
+
+    .error-page-link {
       text-decoration: none;
-      background-color: #8014F1;
-      border-radius: 8px;
-      padding: 8px;
-      padding-top: 16px;
-      margin: 0 auto;
-      display: block;
-      white-space: nowrap;
-      color: white;
+      color: #550ba2;
     }
 
-    .button-404:hover {
-      background-color: #9C45F7;
+    p {
+      font-family: Poppins, sans-serif;
     }
 
-    .header-404 {
-      margin: 0 auto;
-      margin-bottom: 16px;
-      width: max-content;
-      color: white;
-
+    .copyright {
+      font-size: 12px;
     }
   </style>
 </head>
 
 <body class="rails-default-error-page">
-  <div class="back">
-    <h1 class="header-404">Ooops... Something went wrong</h1>
-    <a href="http://www.flyinvite.co/" class="button-404">Back to home</a>
-
+  <div class="wrapper">
+    <h3>500</h3>
+    <p>Ooops... Something went wrong<br>Please go back to the <a href="http://www.flyinvite.co/"
+        class="error-page-link">homepage</a></p>
+    <p class="copyright">Copyright @flyinvite</p>
   </div>
 </body>
 

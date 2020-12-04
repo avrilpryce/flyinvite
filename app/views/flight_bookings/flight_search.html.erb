@@ -3,7 +3,7 @@
 <%# ---------------------------------------------- %>
 <!--traveler restriction card-->
 <div class="container mt-5 mb-5 rounded restrictions-card shadow">
-  <h1 class="pb-2">Booking Restrictions for '<%=@trip.name %>'</h1>
+  <h1 class="pb-4">Booking Restrictions for '<%=@trip.name %>'</h1>
   <div class="d-flex justify-content-between booking-restrictions">
     <div>
       <div class="">
@@ -87,7 +87,7 @@
       </div>
       <div class="col">
         <input type="text" class="form-control" placeholder="FRA" id="obArrivalAp">
-        <div class="autofill-airport " id="arrival-airports"></div>
+        <div class="autofill-airport pl-3" id="arrival-airports"></div>
       </div>
       <div class="col">
         <input type="text" class="form-control datepicker lighter" placeholder="Departure Date" id="ob_date">
@@ -97,7 +97,7 @@
       </div>
 
       <div class="col mt-2 ml-2 align-self-start mt-n1">
-        <button type="button" class="btn-lg w-100 flight-search-button" id="search">Search</button>
+        <button type="button" class="btn-lg w-100 flight-search-button shadow" id="search">Search</button>
 
       </div>
     </div>

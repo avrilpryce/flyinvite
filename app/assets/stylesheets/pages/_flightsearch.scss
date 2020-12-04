@@ -7,14 +7,16 @@
 
 .autofill-airport {
   list-style: none !important;
+  max-width: 28%;
 }
 
 .airports {
   border: white;
   list-style: none !important;
-  width: 50%;
+  opacity: 70%;
   &:hover {
-    background-color: #F1F3F6;
+    opacity: 100%;
+    cursor: pointer;
   }
 }
 
@@ -31,11 +33,17 @@
   border: none;
   border-radius: 5px;
   color: white;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .travel-class-dropdown > option { 
   color: black;
   border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .flight-search-button {

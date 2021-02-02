@@ -16,6 +16,7 @@ This is a rough first draft and there will be many more changes to come.
 
 ### 2. Host invites travelers to trips 
 ### 3. Traveler accepts trip invitation 
+![accepts trip](https://res.cloudinary.com/haus-of-mon/image/upload/c_scale,w_600/v1612300972/3._Invite_Travelers_fast_yiclva.gif)
 
 ### 4. Traveler searches for flights 
 ![search](https://res.cloudinary.com/haus-of-mon/image/upload/c_scale,w_600/v1612297271/4._Accept_Trip_fast_mku8o5.gif)

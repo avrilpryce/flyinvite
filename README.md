@@ -16,7 +16,10 @@ This is a rough first draft and there will be many more changes to come.
 
 ### 2. Host invites travelers to trips 
 ### 3. Traveler accepts trip invitation 
+
 ### 4. Traveler searches for flights 
+![flight search](https://res.cloudinary.com/haus-of-mon/image/upload/v1612297271/4._Accept_Trip_fast_mku8o5.gif)
+
 ### 5. Traveler chooses flight options & sends to host
 ### 6. Host receives traveler’s flight options 
 ### 7. Host chooses a flight option and books flight 

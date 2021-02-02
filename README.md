@@ -1,5 +1,8 @@
 # FlyInvite
 
+![FlyInvite Banner](https://res.cloudinary.com/haus-of-mon/image/upload/v1612296980/Flyinvite_banner_m9jmco.png)
+
+
 ## About
 FlyInvite is an application designed to make the lives of event organizers in charge of booking group flights easier. Often event organizers and travel managers waste so much time going back and forth on emails trying to confirm flights.
 As an event organizer my self, I faced this pain point ALL THE TIME 🤦🏾‍♂️.  Trust me, booking 200 plus flights over email is not fun. COVID -19 finally gave me the time so I decided to do something about it by developing this app with assistance from my wonderful Le Wagon Batch 491 teammates.

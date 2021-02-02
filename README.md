@@ -19,14 +19,14 @@ Host chooses a flight option and books flight
 
 ## User Stories 
 
-### As a Host You Can: 
+### As a Host, You Can: 
 - Create trips
 - Invite guests
 - Set booking restrictions
 - Accept/decline flight booking requests from guests  
 
 
-### As a Traveler You Can: 
+### As a Traveler, You Can: 
 - Receive trip invitations
 - Accept/decline trip invitations
 - Search for flights

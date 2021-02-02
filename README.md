@@ -12,6 +12,8 @@ This is a rough first draft and there will be many more changes to come.
 
 ## Demo
 ### 1. Host creates a trip 
+![host login](https://res.cloudinary.com/haus-of-mon/image/upload/v1612300153/1._Host_Login_oy8of3.gif)
+
 ### 2. Host invites travelers to trips 
 ### 3. Traveler accepts trip invitation 
 ### 4. Traveler searches for flights 

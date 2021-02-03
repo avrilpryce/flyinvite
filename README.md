@@ -9,6 +9,21 @@ As an event organizer my self, I faced this pain point ALL THE TIME 🤦🏾‍�
 
 This is a rough first draft and there will be many more changes to come. 
 
+## User Stories 
+
+### As a Host, You Can: 
+- Create trips
+- Invite guests
+- Set booking restrictions
+- Accept/decline flight booking requests from guests  
+
+
+### As a Traveler, You Can: 
+- Receive trip invitations
+- Accept/decline trip invitations
+- Search for flights
+- Send flight booking request to host 
+
 
 ## Demo
 ### 1. Host login
@@ -32,21 +47,6 @@ This is a rough first draft and there will be many more changes to come.
 ### 7. Host chooses a flight option and books flight 
 ![host books flight](https://res.cloudinary.com/haus-of-mon/image/upload/v1612334125/7.Host_books_flight_wzqfeb.gif)
 
-
-## User Stories 
-
-### As a Host, You Can: 
-- Create trips
-- Invite guests
-- Set booking restrictions
-- Accept/decline flight booking requests from guests  
-
-
-### As a Traveler, You Can: 
-- Receive trip invitations
-- Accept/decline trip invitations
-- Search for flights
-- Send flight booking request to host 
 
 
 ## Flight Search API 

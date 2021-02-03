@@ -47,7 +47,9 @@ This is a rough first draft and there will be many more changes to come.
 ### 7. Host chooses a flight option and books flight 
 ![host books flight](https://res.cloudinary.com/haus-of-mon/image/upload/v1612334125/7.Host_books_flight_wzqfeb.gif)
 
+Full live demo [here](http://www.flyinvite.co/). You will need to sign up as a host to make trips and sign up as a traveler to receive trip invitations and search for flights. 
 
+*I am currently working on making it possible for hosts to accept trip invitations and travelers to become hosts and make trips. This is coming in version 2 🦾.*
 
 ## Flight Search API 🔎
 Kiwi’s Tequila Flight Search API and Location API  was used in this project. More info [here](https://partners.kiwi.com/our-solutions/tequila/). Please note, you will need to sign up and login in order to see the API documentation. The API were called using the JS fetch function.

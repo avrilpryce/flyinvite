@@ -18,10 +18,10 @@ This is a rough first draft and there will be many more changes to come.
 ![trip invitation](https://res.cloudinary.com/haus-of-mon/image/upload/v1612332627/2.a_xxpvdk.gif)
 
 ### 3. Traveler accepts trip invitation 
-![accepts trip](https://res.cloudinary.com/haus-of-mon/image/upload/c_scale,w_600/v1612300972/3._Invite_Travelers_fast_yiclva.gif)
+![accepts trip](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333281/3.Host_sends_invitations.gif)
 
 ### 4. Traveler searches for flights 
-![search](https://res.cloudinary.com/haus-of-mon/image/upload/c_scale,w_600/v1612297271/4._Accept_Trip_fast_mku8o5.gif)
+![search](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333625/4.Traveler_accepts_invitations_firjbx.gif)
 
 ### 5. Traveler chooses flight options & sends to host
 ### 6. Host receives traveler’s flight options 

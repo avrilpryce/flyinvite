@@ -15,6 +15,8 @@ This is a rough first draft and there will be many more changes to come.
 ![host login](https://res.cloudinary.com/haus-of-mon/image/upload/v1612300153/1._Host_Login_oy8of3.gif)
 
 ### 2. Host invites travelers to trips 
+![trip invitation](https://res.cloudinary.com/haus-of-mon/image/upload/v1612332627/2.a_xxpvdk.gif)
+
 ### 3. Traveler accepts trip invitation 
 ![accepts trip](https://res.cloudinary.com/haus-of-mon/image/upload/c_scale,w_600/v1612300972/3._Invite_Travelers_fast_yiclva.gif)
 

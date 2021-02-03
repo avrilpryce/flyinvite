@@ -13,16 +13,16 @@ This is a rough first draft and there will be many more changes to come.
 
 ### 👨🏾‍🏫 As a Host, You Can: 
 - Create trips
-- Invite guests
+- Invite travelers
 - Set booking restrictions
-- Accept/decline flight booking requests from guests  
+- Accept/decline flight options from travelers  
 
 
 ### 👩🏼‍🚀 As a Traveler, You Can: 
-- Receive trip invitations
+- Receive trip invitations from host
 - Accept/decline trip invitations
 - Search for flights
-- Send flight booking request to host 
+- Select and send flight options to host
 
 
 ## Demo 🖥

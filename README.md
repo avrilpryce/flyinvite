@@ -24,8 +24,13 @@ This is a rough first draft and there will be many more changes to come.
 ![search](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333625/4.Traveler_accepts_invitations_firjbx.gif)
 
 ### 5. Traveler chooses flight options & sends to host
+![chooses flight](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333860/5.Traveler_searches_flights_ba1fmq.gif)
+
 ### 6. Host receives traveler’s flight options 
+![host receives options](https://res.cloudinary.com/haus-of-mon/image/upload/v1612334130/6.Host_gets_flight_request_cnrexo.gif)
+
 ### 7. Host chooses a flight option and books flight 
+![host books flight](https://res.cloudinary.com/haus-of-mon/image/upload/v1612334125/7.Host_books_flight_wzqfeb.gif)
 
 
 ## User Stories 

@@ -11,19 +11,19 @@ This is a rough first draft and there will be many more changes to come.
 
 
 ## Demo
-### 1. Host creates a trip 
+### 1. Host login
 ![host login](https://res.cloudinary.com/haus-of-mon/image/upload/v1612300153/1._Host_Login_oy8of3.gif)
 
-### 2. Host invites travelers to trips 
+### 2. Host creates a trip
 ![trip invitation](https://res.cloudinary.com/haus-of-mon/image/upload/v1612332627/2.a_xxpvdk.gif)
 
-### 3. Traveler accepts trip invitation 
+### 3. Host invites travelers to trip
 ![accepts trip](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333281/3.Host_sends_invitations.gif)
 
-### 4. Traveler searches for flights 
+### 4. Traveler accepts trip invitation
 ![search](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333625/4.Traveler_accepts_invitations_firjbx.gif)
 
-### 5. Traveler chooses flight options & sends to host
+### 5. Traveler searches for flight, chooses options, and sends to host
 ![chooses flight](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333860/5.Traveler_searches_flights_ba1fmq.gif)
 
 ### 6. Host receives traveler’s flight options 

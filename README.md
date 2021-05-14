@@ -30,7 +30,7 @@ This is a rough first draft and there will be many more changes to come.
 ![host login](https://res.cloudinary.com/haus-of-mon/image/upload/v1612300153/1._Host_Login_oy8of3.gif)
 
 ### 2. Host creates a trip
-![trip invitation](https://res.cloudinary.com/haus-of-mon/image/upload/v1612332627/2.a_xxpvdk.gif)
+![trip invitation](https://res.cloudinary.com/haus-of-mon/image/upload/v1612332627/2.Host_creates_trip.gif)
 
 ### 3. Host invites travelers to trip
 ![accepts trip](https://res.cloudinary.com/haus-of-mon/image/upload/v1612333281/3.Host_sends_invitations.gif)
